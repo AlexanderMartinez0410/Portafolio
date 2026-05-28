@@ -1,0 +1,105 @@
+<div class="about-page">
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Sobre' : 'About' }} <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Mí' : 'Me' }}</span></h1>
+    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.txt' : 'about_me.txt' }}</p>
+  </header>
+
+  <!-- Split Grid -->
+  <div class="profile-grid">
+    <!-- Biography Window -->
+    <div class="bio-container">
+      <div class="console-card bio-card">
+        <div class="console-titlebar">
+          <div class="titlebar-dots">
+            <span class="titlebar-dot dot-red"></span>
+            <span class="titlebar-dot dot-yellow"></span>
+            <span class="titlebar-dot dot-green"></span>
+          </div>
+          <span>{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.txt' : 'about_me.txt' }}</span>
+        </div>
+        <div class="console-content">
+          <p class="bio-text">> {{ biography() }}</p>
+          <br>
+          <p class="bio-text">> {{ biographySecond() }}</p>
+          
+          <div class="bio-details">
+            <div class="detail-row">
+              <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ UBICACIÓN ]' : '[ LOCATION ]' }}</span>
+              <span class="detail-value">Quito, Pichincha, Ecuador</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ ESTADO ]' : '[ STATUS ]' }}</span>
+              <span class="detail-value text-glow">{{ languageService.currentLanguage() === 'es' ? 'DISPONIBLE_PARA_DESPLIEGUE' : 'READY_FOR_DEPLOYMENT' }}</span>
+            </div>
+          </div>
+
+          <div class="bio-actions">
+            <a href="#" class="btn-primary" (click)="$event.preventDefault()">
+              <span>{{ languageService.currentLanguage() === 'es' ? 'DESCARGAR_CV' : 'DOWNLOAD_CV' }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Column -->
+    <div class="skills-container">
+      @for (category of skillCategories(); track category.title) {
+        <div class="console-card skill-card">
+          <div class="console-titlebar">
+            <div class="titlebar-dots">
+              <span class="titlebar-dot dot-green"></span>
+            </div>
+            <span>{{ category.title | lowercase }}.cfg</span>
+          </div>
+          <div class="console-content">
+            <div class="skill-tags">
+              @for (skill of category.skills; track skill) {
+                <span class="skill-tag">[ {{ skill | uppercase }} ]</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Timeline Logs -->
+  <section class="experience-section">
+    <div class="featured-header-divider">
+      <span class="header-number">02 /</span> {{ languageService.currentLanguage() === 'es' ? 'HISTORIAL_PROFESIONAL' : 'CAREER_TIMELINE' }}
+      <div class="divider-line"></div>
+    </div>
+    
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-items">
+        @for (item of experience(); track item.company; let index = $index) {
+          <div class="timeline-item" [class.left-aligned]="index % 2 === 0" [class.right-aligned]="index % 2 !== 0">
+            <div class="timeline-dot"></div>
+
+            <div class="console-card timeline-card">
+              <div class="console-titlebar">
+                <div class="titlebar-dots">
+                  <span class="titlebar-dot dot-yellow"></span>
+                </div>
+                <span>experience_log_{{ index + 1 }}.log</span>
+              </div>
+              <div class="console-content">
+                <span class="timeline-year">// {{ item.year }}</span>
+                <h3 class="timeline-role">{{ item.role | uppercase }}</h3>
+                <h4 class="timeline-company">@ {{ item.company | uppercase }}</h4>
+                <p class="timeline-desc">> {{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,199 @@
+<div class="contact-page">
+  <!-- Header -->
+  <header class="page-header">
+    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Ponerse en' : 'Get in' }} <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Contacto' : 'Touch' }}</span></h1>
+    <p class="page-subtitle">> ./establish_handshake.sh</p>
+  </header>
+
+  <div class="contact-grid">
+    <!-- Contact Information Console Card -->
+    <div class="info-column">
+      <div class="console-card info-card">
+        <div class="console-titlebar">
+          <div class="titlebar-dots">
+            <span class="titlebar-dot dot-red"></span>
+            <span class="titlebar-dot dot-yellow"></span>
+            <span class="titlebar-dot dot-green"></span>
+          </div>
+          <span>contact_info.cfg</span>
+        </div>
+        <div class="console-content">
+          <p class="info-desc">> {{ languageService.currentLanguage() === 'es' ? 'Inicializar protocolos de conexión segura. Seleccione los canales dinámicos abajo.' : 'Initialize secure connection protocols. Select dynamic channels below.' }}</p>
+          <br>
+
+          <div class="info-items">
+            <!-- Email -->
+            <div class="info-item">
+              <div class="info-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="info-svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.25a2.75 2.75 0 0 0-4.996-1.551L12 12.024 9.246 4.7A2.75 2.75 0 0 0 4.25 6.25v11.5a2.75 2.75 0 0 0 2.75 2.75h10a2.75 2.75 0 0 0 2.75-2.75V6.25Z" />
+                </svg>
+              </div>
+              <div>
+                <h4>{{ languageService.currentLanguage() === 'es' ? 'DIRECCIÓN_EMAIL' : 'EMAIL_ADDRESS' }}</h4>
+                <p>alkut202&#64;gmail.com</p>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="info-item">
+              <div class="info-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="info-svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+              </div>
+              <div>
+                <h4>{{ languageService.currentLanguage() === 'es' ? 'UBICACIÓN_DEL_SERVIDOR' : 'SERVER_NODE_LOCATION' }}</h4>
+                <p>Quito, Pichincha, Ecuador</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-connect">
+            <h4>{{ languageService.currentLanguage() === 'es' ? 'REDES_SOCIALES' : 'SOCIAL_PROMPTS' }}</h4>
+            <div class="social-pills">
+              <a href="https://github.com/AlexanderMartinez0410" target="_blank" rel="noopener" class="social-pill">[ GITHUB ]</a>
+              <a href="https://www.linkedin.com/in/alexander-martinez-a1261921a/" target="_blank" rel="noopener" class="social-pill">[ LINKEDIN ]</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Send Message Console Card -->
+    <div class="form-column">
+      <div class="console-card form-card">
+        <div class="console-titlebar">
+          <div class="titlebar-dots">
+            <span class="titlebar-dot dot-red"></span>
+            <span class="titlebar-dot dot-yellow"></span>
+            <span class="titlebar-dot dot-green"></span>
+          </div>
+          <span>send_message.sh</span>
+        </div>
+        <div class="console-content">
+          
+          <!-- Alerts -->
+          @if (submitSuccess()) {
+            <div class="alert success-alert">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="alert-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <div>
+                <strong>{{ languageService.currentLanguage() === 'es' ? 'CONEXIÓN ESTABLECIDA:' : 'HANDSHAKE ESTABLISHED:' }}</strong> {{ languageService.currentLanguage() === 'es' ? 'Mensaje compilado y transmitido con éxito.' : 'Message compiled and transmitted successfully.' }}
+              </div>
+            </div>
+            <br>
+          }
+
+          @if (submitError()) {
+            <div class="alert error-alert">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="alert-svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+              </svg>
+              <div>
+                <strong>{{ languageService.currentLanguage() === 'es' ? 'TIEMPO DE ESPERA AGOTADO:' : 'CONNECTION TIMEOUT:' }}</strong> {{ languageService.currentLanguage() === 'es' ? 'Fallo en la transmisión. Por favor verifique sus configuraciones.' : 'Transmission failed. Please verify configurations.' }}
+              </div>
+            </div>
+            <br>
+          }
+
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+            <div class="form-row">
+              <!-- Name -->
+              <div class="form-group">
+                <label for="name">{{ languageService.currentLanguage() === 'es' ? '# IDENTIFICADOR_DE_USUARIO' : '# USER_IDENTIFIER' }}</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  #nameInput="ngModel"
+                  [(ngModel)]="formData.name" 
+                  required 
+                  placeholder="John Doe"
+                  [class.invalid]="nameInput.invalid && nameInput.touched"
+                >
+                @if (nameInput.invalid && nameInput.touched) {
+                  <span class="validation-msg">{{ languageService.currentLanguage() === 'es' ? 'Parámetro [nombre] requerido' : 'Parameter [name] required' }}</span>
+                }
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">{{ languageService.currentLanguage() === 'es' ? '# PUNTO_DE_ACCESO_EMAIL' : '# EMAIL_ENDPOINT' }}</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  #emailInput="ngModel"
+                  [(ngModel)]="formData.email" 
+                  required 
+                  email
+                  placeholder="john&#64;example.com"
+                  [class.invalid]="emailInput.invalid && emailInput.touched"
+                >
+                @if (emailInput.invalid && emailInput.touched) {
+                  <span class="validation-msg">{{ languageService.currentLanguage() === 'es' ? 'Parámetro [email] inválido' : 'Parameter [email] invalid' }}</span>
+                }
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group">
+              <label for="subject">{{ languageService.currentLanguage() === 'es' ? '# ASUNTO_DEL_PROTOCOLO' : '# PROTOCOL_SUBJECT' }}</label>
+              <input 
+                type="text" 
+                id="subject" 
+                name="subject" 
+                #subjectInput="ngModel"
+                [(ngModel)]="formData.subject" 
+                required
+                [placeholder]="languageService.currentLanguage() === 'es' ? 'Propuesta de Colaboración' : 'Collaboration Proposal'"
+                [class.invalid]="subjectInput.invalid && subjectInput.touched"
+              >
+              @if (subjectInput.invalid && subjectInput.touched) {
+                <span class="validation-msg">{{ languageService.currentLanguage() === 'es' ? 'Parámetro [asunto] requerido' : 'Parameter [subject] required' }}</span>
+              }
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label for="message">{{ languageService.currentLanguage() === 'es' ? '# CUERPO_DE_TRANSMISIÓN' : '# TRANSMISSION_BODY' }}</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                #messageInput="ngModel"
+                [(ngModel)]="formData.message" 
+                required
+                [placeholder]="languageService.currentLanguage() === 'es' ? 'Inicializar flujo de mensaje...' : 'Initialize message stream...'"
+                [class.invalid]="messageInput.invalid && messageInput.touched"
+              ></textarea>
+              @if (messageInput.invalid && messageInput.touched) {
+                <span class="validation-msg">{{ languageService.currentLanguage() === 'es' ? 'Parámetro [cuerpo] vacío' : 'Parameter [body] empty' }}</span>
+              }
+            </div>
+
+            <!-- Submit -->
+            <button 
+              type="submit" 
+              class="btn-primary form-submit-btn" 
+              [disabled]="contactForm.invalid || isSubmitting()"
+            >
+              @if (isSubmitting()) {
+                <span class="spinner"></span>
+                <span>{{ languageService.currentLanguage() === 'es' ? 'TRANSMITIENDO...' : 'TRANSMITTING...' }}</span>
+              } @else {
+                <span>{{ languageService.currentLanguage() === 'es' ? 'EJECUTAR_ENVÍO' : 'EXECUTE_SEND' }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                </svg>
+              }
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

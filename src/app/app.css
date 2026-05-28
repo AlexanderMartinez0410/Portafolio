@@ -1,0 +1,151 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Shell Split Grid Layout */
+.shell-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: start;
+  flex: 1 0 auto;
+  padding-top: 90px;
+  /* Offset for fixed navbar */
+  padding-bottom: 3rem;
+}
+
+
+
+app-footer {
+  margin-top: auto;
+}
+
+/* Console Sidebar Style */
+.console-sidebar {
+  position: sticky;
+  top: 95px;
+  /* Stay visible under fixed navbar */
+  background: var(--bg-secondary);
+  border: 1px solid var(--console-border);
+  border-radius: var(--radius-sm);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  min-height: calc(80vh - 100px);
+  box-shadow: var(--console-shadow);
+}
+
+.sidebar-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  text-shadow: 0 0 10px var(--accent-green-glow);
+  letter-spacing: -0.5px;
+}
+
+.profile-role {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Sidebar Nav Tree */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.directory-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.directory-list a {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.directory-list a:hover {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+  padding-left: 0.75rem;
+}
+
+.directory-list a.active {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+  border-left: 2px solid var(--accent-green);
+  padding-left: 0.75rem;
+  font-weight: 600;
+}
+
+.folder-icon {
+  font-size: 1rem;
+}
+
+/* Sidebar SSH Prompt Card */
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.ssh-card {
+  display: block;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--console-border);
+  color: var(--accent-green);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ssh-card:hover {
+  border-color: var(--accent-green);
+  background: var(--accent-green-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--accent-green-glow);
+}
+
+.ssh-prompt {
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+/* Responsive Overrides - Collapsing Sidebar on Mobile */
+@media (max-width: 992px) {
+  .shell-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 80px;
+  }
+
+  .console-sidebar {
+    display: none;
+    /* Hide sidebar, navbar handles everything */
+  }
+}

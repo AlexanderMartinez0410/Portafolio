@@ -1,1 +1,290 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Outfit:wght@400;700&display=swap');
+
+:root {
+  /* Tech Console Fonts */
+  --font-heading: 'Fira Code', monospace;
+  --font-body: 'Fira Code', monospace;
+
+  /* Deep Console Colors */
+  --bg-primary: #070d19;
+  /* Ultra deep space blue */
+  --bg-secondary: #0c1527;
+  /* Sleek sidebar / card background */
+  --bg-tertiary: #131e35;
+  /* Glowing card hover / inner container background */
+  --nav-bg: rgba(7, 13, 25, 0.85);
+
+  --text-primary: #ffffff;
+  --text-secondary: #8da2bb;
+  /* Tech blue-grey text */
+  --text-muted: #536b8c;
+  /* Muted console commentary */
+
+  /* Console Neon Accents */
+  --accent-green: #00ff66;
+  /* Glowing terminal green */
+  --accent-green-glow: rgba(0, 255, 102, 0.2);
+  --accent-green-deep: #00b347;
+
+  --accent-cyan: #00e5ff;
+  /* Active cyan details */
+  --accent-cyan-glow: rgba(0, 229, 255, 0.15);
+
+  --accent-blue: #0066ff;
+  /* Solid solid action blue button */
+  --accent-blue-glow: rgba(0, 102, 255, 0.25);
+  --accent-blue-hover: #3385ff;
+
+  --accent-pink: #ff007f;
+  /* Red/Pink warning or delete dots */
+  --accent-pink-glow: rgba(255, 0, 127, 0.2);
+
+  /* Console Borders */
+  --console-border: rgba(0, 255, 102, 0.15);
+  --console-border-hover: rgba(0, 255, 102, 0.4);
+  --console-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light mode console variant (retro amber / green terminal on white background) */
+[data-theme="light"] {
+  --bg-primary: #f4f7fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e9eef5;
+  --nav-bg: rgba(240, 244, 248, 0.85);
+
+  --text-primary: #0a1524;
+  --text-secondary: #2c3a4d;
+  --text-muted: #556880;
+
+  --accent-green: #008033;
+  --accent-green-glow: rgba(0, 128, 51, 0.08);
+
+  --accent-cyan: #006b99;
+  --accent-cyan-glow: rgba(0, 107, 153, 0.08);
+
+  --accent-blue: #004ecc;
+  --accent-blue-glow: rgba(0, 78, 204, 0.1);
+
+  --console-border: #cbd5e1;
+  --console-border-hover: #94a3b8;
+  --console-shadow: 0 12px 30px rgba(10, 21, 36, 0.06);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100%;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Custom Scrollbar styled as clean terminal runner */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--console-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Neon Text Glow */
+.neon-glow {
+  text-shadow: 0 0 10px var(--accent-green-glow);
+}
+
+/* Terminal Console Windows */
+.console-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--console-border);
+  box-shadow: var(--console-shadow);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.console-card:hover {
+  border-color: var(--console-border-hover);
+  box-shadow: 0 15px 50px rgba(0, 255, 102, 0.06);
+}
+
+/* Console Header Window Titlebar */
+.console-titlebar {
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--console-border);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.titlebar-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.titlebar-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.dot-red {
+  background-color: var(--accent-pink);
+}
+
+.dot-yellow {
+  background-color: #ffcc00;
+}
+
+.dot-green {
+  background-color: var(--accent-green);
+}
+
+.console-content {
+  padding: 1.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent-blue);
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 12px var(--accent-blue-glow);
+}
+
+.btn-primary:hover {
+  background: var(--accent-blue-hover);
+  box-shadow: 0 6px 18px var(--accent-blue-glow), 0 0 15px rgba(0, 102, 255, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--console-border);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: var(--transition-normal);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-green-glow);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+/* Available indicator dot */
+.available-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-green);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(0, 255, 102, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
+  }
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 4rem 0;
+}

@@ -1,0 +1,57 @@
+.portfolio-footer {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--console-border);
+  padding: 1.5rem 0;
+  position: relative;
+  z-index: 10;
+  transition: background var(--transition-normal), border var(--transition-normal);
+}
+
+.footer-bottom-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.copyright {
+  color: var(--text-muted);
+}
+
+.text-green {
+  color: var(--accent-green);
+  text-shadow: 0 0 8px var(--accent-green-glow);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-links a {
+  color: var(--accent-cyan);
+  transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--accent-green);
+  text-shadow: 0 0 8px var(--accent-green-glow);
+}
+
+.uptime-badge {
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-bottom-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}

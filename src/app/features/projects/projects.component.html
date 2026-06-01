@@ -31,7 +31,7 @@
   <!-- Projects Grid -->
   <div class="projects-grid">
     @for (project of filteredProjects(); track project.title; let index = $index) {
-      <article class="console-card project-card">
+      <article class="console-card project-card clickable-card" (click)="openModal(project)">
         <!-- Titlebar window -->
         <div class="console-titlebar">
           <div class="titlebar-dots">
@@ -63,7 +63,7 @@
             }
           </div>
 
-          <div class="project-links">
+          <div class="project-links" (click)="$event.stopPropagation()">
             @if (project.githubUrl) {
               <a [href]="project.githubUrl" target="_blank" rel="noopener" class="project-link-btn flex-btn">
                 <svg viewBox="0 0 24 24" fill="currentColor" class="btn-svg">
@@ -106,4 +106,100 @@
       </div>
     }
   </div>
+
+  <!-- Console Project Detail Modal -->
+  @if (selectedProject(); as project) {
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="console-card modal-card animate-scale-up" (click)="$event.stopPropagation()">
+        <div class="console-titlebar">
+          <div class="titlebar-dots">
+            <span class="titlebar-dot dot-red" (click)="closeModal()"></span>
+            <span class="titlebar-dot dot-yellow"></span>
+            <span class="titlebar-dot dot-green"></span>
+          </div>
+          <span>detailed_project_viewer.sh</span>
+          <button class="modal-close-btn" (click)="closeModal()">[X]</button>
+        </div>
+        <div class="console-content modal-content">
+          <div class="modal-header-info">
+            <div class="modal-log-title">> CAT EXTREMELY_DETAILED_RECORD.LOG</div>
+            <span class="modal-year">// {{ (project.category === 'Mobile' && languageService.currentLanguage() === 'es' ? 'MÓVIL' : project.category) | uppercase }}</span>
+            <h2 class="modal-role">{{ project.title | uppercase }}</h2>
+            <div class="project-tags" style="margin-top: 0.35rem;">
+              @for (tag of project.tags; track tag) {
+                <span class="project-tag">{{ tag | uppercase }}</span>
+              }
+            </div>
+          </div>
+          
+          <div class="modal-divider"></div>
+          
+          <div class="modal-body-section">
+            <span class="terminal-prompt">$ ./run_description_analyzer.sh</span>
+            <p class="modal-desc">> {{ project.description }}</p>
+          </div>
+
+          <div class="modal-divider"></div>
+          
+          <!-- Lógica de enlaces con terminal prompts -->
+          <div class="modal-body-section">
+            <span class="terminal-prompt">$ ./check_deployment_status.sh</span>
+            
+            <div class="project-links" style="margin-top: 0.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;" (click)="$event.stopPropagation()">
+              @if (project.githubUrl) {
+                <a [href]="project.githubUrl" target="_blank" rel="noopener" class="project-link-btn flex-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="btn-svg">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  <span>{{ languageService.currentLanguage() === 'es' ? 'CÓDIGO' : 'CODE' }}</span>
+                </a>
+              } @else {
+                <span class="project-link-btn flex-btn disabled-btn" [title]="languageService.currentLanguage() === 'es' ? 'Repositorio Privado (Confidencial)' : 'Private Repository (NDA)'">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="btn-svg" style="width: 14px; height: 14px;">
+                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                  </svg>
+                  <span>{{ languageService.currentLanguage() === 'es' ? 'CÓDIGO PRIVADO' : 'PRIVATE CODE' }}</span>
+                </span>
+              }
+
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" rel="noopener" class="project-link-btn primary-glow flex-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                  <span>DEMO LIVE</span>
+                </a>
+              } @else {
+                <span class="project-link-btn flex-btn disabled-btn" [title]="languageService.currentLanguage() === 'es' ? 'Demo no disponible' : 'Demo unavailable'">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-svg" style="width: 14px; height: 14px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+                  </svg>
+                  <span>{{ languageService.currentLanguage() === 'es' ? 'SIN DEMO' : 'NO DEMO' }}</span>
+                </span>
+              }
+            </div>
+          </div>
+
+          <div class="modal-divider"></div>
+          
+          <div class="modal-footer-metadata">
+            <div class="meta-row">
+              <span class="meta-label">[ STATUS ]</span>
+              <span class="meta-val text-glow-green">{{ languageService.currentLanguage() === 'es' ? 'PROYECTO LISTO' : 'STABLE' }}</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">[ COMPILE ]</span>
+              <span class="meta-val text-glow-cyan">SUCCESSFUL</span>
+            </div>
+          </div>
+          
+          <div class="modal-actions">
+            <button class="btn-primary modal-btn" (click)="closeModal()">
+              <span>{{ languageService.currentLanguage() === 'es' ? 'CERRAR_SESION' : 'CLOSE_SESSION' }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
 </div>

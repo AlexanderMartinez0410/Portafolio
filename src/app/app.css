@@ -8,12 +8,12 @@
 .shell-layout {
   display: grid;
   grid-template-columns: 260px 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: start;
   flex: 1 0 auto;
   padding-top: 90px;
   /* Offset for fixed navbar */
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
 }
 
 
@@ -120,8 +120,17 @@ app-footer {
   font-size: 0.82rem;
   font-weight: 600;
   text-align: center;
-  transition: var(--transition-fast);
+  transition: border-color var(--transition-fast), 
+              background var(--transition-fast), 
+              transform var(--transition-fast), 
+              box-shadow var(--transition-fast);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ssh-card::after {
+  content: " _";
+  color: var(--accent-green);
+  opacity: 0;
 }
 
 .ssh-card:hover {
@@ -129,6 +138,11 @@ app-footer {
   background: var(--accent-green-glow);
   transform: translateY(-2px);
   box-shadow: 0 6px 15px var(--accent-green-glow);
+}
+
+.ssh-card:hover::after {
+  opacity: 1;
+  animation: blink-caret 1s step-end infinite;
 }
 
 .ssh-prompt {

@@ -52,6 +52,8 @@
   /* Transitions */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-premium: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Light mode console variant (retro amber / green terminal on white background) */
@@ -148,14 +150,18 @@ a {
   border: 1px solid var(--console-border);
   box-shadow: var(--console-shadow);
   border-radius: var(--radius-sm);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  transition: border-color var(--transition-normal), 
+              box-shadow var(--transition-normal), 
+              transform var(--transition-normal);
   position: relative;
   overflow: hidden;
 }
 
 .console-card:hover {
+  transform: translateY(-4px);
   border-color: var(--console-border-hover);
-  box-shadow: 0 15px 50px rgba(0, 255, 102, 0.06);
+  box-shadow: 0 15px 45px rgba(0, 255, 102, 0.08), 
+              0 0 15px var(--accent-green-glow);
 }
 
 /* Console Header Window Titlebar */
@@ -192,6 +198,10 @@ a {
 
 .dot-green {
   background-color: var(--accent-green);
+}
+
+.dot-cyan {
+  background-color: var(--accent-cyan);
 }
 
 .console-content {
@@ -287,4 +297,38 @@ a {
 
 .section-padding {
   padding: 4rem 0;
+}
+
+/* --- ANIMACIONES ADICIONALES --- */
+
+/* Transición suave para cada página (ruta activa) */
+.home-page > *,
+.experience-page > *:not(.modal-overlay),
+.about-page > *,
+.projects-page > *:not(.modal-overlay),
+.contact-page > * {
+  animation: page-enter var(--transition-slow) both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de Cursor Parpadeante de Consola */
+@keyframes blink-caret {
+  from, to {
+    color: transparent;
+    text-shadow: none;
+  }
+  50% {
+    color: var(--accent-green);
+    text-shadow: 0 0 8px var(--accent-green-glow);
+  }
 }

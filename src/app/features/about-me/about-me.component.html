@@ -1,32 +1,130 @@
 <div class="about-page">
   <!-- Page Header -->
   <header class="page-header">
-    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Sobre' : 'About' }} <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Mí' : 'Me' }}</span></h1>
-    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.txt' : 'about_me.txt' }}</p>
+    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Sobre Mí &' : 'About Me &' }} <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Habilidades' : 'Skills' }}</span></h1>
+    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.cfg' : 'about_me.cfg' }}</p>
   </header>
 
-  <!-- Split Grid -->
-  <div class="profile-grid">
-    <!-- Biography Window -->
-    <div class="bio-container">
-      <div class="console-card bio-card">
-        <div class="console-titlebar">
-          <div class="titlebar-dots">
-            <span class="titlebar-dot dot-red"></span>
-            <span class="titlebar-dot dot-yellow"></span>
-            <span class="titlebar-dot dot-green"></span>
-          </div>
-          <span>{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.txt' : 'about_me.txt' }}</span>
+  <!-- Side-by-Side Content Layout -->
+  <div class="about-split-layout">
+    
+    <!-- Left Column: Biography with ALKUT ASCII art -->
+    <div class="console-card about-bio-card">
+      <div class="console-titlebar">
+        <div class="titlebar-dots">
+          <span class="titlebar-dot dot-red"></span>
+          <span class="titlebar-dot dot-yellow"></span>
+          <span class="titlebar-dot dot-green"></span>
         </div>
-        <div class="console-content">
+        <span>alexander_biography.cfg</span>
+      </div>
+      
+      <div class="console-content bio-card-content">
+        <!-- Biography Welcome Header with ASCII Art -->
+        <div class="bio-welcome-header">
+          <div class="avatar-ascii">
+            <pre>
+   ______  __   __  __  __  ______ 
+  /\  __ \/\ \ / / /\ \/\ \/\  ___\
+  \ \  __ \ \ \'/  \ \ \_\ \ \  __\
+   \ \_\ \_\ \__|   \ \_____\ \_____\
+    \/_/\/_/\/_/     \/_____/\/_____/
+            </pre>
+          </div>
+        </div>
+
+        <!-- Story Paragraphs -->
+        <div class="bio-paragraphs">
           <p class="bio-text">> {{ biography() }}</p>
-          <br>
           <p class="bio-text">> {{ biographySecond() }}</p>
+          <p class="bio-text">> {{ biographyThird() }}</p>
+        </div>
+        
+        <div class="bio-actions">
+          <a href="#" class="btn-primary" (click)="$event.preventDefault()">
+            <span>{{ languageService.currentLanguage() === 'es' ? 'DESCARGAR_CV' : 'DOWNLOAD_CV' }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Technical Skills Manifest Card -->
+    <div class="console-card about-skills-card">
+      <div class="console-titlebar">
+        <div class="titlebar-dots">
+          <span class="titlebar-dot dot-red"></span>
+          <span class="titlebar-dot dot-yellow"></span>
+          <span class="titlebar-dot dot-green"></span>
+        </div>
+        <span>skills_manifest.sh</span>
+      </div>
+      
+      <div class="console-content skills-card-content">
+        <div class="skills-terminal-box">
+          <div class="skills-section-title">// CORE_TECHNICAL_SKILLS</div>
           
-          <div class="bio-details">
+          <!-- Skill Category 1 -->
+          <div class="skill-group">
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'LENGUAJES' : 'LANGUAGES' }}</span>
+            <div class="skill-badges">
+              <span class="skill-badge">[ TS ]</span>
+              <span class="skill-badge">[ JS ]</span>
+              <span class="skill-badge">[ C++ ]</span>
+              <span class="skill-badge">[ PHP ]</span>
+              <span class="skill-badge">[ PY ]</span>
+              <span class="skill-badge">[ JAVA ]</span>
+              <span class="skill-badge">[ SQL ]</span>
+              <span class="skill-badge">[ C# ]</span>
+            </div>
+          </div>
+
+          <!-- Skill Category 2 -->
+          <div class="skill-group">
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'FRAMEWORKS' : 'FRAMEWORKS' }}</span>
+            <div class="skill-badges">
+              <span class="skill-badge">[ ANGULAR ]</span>
+              <span class="skill-badge">[ IONIC ]</span>
+              <span class="skill-badge">[ LARAVEL ]</span>
+              <span class="skill-badge">[ FLUTTER ]</span>
+              <span class="skill-badge">[ REACT ]</span>
+              <span class="skill-badge">[ UNITY ]</span>
+            </div>
+          </div>
+
+          <!-- Skill Category 3 -->
+          <div class="skill-group">
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'BASES_DATOS_CLOUD' : 'DB_&_CLOUD' }}</span>
+            <div class="skill-badges">
+              <span class="skill-badge">[ POSTGRES ]</span>
+              <span class="skill-badge">[ MYSQL ]</span>
+              <span class="skill-badge">[ FIREBASE ]</span>
+              <span class="skill-badge">[ SUPABASE ]</span>
+              <span class="skill-badge">[ AWS ]</span>
+              <span class="skill-badge">[ DOCKER ]</span>
+              <span class="skill-badge">[ GIT ]</span>
+            </div>
+          </div>
+
+          <!-- Skill Category 4 -->
+          <div class="skill-group">
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'ESPECIALIDADES' : 'SPECIALTIES' }}</span>
+            <div class="skill-badges">
+              <span class="skill-badge">[ UX_UI ]</span>
+              <span class="skill-badge">[ QA_ENG ]</span>
+              <span class="skill-badge">[ PROMPT ]</span>
+              <span class="skill-badge">[ AI_CREATE ]</span>
+              <span class="skill-badge">[ GEMINI ]</span>
+            </div>
+          </div>
+
+          <!-- System Metadata Details -->
+          <div class="system-metadata-box">
             <div class="detail-row">
               <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ UBICACIÓN ]' : '[ LOCATION ]' }}</span>
-              <span class="detail-value">Quito, Pichincha, Ecuador</span>
+              <span class="detail-value">Quito, Ecuador</span>
             </div>
             <div class="detail-row">
               <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ ESTADO ]' : '[ STATUS ]' }}</span>
@@ -34,72 +132,27 @@
             </div>
           </div>
 
-          <div class="bio-actions">
-            <a href="#" class="btn-primary" (click)="$event.preventDefault()">
-              <span>{{ languageService.currentLanguage() === 'es' ? 'DESCARGAR_CV' : 'DOWNLOAD_CV' }}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-              </svg>
-            </a>
-          </div>
         </div>
       </div>
     </div>
 
-    <!-- Skills Column -->
-    <div class="skills-container">
-      @for (category of skillCategories(); track category.title) {
-        <div class="console-card skill-card">
-          <div class="console-titlebar">
-            <div class="titlebar-dots">
-              <span class="titlebar-dot dot-green"></span>
-            </div>
-            <span>{{ category.title | lowercase }}.cfg</span>
-          </div>
-          <div class="console-content">
-            <div class="skill-tags">
-              @for (skill of category.skills; track skill) {
-                <span class="skill-tag">[ {{ skill | uppercase }} ]</span>
-              }
-            </div>
-          </div>
-        </div>
-      }
-    </div>
   </div>
 
-  <!-- Timeline Logs -->
-  <section class="experience-section">
-    <div class="featured-header-divider">
-      <span class="header-number">02 /</span> {{ languageService.currentLanguage() === 'es' ? 'HISTORIAL_PROFESIONAL' : 'CAREER_TIMELINE' }}
-      <div class="divider-line"></div>
-    </div>
-    
-    <div class="timeline-container">
-      <div class="timeline-line"></div>
-
-      <div class="timeline-items">
-        @for (item of experience(); track item.company; let index = $index) {
-          <div class="timeline-item" [class.left-aligned]="index % 2 === 0" [class.right-aligned]="index % 2 !== 0">
-            <div class="timeline-dot"></div>
-
-            <div class="console-card timeline-card">
-              <div class="console-titlebar">
-                <div class="titlebar-dots">
-                  <span class="titlebar-dot dot-yellow"></span>
-                </div>
-                <span>experience_log_{{ index + 1 }}.log</span>
-              </div>
-              <div class="console-content">
-                <span class="timeline-year">// {{ item.year }}</span>
-                <h3 class="timeline-role">{{ item.role | uppercase }}</h3>
-                <h4 class="timeline-company">@ {{ item.company | uppercase }}</h4>
-                <p class="timeline-desc">> {{ item.description }}</p>
-              </div>
-            </div>
-          </div>
-        }
+  <!-- Glowing Bottom CTA Banner -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <h3 class="cta-title">
+        {{ languageService.currentLanguage() === 'es' ? '¿Quieres formar parte de mi historia?' : 'Want to be part of my story?' }}
+      </h3>
+      <p class="cta-subtitle">
+        {{ languageService.currentLanguage() === 'es' ? 'Diseñemos e implementemos el próximo gran sistema juntos.' : 'Let\'s collaborate and build the next great system together.' }}
+      </p>
+      <div class="cta-action">
+        <a routerLink="/contact" class="btn-cta neon-btn">
+          <span>&gt; ssh {{ languageService.currentLanguage() === 'es' ? 'contacto' : 'contact' }}&#64;alkut.dev</span>
+          <span class="pulse-ring"></span>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 </div>

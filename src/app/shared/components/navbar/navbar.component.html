@@ -12,6 +12,9 @@
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">&gt; {{ languageService.currentLanguage() === 'es' ? '~/inicio' : '~/home' }}</a>
         </li>
         <li>
+          <a routerLink="/experience" routerLinkActive="active">&gt; {{ languageService.currentLanguage() === 'es' ? '~/experiencia' : '~/experience' }}</a>
+        </li>
+        <li>
           <a routerLink="/projects" routerLinkActive="active">&gt; {{ languageService.currentLanguage() === 'es' ? '~/proyectos' : '~/projects' }}</a>
         </li>
         <li>
@@ -31,16 +34,27 @@
       </button>
 
       <!-- Theme Toggle Button -->
-      <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme">
+      <button 
+        class="theme-toggle" 
+        (click)="toggleTheme()" 
+        [attr.aria-label]="isDarkMode() ? 'Toggle light mode' : 'Toggle dark mode'"
+        [title]="isDarkMode() ? (languageService.currentLanguage() === 'es' ? 'Cambiar a Consola Clara' : 'Switch to Light Console') : (languageService.currentLanguage() === 'es' ? 'Cambiar a Consola Negra' : 'Switch to Dark Console')"
+      >
         @if (isDarkMode()) {
-          <!-- Sun Icon for light mode -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="theme-icon">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21m8.97-8.97h-2.25C18.18 12 12 18.18 12 19.313m-8.97-8.97h2.25m1.89-6.31 1.59 1.59m10.602 10.602 1.59 1.59m-10.602 0-1.59 1.59m10.602-10.602-1.59 1.59M12 9.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+          <!-- Consola Claro Icon (Representa consola clara) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon console-light-icon">
+            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="#ffffff" stroke="currentColor"></rect>
+            <line x1="2" y1="8" x2="22" y2="8" stroke="currentColor"></line>
+            <path d="M6 12l2 2-2 2" stroke="#0c1527" stroke-width="2.5"></path>
+            <line x1="11" y1="16" x2="15" y2="16" stroke="#0c1527" stroke-width="2.5"></line>
           </svg>
         } @else {
-          <!-- Moon Icon for dark mode -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="theme-icon">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+          <!-- Consola Negra Icon (Representa consola oscura) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon console-dark-icon">
+            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="#0c1527" stroke="currentColor"></rect>
+            <line x1="2" y1="8" x2="22" y2="8" stroke="currentColor"></line>
+            <path d="M6 12l2 2-2 2" stroke="#00ff66" stroke-width="2.5"></path>
+            <line x1="11" y1="16" x2="15" y2="16" stroke="#00ff66" stroke-width="2.5"></line>
           </svg>
         }
       </button>
@@ -58,6 +72,9 @@
       <ul class="mobile-nav-links">
         <li>
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMobileMenu()">&gt; {{ languageService.currentLanguage() === 'es' ? '~/inicio' : '~/home' }}</a>
+        </li>
+        <li>
+          <a routerLink="/experience" routerLinkActive="active" (click)="closeMobileMenu()">&gt; {{ languageService.currentLanguage() === 'es' ? '~/experiencia' : '~/experience' }}</a>
         </li>
         <li>
           <a routerLink="/projects" routerLinkActive="active" (click)="closeMobileMenu()">&gt; {{ languageService.currentLanguage() === 'es' ? '~/proyectos' : '~/projects' }}</a>

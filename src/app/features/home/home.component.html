@@ -30,8 +30,8 @@
       </div>
 
       <h1 class="hero-title">
-        {{ languageService.currentLanguage() === 'es' ? 'ARQUITECTO TÉCNICO PRINCIPAL' : 'LEAD TECHNICAL ARCHITECT' }}<br>
-        <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? '& LÍDER TÉCNICO (TECH LEAD)' : '& TECH LEAD' }}</span>
+        {{ languageService.currentLanguage() === 'es' ? 'ESPECIALISTA FRONTEND' : 'FRONTEND SPECIALIST' }}<br>
+        <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'CON CAPACIDADES FULL STACK' : 'WITH FULL STACK CAPABILITIES' }}</span>
       </h1>
 
       <p class="hero-tagline">> {{ tagline() }}</p>
@@ -121,7 +121,21 @@
   <!-- Core Pillars Focus Section -->
   <section class="focus-section section-padding">
     <div class="focus-grid">
-      <!-- Card 1 -->
+      <!-- Card 1: Frontend Specialization -->
+      <div class="console-card focus-card">
+        <div class="console-titlebar">
+          <div class="titlebar-dots">
+            <span class="titlebar-dot dot-cyan"></span>
+          </div>
+          <span>FRONTEND_UX.cfg</span>
+        </div>
+        <div class="console-content">
+          <h3 class="focus-title">{{ languageService.currentLanguage() === 'es' ? 'INTERFAZ_Y_EXPERIENCIA' : 'UI_UX_ENGINEERING' }}</h3>
+          <p class="focus-desc">{{ languageService.currentLanguage() === 'es' ? 'Desarrollo de interfaces reactivas y de alto rendimiento utilizando Angular, optimización de carga y diseño UX moderno para flujos complejos.' : 'Reactive, high-performance user interfaces using Angular, bundle size optimization, and modern UX design for complex workflows.' }}</p>
+        </div>
+      </div>
+
+      <!-- Card 2: System Logic -->
       <div class="console-card focus-card">
         <div class="console-titlebar">
           <div class="titlebar-dots">
@@ -135,21 +149,21 @@
         </div>
       </div>
 
-      <!-- Card 2 -->
+      <!-- Card 3: Technical Documentation -->
       <div class="console-card focus-card">
         <div class="console-titlebar">
           <div class="titlebar-dots">
             <span class="titlebar-dot dot-yellow"></span>
           </div>
-          <span>DATA_INTEGRITY.cfg</span>
+          <span>SYS_DOCS.cfg</span>
         </div>
         <div class="console-content">
-          <h3 class="focus-title">{{ languageService.currentLanguage() === 'es' ? 'INTEGRIDAD_DE_DATOS' : 'DATA_INTEGRITY' }}</h3>
-          <p class="focus-desc">{{ languageService.currentLanguage() === 'es' ? 'Diseño de esquemas y modelos relacionales que priorizan la máxima seguridad, encriptación de datos sensibles en reposo y optimización de índices.' : 'Architecting relational schemas that prioritize security, encryption at rest, and HIPAA/FERPA compliance.' }}</p>
+          <h3 class="focus-title">{{ languageService.currentLanguage() === 'es' ? 'DOCUMENTACION_TECNICA' : 'SYSTEM_DOCUMENTATION' }}</h3>
+          <p class="focus-desc">{{ languageService.currentLanguage() === 'es' ? 'Redacción detallada de especificaciones funcionales, diagramas de flujo de datos, manuales de usuario del sistema y documentación de procesos bajo metodologías ágiles.' : 'Detailed functional specifications, data flow diagrams, system user manuals, and agile process documentation.' }}</p>
         </div>
       </div>
 
-      <!-- Card 3 -->
+      <!-- Card 4: QA Engineering -->
       <div class="console-card focus-card">
         <div class="console-titlebar">
           <div class="titlebar-dots">
@@ -158,8 +172,8 @@
           <span>QA_CYCLES.cfg</span>
         </div>
         <div class="console-content">
-          <h3 class="focus-title">{{ languageService.currentLanguage() === 'es' ? 'CICLOS_DE_QA' : 'QA_CYCLES' }}</h3>
-          <p class="focus-desc">{{ languageService.currentLanguage() === 'es' ? 'Baterías de pruebas completas de integración, unitarias y E2E para asegurar una experiencia estudiantil óptima y despliegues con cero errores.' : 'Comprehensive test suites for both UI and API layers to ensure zero-downtime student experiences.' }}</p>
+          <h3 class="focus-title">{{ languageService.currentLanguage() === 'es' ? 'INGENIERIA_DE_QA' : 'QA_ENGINEERING' }}</h3>
+          <p class="focus-desc">{{ languageService.currentLanguage() === 'es' ? 'Planificación de pruebas manuales y exploratorias, diseño estructurado de casos de prueba, seguimiento meticuloso de incidencias y automatización de pruebas unitarias/E2E.' : 'Manual and exploratory test planning, structured test case design, meticulous bug tracking, and automated unit/E2E test suites.' }}</p>
         </div>
       </div>
     </div>

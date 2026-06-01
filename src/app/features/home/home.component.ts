@@ -25,14 +25,14 @@ export class HomeComponent {
   
   role = computed(() => {
     return this.languageService.currentLanguage() === 'es'
-      ? 'Arquitecto Técnico Principal & Líder Técnico'
-      : 'Lead Technical Architect & Tech Lead';
+      ? 'Especialista Frontend con capacidades Full Stack'
+      : 'Frontend Specialist with Full Stack Capabilities';
   });
 
   tagline = computed(() => {
     return this.languageService.currentLanguage() === 'es'
-      ? 'Especializado en arquitecturas frontend premium, backends de alto rendimiento, ingeniería de bases de datos, desarrollo móvil y dirección de equipos multidisciplinarios desde la concepción del cliente hasta el despliegue seguro.'
-      : 'Specialized in premium frontend architectures, high-performance backends, database engineering, mobile development, and orchestrating cross-functional teams from client kickoff to secure deployment.';
+      ? 'Especialista en reestructuración y modernización de interfaces. Transformo sistemas complejos en experiencias intuitivas y a prueba de errores, imponiendo manuales de marca estrictos con arquitecturas robustas en Angular, Laravel, .NET y contenedores Docker.'
+      : 'Specialist in interface re-architecture and system modernization. I transform complex workflows into highly intuitive, bulletproof user experiences, enforcing strict brand guidelines backed by robust architectures in Angular, Laravel, .NET, and Docker containers.';
   });
 
   featuredProjects = computed<HighlightedProject[]>(() => {
@@ -41,8 +41,8 @@ export class HomeComponent {
       {
         title: lang === 'es' ? 'Iris — Red Social Institucional' : 'Iris — Institutional Social Network',
         description: lang === 'es'
-          ? 'Una red social completa diseñada para el instituto ISTPET. Cuenta con comunicación segura en tiempo real, muros de publicaciones personalizados, perfiles de usuario y gestión multimedia en AWS EC2 y S3.'
-          : 'A complete social network engineered for the ISTPET institute. Features secure real-time student communications, custom feeds, user profiles, and media storage on AWS EC2 & S3.',
+          ? 'Red social estudiantil para el instituto ISTPET. Como líder, estructuré y desplegué todo el ecosistema frontend y en la nube (AWS EC2/S3) en solo 33 días, con muros de publicaciones dinámicos y perfiles de usuario.'
+          : 'Student social network built for ISTPET institute. As lead, engineered and deployed the entire frontend and cloud (AWS EC2/S3) environment in a 33-day timeline, featuring dynamic feeds and custom profiles.',
         tags: ['Angular', 'Laravel', 'AWS S3', 'PostgreSQL'],
         image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
         githubUrl: 'https://github.com/manetao/iris'
@@ -50,8 +50,8 @@ export class HomeComponent {
       {
         title: lang === 'es' ? 'Bioregistro — Control de Asistencia Biométrico' : 'Bioregistro — Biometric Attendance Suite',
         description: lang === 'es'
-          ? 'Un sistema de control de accesos e ingresos de alta velocidad que integra validación biométrica local (huella dactilar/reconocimiento facial), transmisión de logs en tiempo real y registro automatizado de puntualidad.'
-          : 'A high-performance security and check-in system integrating local biometric validations (fingerprint/face ID), real-time transaction streams, and automated student tardiness records.',
+          ? 'Aplicación móvil completa para el registro y control de asistencia en una institución educativa. Cuenta con validación biométrica de huella dactilar nativa, geolocalización, mapas y base de datos con Firebase.'
+          : 'Complete mobile application for student check-ins and attendance tracking inside a school. Built with Flutter and Firebase, featuring native biometric fingerprint verification, secure GPS tracking, and maps.',
         tags: ['Flutter', 'Firebase', 'Biometrics', 'Firestore'],
         image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80',
         githubUrl: 'https://github.com/AlexanderMartinez0410/biometric_attendance'

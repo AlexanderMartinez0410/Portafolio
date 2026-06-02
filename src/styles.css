@@ -43,6 +43,7 @@
   --console-border: rgba(0, 255, 102, 0.15);
   --console-border-hover: rgba(0, 255, 102, 0.4);
   --console-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  --navbar-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -79,6 +80,7 @@
   --console-border: #cbd5e1;
   --console-border-hover: #94a3b8;
   --console-shadow: 0 12px 30px rgba(10, 21, 36, 0.06);
+  --navbar-shadow: none;
 }
 
 /* Global Reset */
@@ -332,3 +334,64 @@ a {
     text-shadow: 0 0 8px var(--accent-green-glow);
   }
 }
+
+/* CRT Scanline and Vignette Styles */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.05),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.05)
+  );
+  background-size: 100% 4px, 6px 100%;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+.crt-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7);
+  z-index: 99998;
+  pointer-events: none;
+}
+
+/* Glitch styling classes */
+.glitch-hover {
+  display: inline-block;
+  position: relative;
+  transition: text-shadow 0.15s ease;
+}
+
+.glitch-hover:hover {
+  text-shadow: 0.05em 0 0 rgba(255, 0, 80, 0.75),
+               -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+               0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+}
+
+/* Global Terminal Command Prompt Typography and Blinking Cursor */
+.terminal-command-text {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  min-width: 1px;
+}
+
+.terminal-cursor {
+  color: var(--accent-green);
+  font-family: var(--font-heading);
+  font-weight: bold;
+  animation: blink-caret 1s step-end infinite;
+}
+

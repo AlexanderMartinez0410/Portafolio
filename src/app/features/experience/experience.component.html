@@ -1,8 +1,10 @@
 <div class="experience-page">
   <!-- Page Header -->
   <header class="page-header">
-    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Experiencia &' : 'Experience &' }} <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Trayectoria' : 'Career' }}</span></h1>
-    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'experiencia.log' : 'experience.log' }}</p>
+    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Experiencia &' : 'Experience &' }} <span
+        class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Trayectoria' : 'Career' }}</span></h1>
+    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'experiencia.log' :
+      'experience.log' }}</p>
   </header>
 
   <!-- Timeline Logs (Vertical Only) -->
@@ -12,25 +14,26 @@
 
       <div class="timeline-items">
         @for (item of experience(); track item.company; let index = $index) {
-          <div class="timeline-item" [class.left-aligned]="index % 2 === 0" [class.right-aligned]="index % 2 !== 0">
-            <div class="timeline-dot"></div>
+        <div class="timeline-item" [class.left-aligned]="index % 2 === 0" [class.right-aligned]="index % 2 !== 0">
+          <div class="timeline-dot"></div>
 
-            <div class="console-card timeline-card" (click)="openModal(item)">
-              <div class="console-titlebar">
-                <div class="titlebar-dots">
-                  <span class="titlebar-dot dot-yellow"></span>
-                </div>
-                <span>experience_log_{{ index + 1 }}.log</span>
-                <span class="info-indicator" title="{{ languageService.currentLanguage() === 'es' ? 'Haz clic para ver detalles' : 'Click to view details' }}">i</span>
+          <div class="console-card timeline-card" (click)="openModal(item)">
+            <div class="console-titlebar">
+              <div class="titlebar-dots">
+                <span class="titlebar-dot dot-yellow"></span>
               </div>
-              <div class="console-content">
-                <span class="timeline-year">// {{ item.year }}</span>
-                <h3 class="timeline-role">{{ item.role | uppercase }}</h3>
-                <h4 class="timeline-company">@ {{ item.company | uppercase }}</h4>
-                <p class="timeline-desc">> {{ item.description }}</p>
-              </div>
+              <span>experience_log_{{ index + 1 }}.log</span>
+              <span class="info-indicator"
+                title="{{ languageService.currentLanguage() === 'es' ? 'Haz clic para ver detalles' : 'Click to view details' }}">i</span>
+            </div>
+            <div class="console-content">
+              <span class="timeline-year">// {{ item.year }}</span>
+              <h3 class="timeline-role">{{ item.role | uppercase }}</h3>
+              <h4 class="timeline-company">@ {{ item.company | uppercase }}</h4>
+              <p class="timeline-desc">> {{ item.description }}</p>
             </div>
           </div>
+        </div>
         }
       </div>
     </div>
@@ -38,63 +41,66 @@
 
   <!-- Console Detail Modal -->
   @if (selectedItem(); as item) {
-    <div class="modal-overlay" (click)="closeModal()">
-      <div class="console-card modal-card animate-scale-up" (click)="$event.stopPropagation()">
-        <div class="console-titlebar">
-          <div class="titlebar-dots">
-            <span class="titlebar-dot dot-red" (click)="closeModal()"></span>
-            <span class="titlebar-dot dot-yellow"></span>
-            <span class="titlebar-dot dot-green"></span>
-          </div>
-          <span>detailed_experience_viewer.sh</span>
-          <button class="modal-close-btn" (click)="closeModal()">[X]</button>
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="console-card modal-card animate-scale-up" (click)="$event.stopPropagation()">
+      <div class="console-titlebar">
+        <div class="titlebar-dots">
+          <span class="titlebar-dot dot-red" (click)="closeModal()"></span>
+          <span class="titlebar-dot dot-yellow"></span>
+          <span class="titlebar-dot dot-green"></span>
         </div>
-        <div class="console-content modal-content">
-          <div class="modal-header-info">
-            <div class="modal-log-title">> CAT EXTREMELY_DETAILED_RECORD.LOG</div>
-            <span class="modal-year">// {{ item.year }}</span>
-            <h2 class="modal-role">{{ item.role | uppercase }}</h2>
-            <h3 class="modal-company">@ {{ item.company | uppercase }}</h3>
-          </div>
-          
-          <div class="modal-divider"></div>
-          
-          <div class="modal-body-section">
-            <span class="terminal-prompt">$ ./run_description_analyzer.sh</span>
-            <p class="modal-desc">> {{ item.description }}</p>
-          </div>
+        <span>detailed_experience_viewer.sh</span>
+        <button class="modal-close-btn" (click)="closeModal()">[X]</button>
+      </div>
+      <div class="console-content modal-content">
+        <div class="modal-header-info">
+          <div class="modal-log-title">> CAT EXTREMELY_DETAILED_RECORD.LOG</div>
+          <span class="modal-year">// {{ item.year }}</span>
+          <h2 class="modal-role">{{ item.role | uppercase }}</h2>
+          <h3 class="modal-company">@ {{ item.company | uppercase }}</h3>
+        </div>
 
-          <div class="modal-divider"></div>
-          
-          <div class="modal-footer-metadata">
-            <div class="meta-row">
-              <span class="meta-label">[ STATUS ]</span>
-              <span class="meta-val text-glow-green">{{ languageService.currentLanguage() === 'es' ? 'COMPLETADO' : 'COMPLETED' }}</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">[ INTEGRITY ]</span>
-              <span class="meta-val text-glow-cyan">VERIFIED_LOG_ENTRY</span>
-            </div>
+        <div class="modal-divider"></div>
+
+        <div class="modal-body-section">
+          <span class="terminal-prompt">$ ./run_description_analyzer.sh</span>
+          <p class="modal-desc">> {{ item.description }}</p>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="modal-footer-metadata">
+          <div class="meta-row">
+            <span class="meta-label">[ STATUS ]</span>
+            <span class="meta-val text-glow-green">{{ languageService.currentLanguage() === 'es' ? 'COMPLETADO' :
+              'COMPLETED' }}</span>
           </div>
-          
-          <div class="modal-actions">
-            <button class="btn-primary modal-btn" (click)="closeModal()">
-              <span>{{ languageService.currentLanguage() === 'es' ? 'CERRAR_SESION' : 'CLOSE_SESSION' }}</span>
-            </button>
+          <div class="meta-row">
+            <span class="meta-label">[ INTEGRITY ]</span>
+            <span class="meta-val text-glow-cyan">VERIFIED_LOG_ENTRY</span>
           </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-primary modal-btn" (click)="closeModal()">
+            <span>{{ languageService.currentLanguage() === 'es' ? 'CERRAR_SESION' : 'CLOSE_SESSION' }}</span>
+          </button>
         </div>
       </div>
     </div>
+  </div>
   }
 
   <!-- Glowing Bottom CTA Banner linking to About Me & Skills -->
   <div class="cta-banner">
     <div class="cta-inner">
       <h3 class="cta-title">
-        {{ languageService.currentLanguage() === 'es' ? '¿Quieres conocer quién está detrás del código?' : 'Want to know who is behind the code?' }}
+        {{ languageService.currentLanguage() === 'es' ? '¿Quieres conocer quién está detrás del código?' : 'Want to know
+        who is behind the code?' }}
       </h3>
       <p class="cta-subtitle">
-        {{ languageService.currentLanguage() === 'es' ? 'Descubre mi historia personal y mi conjunto completo de habilidades técnicas.' : 'Discover my personal story and my complete technical skill set.' }}
+        {{ languageService.currentLanguage() === 'es' ? 'Descubre mi historia personal y mi conjunto completo de
+        habilidades técnicas.' : 'Discover my personal story and my complete technical skill set.' }}
       </p>
       <div class="cta-action">
         <a routerLink="/about-me" class="btn-cta neon-btn">

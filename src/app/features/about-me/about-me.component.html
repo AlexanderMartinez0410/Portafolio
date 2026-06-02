@@ -1,13 +1,15 @@
 <div class="about-page">
   <!-- Page Header -->
   <header class="page-header">
-    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Sobre Mí &' : 'About Me &' }} <span class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Habilidades' : 'Skills' }}</span></h1>
-    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.cfg' : 'about_me.cfg' }}</p>
+    <h1 class="page-title">{{ languageService.currentLanguage() === 'es' ? 'Sobre Mí &' : 'About Me &' }} <span
+        class="grad-text">{{ languageService.currentLanguage() === 'es' ? 'Habilidades' : 'Skills' }}</span></h1>
+    <p class="page-subtitle">> cat root/{{ languageService.currentLanguage() === 'es' ? 'sobre_mi.cfg' : 'about_me.cfg'
+      }}</p>
   </header>
 
   <!-- Side-by-Side Content Layout -->
   <div class="about-split-layout">
-    
+
     <!-- Left Column: Biography with ALKUT ASCII art -->
     <div class="console-card about-bio-card">
       <div class="console-titlebar">
@@ -18,17 +20,16 @@
         </div>
         <span>alexander_biography.cfg</span>
       </div>
-      
+
       <div class="console-content bio-card-content">
         <!-- Biography Welcome Header with ASCII Art -->
         <div class="bio-welcome-header">
           <div class="avatar-ascii">
             <pre>
-   ______  __   __  __  __  ______ 
-  /\  __ \/\ \ / / /\ \/\ \/\  ___\
-  \ \  __ \ \ \'/  \ \ \_\ \ \  __\
-   \ \_\ \_\ \__|   \ \_____\ \_____\
-    \/_/\/_/\/_/     \/_____/\/_____/
+      /\___/\
+     ( =•.+= )
+        /  つ   つ 🐾
+    (  __ __ )
             </pre>
           </div>
         </div>
@@ -39,12 +40,14 @@
           <p class="bio-text">> {{ biographySecond() }}</p>
           <p class="bio-text">> {{ biographyThird() }}</p>
         </div>
-        
+
         <div class="bio-actions">
           <a href="#" class="btn-primary" (click)="$event.preventDefault()">
             <span>{{ languageService.currentLanguage() === 'es' ? 'DESCARGAR_CV' : 'DOWNLOAD_CV' }}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+              stroke="currentColor" class="btn-icon">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
             </svg>
           </a>
         </div>
@@ -61,14 +64,15 @@
         </div>
         <span>skills_manifest.sh</span>
       </div>
-      
+
       <div class="console-content skills-card-content">
         <div class="skills-terminal-box">
           <div class="skills-section-title">// CORE_TECHNICAL_SKILLS</div>
-          
+
           <!-- Skill Category 1 -->
           <div class="skill-group">
-            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'LENGUAJES' : 'LANGUAGES' }}</span>
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'LENGUAJES' : 'LANGUAGES'
+              }}</span>
             <div class="skill-badges">
               <span class="skill-badge">[ TS ]</span>
               <span class="skill-badge">[ JS ]</span>
@@ -83,7 +87,8 @@
 
           <!-- Skill Category 2 -->
           <div class="skill-group">
-            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'FRAMEWORKS' : 'FRAMEWORKS' }}</span>
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'FRAMEWORKS' : 'FRAMEWORKS'
+              }}</span>
             <div class="skill-badges">
               <span class="skill-badge">[ ANGULAR ]</span>
               <span class="skill-badge">[ IONIC ]</span>
@@ -96,7 +101,8 @@
 
           <!-- Skill Category 3 -->
           <div class="skill-group">
-            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'BASES_DATOS_CLOUD' : 'DB_&_CLOUD' }}</span>
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'BASES_DATOS_CLOUD' :
+              'DB_&_CLOUD' }}</span>
             <div class="skill-badges">
               <span class="skill-badge">[ POSTGRES ]</span>
               <span class="skill-badge">[ MYSQL ]</span>
@@ -110,7 +116,8 @@
 
           <!-- Skill Category 4 -->
           <div class="skill-group">
-            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'ESPECIALIDADES' : 'SPECIALTIES' }}</span>
+            <span class="skill-group-name">> {{ languageService.currentLanguage() === 'es' ? 'ESPECIALIDADES' :
+              'SPECIALTIES' }}</span>
             <div class="skill-badges">
               <span class="skill-badge">[ UX_UI ]</span>
               <span class="skill-badge">[ QA_ENG ]</span>
@@ -123,12 +130,15 @@
           <!-- System Metadata Details -->
           <div class="system-metadata-box">
             <div class="detail-row">
-              <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ UBICACIÓN ]' : '[ LOCATION ]' }}</span>
+              <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ UBICACIÓN ]' : '[ LOCATION
+                ]' }}</span>
               <span class="detail-value">Quito, Ecuador</span>
             </div>
             <div class="detail-row">
-              <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ ESTADO ]' : '[ STATUS ]' }}</span>
-              <span class="detail-value text-glow">{{ languageService.currentLanguage() === 'es' ? 'DISPONIBLE_PARA_DESPLIEGUE' : 'READY_FOR_DEPLOYMENT' }}</span>
+              <span class="detail-label">{{ languageService.currentLanguage() === 'es' ? '[ ESTADO ]' : '[ STATUS ]'
+                }}</span>
+              <span class="detail-value text-glow">{{ languageService.currentLanguage() === 'es' ?
+                'DISPONIBLE_PARA_DESPLIEGUE' : 'READY_FOR_DEPLOYMENT' }}</span>
             </div>
           </div>
 
@@ -142,10 +152,12 @@
   <div class="cta-banner">
     <div class="cta-inner">
       <h3 class="cta-title">
-        {{ languageService.currentLanguage() === 'es' ? '¿Quieres formar parte de mi historia?' : 'Want to be part of my story?' }}
+        {{ languageService.currentLanguage() === 'es' ? '¿Quieres formar parte de mi historia?' : 'Want to be part of my
+        story?' }}
       </h3>
       <p class="cta-subtitle">
-        {{ languageService.currentLanguage() === 'es' ? 'Diseñemos e implementemos el próximo gran sistema juntos.' : 'Let\'s collaborate and build the next great system together.' }}
+        {{ languageService.currentLanguage() === 'es' ? 'Diseñemos e implementemos el próximo gran sistema juntos.' :
+        'Let\'s collaborate and build the next great system together.' }}
       </p>
       <div class="cta-action">
         <a routerLink="/contact" class="btn-cta neon-btn">

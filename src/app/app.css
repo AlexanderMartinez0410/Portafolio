@@ -163,3 +163,152 @@ app-footer {
     /* Hide sidebar, navbar handles everything */
   }
 }
+
+/* Terminal Command Bar styles */
+.terminal-command-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.terminal-prompt {
+  color: var(--accent-cyan);
+}
+
+
+.router-content-wrapper {
+  opacity: 1;
+}
+
+/* BIOS / Boot Loader Screen */
+.bios-overlay {
+  display: none; /* Hidden by default to prevent black screen lockups */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  padding: 3rem;
+  box-sizing: border-box;
+  z-index: 100000;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.bios-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 800px;
+}
+
+.bios-line {
+  opacity: 0;
+  white-space: pre-wrap;
+}
+
+.bios-line.ready-message {
+  color: var(--accent-green);
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--accent-green-glow);
+}
+
+.bios-overlay.bios-hidden {
+  display: none !important;
+}
+
+/* Sidebar CLI input styling */
+.sidebar-cli {
+  margin-top: 1.5rem;
+}
+
+.cli-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--console-border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-heading);
+}
+
+.cli-prompt {
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+.cli-input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  width: 100%;
+  outline: none;
+}
+
+.cli-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Modal overlays */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neofetch-modal {
+  width: 90%;
+  max-width: 480px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--console-border);
+}
+
+.neofetch-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+
+.neofetch-logo pre {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.neofetch-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--text-secondary);
+}
+
+
+

@@ -42,13 +42,98 @@
       <a routerLink="/contact" class="ssh-card">
         <span class="ssh-prompt">&gt;</span> ssh {{ languageService.currentLanguage() === 'es' ? 'contacto' : 'contact' }}&#64;alkut.dev
       </a>
+
+      <div class="sidebar-cli">
+        <div class="cli-input-wrapper">
+          <span class="cli-prompt">&gt;</span>
+          <input type="text" 
+                 class="cli-input" 
+                 [placeholder]="languageService.currentLanguage() === 'es' ? 'ayuda...' : 'help...'"
+                 (keydown.enter)="onCliSubmit($event)">
+        </div>
+      </div>
     </div>
   </aside>
 
   <!-- Right Side: Dynamic Content Shell -->
   <main class="app-main-content">
-    <router-outlet></router-outlet>
+    <div class="router-content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>
 
 <app-footer></app-footer>
+
+<!-- CRT screen effects -->
+<div class="crt-overlay"></div>
+<div class="crt-vignette"></div>
+
+<div class="bios-overlay">
+  <div class="bios-text-container">
+    <div class="bios-line">ALKUT BIOS v4.10, An Energy Star Ally</div>
+    <div class="bios-line">Copyright (C) 2026, Alexander Martinez Portafolio Corp.</div>
+    <div class="bios-line"></div>
+    <div class="bios-line">CPU: Human Intelligence @ Core Level</div>
+    <div class="bios-line">Memory Test: 16384KB OK</div>
+    <div class="bios-line"></div>
+    <div class="bios-line">Detecting primary master ... Portafolio OS</div>
+    <div class="bios-line">Detecting primary slave  ... Angular Engine v17</div>
+    <div class="bios-line">Detecting secondary master ... .NET WebAPI Core</div>
+    <div class="bios-line">Detecting secondary slave  ... Docker Container</div>
+    <div class="bios-line"></div>
+    <div class="bios-line">Loading systems boot log...</div>
+    <div class="bios-line log-entry">[  0.000000] Booting Portafolio OS Kernel...</div>
+    <div class="bios-line log-entry">[  0.103841] Initializing system UI parameters... OK</div>
+    <div class="bios-line log-entry">[  0.228941] Checking connection: contacto&#64;alkut.dev... OK</div>
+    <div class="bios-line log-entry">[  0.395810] Loading projects database index... OK</div>
+    <div class="bios-line log-entry">[  0.510932] Enabling console developer command line... OK</div>
+    <div class="bios-line"></div>
+    <div class="bios-line ready-message">SYSTEM ONLINE. ESTABLISHING LOCAL SHELL ROUTE...</div>
+  </div>
+</div>
+
+@if (showNeofetchModal) {
+  <div class="modal-overlay" (click)="showNeofetchModal = false">
+    <div class="console-card neofetch-modal" (click)="$event.stopPropagation()">
+      <div class="console-titlebar">
+        <div class="titlebar-dots">
+          <span class="titlebar-dot dot-red" (click)="showNeofetchModal = false" style="cursor: pointer;"></span>
+          <span class="titlebar-dot dot-yellow"></span>
+          <span class="titlebar-dot dot-green"></span>
+        </div>
+        <span>neofetch --output</span>
+      </div>
+      <div class="console-content neofetch-content">
+        <div class="neofetch-grid">
+          <div class="neofetch-logo">
+            <pre style="color: var(--accent-green);">
+   /\_/ \
+  ( o.o )
+   > ^ &lt;
+ ALKUT_OS
+            </pre>
+          </div>
+          <div class="neofetch-info">
+            <h3 style="color: var(--accent-green);">alexander&#64;portafolio</h3>
+            <div>-------------------</div>
+            <div>OS: Portafolio OS 2026.06</div>
+            <div>Host: Angular 20.3.0 / .NET Core</div>
+            <div>Kernel: Gemini AI Co-Created</div>
+            <div>Uptime: 2 mins</div>
+            <div>Shell: ALKUT interactive CLI</div>
+            <div>CPU: Human Intelligence @ Core Level</div>
+            <div>Memory: 16384 MB (Allocated)</div>
+            <div>Skills: Angular, .NET, TS, C#</div>
+          </div>
+        </div>
+        <button class="btn-secondary" style="margin-top: 1rem; width: 100%; justify-content: center;" (click)="showNeofetchModal = false">
+          {{ languageService.currentLanguage() === 'es' ? 'CERRAR' : 'CLOSE' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+
+

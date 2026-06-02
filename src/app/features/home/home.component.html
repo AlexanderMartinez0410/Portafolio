@@ -45,7 +45,7 @@
       <div class="divider-line"></div>
     </div>
 
-    @for (project of featuredProjects(); track project.title; let index = $index) {
+    @for (project of featuredProjects(); track project.id; let index = $index) {
       <!-- Console Window Card -->
       <div class="console-card featured-window-card">
         <!-- Titlebar window -->
@@ -60,7 +60,7 @@
 
         <div class="window-grid">
           <!-- Left side: Image -->
-          <div class="window-visual">
+          <div class="window-visual" (click)="viewProjectDetails(project.id)" style="cursor: pointer;">
             <img [src]="project.image" [alt]="project.title" class="window-img">
             
             <div class="visual-stack-tags">
@@ -78,7 +78,7 @@
 
           <!-- Right side: Details -->
           <div class="window-info">
-            <h2 class="window-title">{{ project.title | uppercase }}</h2>
+            <h2 class="window-title" (click)="viewProjectDetails(project.id)" style="cursor: pointer;">{{ project.title | uppercase }}</h2>
             
             <div class="prompt-descriptions">
               <p class="prompt-desc-item">
@@ -94,12 +94,16 @@
 
             <!-- Action buttons -->
             <div class="window-actions">
+              <button (click)="viewProjectDetails(project.id)" class="btn-primary">
+                <span>{{ languageService.currentLanguage() === 'es' ? 'VER_DETALLES' : 'VIEW_DETAILS' }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-arrow-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+
               @if (project.liveUrl) {
-                <a [href]="project.liveUrl" target="_blank" rel="noopener" class="btn-primary">
-                  <span>{{ languageService.currentLanguage() === 'es' ? 'VER_DEMO_EN_VIVO' : 'VIEW_LIVE_DEMO' }}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="btn-arrow-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
+                <a [href]="project.liveUrl" target="_blank" rel="noopener" class="btn-secondary">
+                  <span>{{ languageService.currentLanguage() === 'es' ? 'DEMO' : 'DEMO' }}</span>
                 </a>
               }
               @if (project.githubUrl) {

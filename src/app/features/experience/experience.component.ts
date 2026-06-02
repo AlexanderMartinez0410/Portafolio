@@ -38,24 +38,24 @@ export class ExperienceComponent {
         role: isEs ? 'Líder Frontend & Desarrollador Full-Stack' : 'Frontend Lead & Full-Stack Developer',
         company: 'ISTPET',
         description: isEs
-          ? 'Responsable del rediseño y reestructuración completa de sistemas institucionales para mejorar la usabilidad final bajo manuales de marca estrictos. Lidero el desarrollo frontend en Angular integrado con backends (.NET Core, Laravel) y bases de datos relacionales, además de planificar y desplegar con éxito la red social estudiantil "Iris" en AWS (EC2/S3).'
-          : 'Responsible for the complete redesign and re-architecture of institutional platforms to improve final user adoption under strict brand guidelines. Leading frontend engineering with Angular integrated with backends (.NET Core, Laravel) and relational databases, alongside successfully deploying the student social network "Iris" on AWS (EC2/S3).'
+          ? 'Lidero la reestructuración y rediseño de plataformas institucionales para más de 130 usuarios activos (docentes y alumnos), logrando interfaces más simples, limpias e incrementando la satisfacción del usuario. Adicionalmente, colaboré en un equipo de 5 integrantes asumiendo la responsabilidad principal del desarrollo frontend e integración para diseñar y desplegar con éxito la red social estudiantil "Iris" (con ~80 estudiantes registrados) en AWS (EC2/S3) en tiempo récord de 33 días.'
+          : 'Leading the re-architecture and redesign of institutional platforms for over 130 active users (faculty and students), delivering simpler, cleaner interfaces and significantly increasing user satisfaction. Additionally, collaborated within a 5-member team, assuming primary responsibility for frontend development and cloud integration to successfully design and deploy the student social network "Iris" (~80 registered students) on AWS (EC2/S3) within a record-breaking 33-day timeline.'
       },
       {
         year: isEs ? '2025 (Contrato)' : '2025 (Contract)',
         role: isEs ? 'Desarrollador Mobile (Freelance)' : 'Mobile Developer (Freelance)',
         company: 'Bioregistro / biometric_attendance',
         description: isEs
-          ? 'Desarrollé e integré un aplicativo móvil empresarial de uso interno corporativo en Flutter y Firebase. Diseñé flujos interactivos de asistencia mediante geolocalización, autenticación biométrica nativa (registro de huella) y consumo de mapas con librerías gratuitas de código abierto.'
-          : 'Developed and integrated an internal enterprise mobile application using Flutter and Firebase. Designed interactive user check-in flows backed by secure geolocation tracking, native biometric authentication (fingerprint ID), and open-source map library integration.'
+          ? 'Diseñé y desarrollé desde cero una aplicación móvil nativa en Flutter y Firebase para control de asistencia, registrando exitosamente a más de 40 usuarios activos. Implementé flujos interactivos de asistencia respaldados por geolocalización, autenticación biométrica nativa (huella dactilar) y consumo de mapas con librerías gratuitas de código abierto.'
+          : 'Designed and developed from scratch a native mobile application using Flutter and Firebase for attendance tracking, successfully onboarding over 40 active users. Implemented interactive check-in flows backed by secure geolocation tracking, native biometric authentication (fingerprint ID), and open-source map library integration.'
       },
       {
         year: isEs ? '2024 (Prácticas Preprofesionales)' : '2024 (Pre-professional Internship)',
         role: isEs ? 'Desarrollador de Software (Prácticas)' : 'Software Developer (Internship)',
         company: 'Consejo Nacional de Competencias (CNC)',
         description: isEs
-          ? 'Mi primera experiencia formal a través de prácticas preprofesionales. Implementé un sistema Help Desk para la creación y control de tickets en Ionic y Supabase, permitiendo al organismo del estado cumplir con las normativas gubernamentales obligatorias.'
-          : 'My first formal professional role completed as a pre-professional internship. Implemented a Help Desk system for ticket creation and tracking using Ionic and Supabase, enabling the government agency to comply with mandatory state ticketing regulations.'
+          ? 'Desarrollé e implementé un sistema Help Desk de control de incidentes con Ionic y Supabase. Logré el 100% de cumplimiento de las normativas de auditoría estatal obligatorias y me encargué de impartir capacitaciones técnicas básicas a los usuarios finales para garantizar una adopción y transición exitosa.'
+          : 'Developed and implemented a Help Desk ticket control system using Ionic and Supabase. Achieved 100% compliance with mandatory state audit regulations and personally delivered basic technical training to end-users to guarantee a smooth and successful transition.'
       },
       {
         year: isEs ? '2023 (Logro Competitivo)' : '2023 (Competitive Milestone)',

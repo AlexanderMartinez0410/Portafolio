@@ -6,21 +6,13 @@ export const COMMANDS_LIST = [
   'cat',
   'cd',
   'pwd',
-  'neofetch',
-  'pingu',
-  'cv',
-  'bio',
-  'foto',
-  'poema_1',
-  'poema_2',
-  'poema_3',
-  'lista_compras',
-  'notas',
   'tree',
   'whoami',
   'date',
+  'echo',
   'clear',
-  'echo'
+  'neofetch',
+  'pingu'
 ];
 
 /**

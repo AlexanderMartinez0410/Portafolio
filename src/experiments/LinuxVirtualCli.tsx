@@ -14,16 +14,11 @@ import type { TerminalLine } from './terminal/types';
 import { createInitialVFS } from './terminal/vfsData';
 import { executeTerminalCommand } from './terminal/commands';
 import { handleTabAutocomplete } from './terminal/autocomplete';
+import { syncObsidianVault } from './terminal/obsidianSync';
 import {
   Terminal as TerminalIcon,
   Sparkles,
-  User,
-  FileText,
-  Trash2,
-  BookOpen,
-  ShoppingCart,
-  FolderTree,
-  Smile
+  Trash2
 } from 'lucide-react';
 
 export const LinuxVirtualCli: React.FC<ExperimentComponentProps> = ({
@@ -37,6 +32,7 @@ export const LinuxVirtualCli: React.FC<ExperimentComponentProps> = ({
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [commandCount, setCommandCount] = useState<number>(0);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
 
   const [history, setHistory] = useState<TerminalLine[]>([
     {
@@ -44,20 +40,49 @@ export const LinuxVirtualCli: React.FC<ExperimentComponentProps> = ({
       type: 'banner',
       content: `╔══════════════════════════════════════════════════════════════════════════╗
 ║         DinoPenguOS (GNU/Linux x86_64 Virtual Environment v2.6.4)        ║
-║   Presiona [Tab] para autocompletar o usa los botones de acceso rápido   ║
+║       Presiona [Tab] para autocompletar · Escribe 'help' para ayuda      ║
 ╚══════════════════════════════════════════════════════════════════════════╝`
     },
     {
       id: 'init-msg',
       type: 'output',
       content: `Bienvenido a la estación de trabajo de Alexander Martínez.
-Archivos en ~: cv.txt, bio.txt, poema_1.txt, poema_2.txt, lista_compras.txt, pingu.png
-Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
+Escribe 'help' para ver la lista de comandos o explora el sistema con 'ls'.`
     }
   ]);
 
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Telemetría para el panel de métricas superior
+  const updateTelemetry = useCallback(
+    (lastCmd: string, total: number, dir: string, connected: boolean) => {
+      onTelemetryUpdate?.({
+        renderTime: 0.03,
+        eventName: `CMD: ${lastCmd}`,
+        customMetrics: [
+          { label: 'Shell', value: 'DinoBash 5.2', color: 'text-emerald-500' },
+          { label: 'CMD', value: total, color: connected ? 'text-emerald-500' : 'text-red-500' },
+          { label: 'Ruta', value: dir === '/home/alexander' ? '~' : dir, color: 'text-blue-500' }
+        ]
+      });
+    },
+    [onTelemetryUpdate]
+  );
+
+  // Sincronizar en segundo plano el repositorio de Obsidian al montar el componente
+  useEffect(() => {
+    let isMounted = true;
+    syncObsidianVault(vfsRoot).then((res) => {
+      if (!isMounted) return;
+      const status = res.connected && res.count > 0;
+      setIsConnected(status);
+      updateTelemetry('init', 0, currentDir, status);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [vfsRoot, currentDir, updateTelemetry]);
 
   // Auto-scroll al final del buffer
   useEffect(() => {
@@ -69,25 +94,8 @@ Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
     inputRef.current?.focus();
   };
 
-  // Telemetría para el panel de métricas superior
-  const updateTelemetry = useCallback(
-    (lastCmd: string, total: number, dir: string) => {
-      onTelemetryUpdate?.({
-        renderTime: 0.03,
-        eventName: `CMD: ${lastCmd}`,
-        customMetrics: [
-          { label: 'Shell', value: 'DinoBash 5.2', color: 'text-emerald-500' },
-          { label: 'Comandos', value: total, color: 'text-amber-500' },
-          { label: 'Ruta', value: dir === '/home/alexander' ? '~' : dir, color: 'text-blue-500' },
-          { label: 'VFS Status', value: 'READY (RAM)', color: 'text-purple-500' }
-        ]
-      });
-    },
-    [onTelemetryUpdate]
-  );
-
-  // Ejecutar comando usando la capa modular de commands.ts
-  const runCommand = (rawText: string) => {
+  // Ejecutar comando usando la capa modular de commands.ts (asíncrono)
+  const runCommand = async (rawText: string) => {
     const trimmed = rawText.trim();
     if (!trimmed) return;
 
@@ -104,7 +112,7 @@ Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
       promptPath
     };
 
-    const result = executeTerminalCommand(trimmed, {
+    const result = await executeTerminalCommand(trimmed, {
       currentPath: currentDir,
       vfsRoot,
       imageSrc: dinoPenguImg
@@ -112,7 +120,7 @@ Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
 
     if (result.clear) {
       setHistory([]);
-      updateTelemetry('clear', newTotal, currentDir);
+      updateTelemetry('clear', newTotal, currentDir, isConnected);
       return;
     }
 
@@ -122,7 +130,7 @@ Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
     }
 
     setHistory((prev) => [...prev, cmdLine, ...result.lines]);
-    updateTelemetry(trimmed.split(' ')[0], newTotal, nextDir);
+    updateTelemetry(trimmed.split(' ')[0], newTotal, nextDir, isConnected);
   };
 
   // Manejador del teclado con soporte de Tab, Enter y flechas arriba/abajo
@@ -195,68 +203,15 @@ Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
           </span>
         </div>
 
-        {/* Botones de acción rápida */}
-        <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-          <button
-            onClick={() => runCommand('cv')}
-            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg text-[11px] font-semibold flex items-center gap-1 transition-all active:scale-95 shadow-sm"
-            title="Ver Currículum Vitae (cv)"
-          >
-            <FileText className="w-3 h-3 text-emerald-500" />
-            <span>cv</span>
-          </button>
-
-          <button
-            onClick={() => runCommand('bio')}
-            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg text-[11px] font-semibold flex items-center gap-1 transition-all active:scale-95 shadow-sm"
-            title="Ver Biografía (bio)"
-          >
-            <User className="w-3 h-3 text-blue-500" />
-            <span>bio</span>
-          </button>
-
-          <button
-            onClick={() => runCommand('pingu')}
-            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg text-[11px] font-semibold flex items-center gap-1 transition-all active:scale-95 shadow-sm"
-            title="Llamar al pingüino dinosaurio (pingu)"
-          >
-            <Smile className="w-3 h-3 text-purple-500" />
-            <span>pingu</span>
-          </button>
-
-          <button
-            onClick={() => runCommand('poema_1')}
-            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg text-[11px] font-semibold flex items-center gap-1 transition-all active:scale-95 shadow-sm"
-            title="Leer Poema 1 (poema_1)"
-          >
-            <BookOpen className="w-3 h-3 text-amber-500" />
-            <span>poema 1</span>
-          </button>
-
-          <button
-            onClick={() => runCommand('lista_compras')}
-            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg text-[11px] font-semibold flex items-center gap-1 transition-all active:scale-95 shadow-sm"
-            title="Ver lista de compras del programador (lista_compras)"
-          >
-            <ShoppingCart className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-            <span>compras</span>
-          </button>
-
-          <button
-            onClick={() => runCommand('tree')}
-            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg text-[11px] font-semibold flex items-center gap-1 transition-all active:scale-95 shadow-sm"
-            title="Ver árbol del sistema de archivos (tree)"
-          >
-            <FolderTree className="w-3 h-3 text-indigo-500" />
-            <span>tree</span>
-          </button>
-
+        {/* Botón de limpiar pantalla */}
+        <div className="flex items-center gap-1.5 shrink-0">
           <button
             onClick={() => runCommand('clear')}
-            className="p-1 border border-border hover:border-fg bg-bg-subtle text-fg-subtle hover:text-fg transition-all active:scale-95 shadow-sm"
+            className="px-2 py-1 border border-border hover:border-fg bg-bg-subtle text-fg-subtle hover:text-fg text-[11px] font-mono flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
             title="Limpiar pantalla (clear)"
           >
             <Trash2 className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">clear</span>
           </button>
         </div>
       </div>
@@ -391,9 +346,9 @@ Escribe 'help' para la lista de comandos o 'cat [archivo]' para inspeccionar.`
             Presiona <kbd className="px-1 py-0.5 border border-border bg-bg-subtle text-fg font-bold">Tab</kbd> para autocompletar · <kbd className="px-1 py-0.5 border border-border bg-bg-subtle text-fg font-bold">↑</kbd> <kbd className="px-1 py-0.5 border border-border bg-bg-subtle text-fg font-bold">↓</kbd> historial
           </span>
           <span className="sm:hidden">
-            Usa los botones arriba o escribe 'help'
+            Escribe 'help' o 'ls' para comenzar
           </span>
-          <span className="font-bold text-fg-muted">
+          <span className={`font-bold transition-colors ${isConnected ? 'text-emerald-500' : 'text-red-500'}`}>
             CMD #{commandCount}
           </span>
         </div>

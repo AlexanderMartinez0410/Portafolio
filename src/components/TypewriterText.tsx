@@ -19,32 +19,33 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
 }) => {
   const [displayedText, setDisplayedText] = useState<string>(text);
   const [isTyping, setIsTyping] = useState<boolean>(false);
-  const targetTextRef = useRef<string>(text);
+  const displayedRef = useRef<string>(text);
   const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Si el texto es igual al que ya se muestra, no hacer nada
-    if (text === displayedText && !isTyping) {
-      targetTextRef.current = text;
+    if (text === displayedRef.current) {
       return;
     }
 
-    targetTextRef.current = text;
-    setIsTyping(true);
-
-    let currentText = displayedText;
+    const targetText = text;
+    let currentText = displayedRef.current;
     let mode: 'erasing' | 'typing' = currentText.length > 0 ? 'erasing' : 'typing';
     let lastTime = performance.now();
+    let started = false;
 
     const animate = (time: number) => {
+      if (!started) {
+        setIsTyping(true);
+        started = true;
+      }
       const delta = time - lastTime;
 
       if (mode === 'erasing') {
         if (delta >= erasingSpeed) {
           lastTime = time;
-          // Borrar de a 2-3 caracteres para un ritmo ágil y perceptible
           const step = Math.max(1, Math.ceil(currentText.length / 15));
           currentText = currentText.slice(0, Math.max(0, currentText.length - step));
+          displayedRef.current = currentText;
           setDisplayedText(currentText);
 
           if (currentText.length === 0) {
@@ -54,15 +55,15 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
       } else if (mode === 'typing') {
         if (delta >= typingSpeed) {
           lastTime = time;
-          const target = targetTextRef.current;
-          const step = Math.max(1, Math.ceil((target.length - currentText.length) / 25));
-          const nextLength = Math.min(target.length, currentText.length + step);
-          currentText = target.slice(0, nextLength);
+          const step = Math.max(1, Math.ceil((targetText.length - currentText.length) / 25));
+          const nextLength = Math.min(targetText.length, currentText.length + step);
+          currentText = targetText.slice(0, nextLength);
+          displayedRef.current = currentText;
           setDisplayedText(currentText);
 
-          if (currentText.length >= target.length) {
+          if (currentText.length >= targetText.length) {
             setIsTyping(false);
-            return; // Fin de la animación
+            return;
           }
         }
       }
@@ -77,7 +78,7 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [text]);
+  }, [text, typingSpeed, erasingSpeed]);
 
   return (
     <Component className={className}>

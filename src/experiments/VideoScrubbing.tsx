@@ -159,9 +159,12 @@ export const VideoScrubbing: React.FC<ExperimentComponentProps> = ({
     });
   }, [clearBitmaps]);
 
-  // Cargar demo inicial al montar
+  // Cargar demo inicial diferido al montar para evitar cascading renders
   useEffect(() => {
-    loadProceduralDemo();
+    const handle = requestAnimationFrame(() => {
+      void loadProceduralDemo();
+    });
+    return () => cancelAnimationFrame(handle);
   }, [loadProceduralDemo]);
 
   // ─── Extractor de frames 100% en Web (Client-Side, Cero disco) ───────────

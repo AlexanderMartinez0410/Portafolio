@@ -14,55 +14,55 @@ export const Experience: React.FC = () => {
   const localizedExperience = [
     {
       period: isEn ? '2025 — PRESENT' : '2025 — ACTUALIDAD',
-      role: 'Software & Frontend Engineer',
-      company: 'ISTPET (Inst. Sup. Tecnológico Mayor Pedro Traversari)',
+      role: isEn ? 'Full Stack Software Developer (.NET & Frontend Specialist)' : 'Desarrollador de Software Full Stack (Especialidad Frontend / .NET)',
+      company: 'Instituto Superior Tecnológico Central Técnico (ISTPET)',
       location: isEn ? 'Quito, Ecuador // Active Production' : 'Quito, Ecuador // Producción Activa',
       impact: isEn
-        ? 'Design, development, and maintenance of academic and administrative modules in real production. Building reactive interfaces with Angular 21 and TypeScript connected to backend services in .NET 8 (ASP.NET Core) and Python FastAPI. Relational database modeling (PostgreSQL / SQL Server), strict RBAC authentication, and query performance tuning.'
-        : 'Diseño, desarrollo y mantenimiento de módulos académicos y administrativos en producción real. Construcción de interfaces reactivas en Angular y TypeScript conectadas a servicios backend en .NET 8 (ASP.NET Core) y FastAPI en Python. Modelado de bases de datos relacionales (PostgreSQL / SQL Server), autenticación con roles estrictos (RBAC) y optimización de consultas.',
+        ? 'Full software lifecycle execution (Requirements → Architecture → Deployment → Training). Systematic development of Angular SPAs backed by .NET microservices and Web APIs, decoupling presentation logic from data engines. Refactoring and extending transactional schemas over a centralized corporate database with 20+ years in production. Design of centralized Role-Based Access Control (RBAC).'
+        : 'Ciclo de vida completo (Requerimientos → Arquitectura → Despliegue → Capacitación). Desarrollo sistemático de SPAs en Angular respaldadas por microservicios y Web APIs en .NET, desacoplando la lógica de interfaz del motor de datos. Intervención, refactorización y extensión de esquemas transaccionales sobre una base de datos corporativa centralizada con más de 20 años en producción, garantizando integridad referencial y retrocompatibilidad. Diseño del motor centralizado de autenticación y autorización basado en roles (RBAC).',
       tag: isEn ? '[ INSTITUTIONAL PRODUCTION ]' : '[ PRODUCCIÓN INSTITUCIONAL ]',
-      stack: ['Angular 21', 'TypeScript', '.NET 8', 'C#', 'FastAPI', 'PostgreSQL', 'SQL Server', 'Tailwind CSS']
+      stack: ['Angular 20/21', '.NET 8', 'C#', 'SQL Server', 'MySQL', 'RBAC', 'Clean Architecture', 'Tailwind CSS']
     },
     {
-      period: isEn ? '2023 — PRESENT' : '2023 — ACTUALIDAD',
-      role: 'Frontend & Software Solutions Developer',
-      company: isEn ? 'Independent Projects & Freelance' : 'Proyectos Independientes & Freelance',
-      location: isEn ? 'Remote // International' : 'Remoto // Internacional',
+      period: isEn ? '2024 — PRESENT' : '2024 — ACTUALIDAD',
+      role: isEn ? 'Freelance Software Engineer & Tech Consultant' : 'Ingeniero de Software Freelance & Tech Consultant',
+      company: isEn ? 'Independent Consulting & Freelance' : 'Consultoría Independiente & Desarrollo Freelance',
+      location: isEn ? 'Remote International (B2B / Full-time)' : 'Remoto Internacional (B2B / Full-time)',
       impact: isEn
-        ? 'Development of interactive web and mobile applications using React, Next.js, and Flutter. Biometric hardware integration via TCP network sockets (ZKTeco / pyzk), 3D graphics experimentation in Three.js/Canvas, and agile workflow adoption with Spec-Driven Development.'
-        : 'Desarrollo de interfaces web y móviles interactivas en React, Next.js y Flutter. Integración de hardware biométrico mediante sockets de red (ZKTeco / pyzk), experimentación con gráficos 3D en Three.js/Canvas y adopción de metodologías ágiles asistidas por IA con Spec-Driven Development.',
+        ? 'Turnkey delivery of mobile and full stack applications with critical time-to-market constraints and hardware integrations (e.g. developing Bioregistro with triple anti-fraud barrier within a 5-day calendar SLA). Engineering automation pipelines integrating Webhooks and messaging APIs (Telegram / WhatsApp) with cloud storage services.'
+        : 'Entrega llave en mano de aplicaciones móviles con requerimientos críticos de tiempo y hardware (como el desarrollo de Bioregistro con triple barrera anti-fraude en 5 días calendario). Desarrollo de pipelines de automatización integrando Webhooks y APIs de mensajería (Telegram / WhatsApp) con Google Drive y microservicios de almacenamiento en la nube.',
       tag: isEn ? '[ FREELANCE // ENGINEERING ]' : '[ FREELANCE // INGENIERÍA ]',
-      stack: ['React', 'Next.js', 'Three.js', 'Flutter', 'Python', 'Docker', 'ZKTeco Sockets', 'Vitest']
+      stack: ['Flutter', 'Dart', 'FastAPI', 'Python', 'Firebase', 'WebSockets', 'Redis', 'Docker']
     }
   ];
 
   const localizedMilestones = [
     {
-      year: '2023',
-      title: isEn ? '1st Place — University Algorithm & Programming Competition' : '1er Lugar — Concurso Universitario de Algoritmos & Programación',
-      issuer: 'Universidad Técnica de Cotopaxi (UTC)',
+      year: '2026',
+      title: isEn ? 'Software Engineering Student & AWS Builder' : 'Formación en Ingeniería de Software & AWS Builder',
+      issuer: 'Universidad Politécnica Salesiana / AWS',
       description: isEn
-        ? 'First place in university programming competition: solving algorithmic challenges, time/space complexity optimization, and advanced data structures.'
-        : 'Primer puesto en la competencia universitaria de programación: resolución de desafíos de algoritmos, optimización de complejidad temporal/espacial y estructuras de datos.',
-      badge: '[ 1ER LUGAR / UTC ]'
+        ? 'Software Engineering degree (UPS, in progress) and active member of AWS Builder Student program focused on modern cloud architectures and AWS deployments.'
+        : 'Estudiante de Ingeniería en Desarrollo de Software (UPS) y miembro activo del programa AWS Builder Student enfocado en arquitecturas cloud y despliegues en infraestructura AWS.',
+      badge: '[ INGENIERÍA & AWS ]'
     },
     {
       year: '2025',
-      title: isEn ? 'Official Release on Google Play Store (Mobile App)' : 'Despliegue Oficial en Google Play Store (App Móvil)',
-      issuer: 'Comunidad Institucional ISTPET',
+      title: isEn ? 'Higher Technician in Software Development' : 'Tecnólogo Superior en Desarrollo de Software',
+      issuer: 'Instituto Superior Tecnológico Central Técnico',
       description: isEn
-        ? 'Publication and maintenance of institutional mobile app ("Mi ISTPET") on the official Google Play store, integrated with academic and administrative services.'
-        : 'Publicación y mantenimiento de la aplicación móvil institucional ("Mi ISTPET") en la tienda oficial de Google Play, conectada a los servicios académicos y administrativos.',
-      badge: '[ GOOGLE PLAY STORE ]'
+        ? 'Graduated with comprehensive technical training in full software development lifecycle, relational database modeling, and scalable system architectures.'
+        : 'Graduado con formación técnica integral en ciclo de vida de desarrollo de software, modelado de bases de datos relacionales y arquitectura de sistemas.',
+      badge: '[ GRADUADO // TITULACIÓN ]'
     },
     {
-      year: '2024',
-      title: isEn ? 'TCP Socket Biometric Hardware Integration' : 'Integración de Hardware Biométrico por Sockets TCP',
-      issuer: isEn ? 'Applied Enterprise Systems' : 'Sistemas Enterprise Aplicados',
+      year: '2023',
+      title: isEn ? 'Algorithmic Competitions & Data Structures' : 'Competencias de Algoritmia & Programación',
+      issuer: isEn ? 'University & Competitive Programming' : 'Concursos Universitarios & Competitivos',
       description: isEn
-        ? 'Autonomous background daemon engineering to capture physical punch logs without data loss, handling intermittent network connection events.'
-        : 'Ingeniería de demonio autónomo para captura de marcaciones físicas sin pérdida de datos ante cortes intermitentes de red.',
-      badge: '[ IOT / HARDWARE ]'
+        ? 'Participation and distinguished performance in programming contests: resolving algorithmic problems, graph theory, dynamic programming, and computational complexity optimization.'
+        : 'Participación y destacados resultados en competencias de programación: resolución de desafíos de algoritmos, teoría de grafos, programación dinámica y optimización de complejidad computacional.',
+      badge: '[ ALGORITMOS & ESTRUCTURAS ]'
     }
   ];
 

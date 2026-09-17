@@ -2,10 +2,10 @@ import type { CommandContext, CommandResult, VFSNode } from './types';
 import { getNodeAtPath } from './autocomplete';
 import { PINGU_ASCII_ART } from './vfsData';
 
-export function executeTerminalCommand(
+export async function executeTerminalCommand(
   rawInput: string,
   context: CommandContext
-): CommandResult {
+): Promise<CommandResult> {
   const trimmed = rawInput.trim();
   if (!trimmed) {
     return { lines: [] };
@@ -22,7 +22,7 @@ export function executeTerminalCommand(
     case 'dir':
       return handleLs(arg, context);
     case 'cat':
-      return handleCat(arg, context);
+      return await handleCat(arg, context);
     case 'cd':
       return handleCd(arg, context);
     case 'pwd':
@@ -45,34 +45,6 @@ export function executeTerminalCommand(
     case 'pinguino':
     case 'dino':
       return handlePingu(context);
-    case 'cv':
-      return handleCat('cv.txt', context);
-    case 'bio':
-    case 'biografia':
-      return handleCat('bio.txt', context);
-    case 'foto':
-    case 'avatar':
-    case 'imagen':
-      return handleCat('foto.png', context);
-    case 'poema_1':
-    case 'poema1':
-      return handleCat('poema_1.txt', context);
-    case 'poema_2':
-    case 'poema2':
-      return handleCat('poema_2.txt', context);
-    case 'poema_3':
-    case 'poema3':
-      return handleCat('poema_3.txt', context);
-    case 'poesia':
-    case 'poema': {
-      const pId = Math.floor(Math.random() * 3) + 1;
-      return handleCat(`poema_${pId}.txt`, context);
-    }
-    case 'lista_compras':
-    case 'compras':
-      return handleCat('lista_compras.txt', context);
-    case 'notas':
-      return handleCat('notas.txt', context);
     default:
       return {
         lines: [
@@ -177,7 +149,7 @@ function handleLs(arg: string, context: CommandContext): CommandResult {
   };
 }
 
-function handleCat(arg: string, context: CommandContext): CommandResult {
+async function handleCat(arg: string, context: CommandContext): Promise<CommandResult> {
   if (!arg) {
     return {
       lines: [
@@ -215,6 +187,29 @@ function handleCat(arg: string, context: CommandContext): CommandResult {
         }
       ]
     };
+  }
+
+  // Descarga remota si es un archivo de GitHub/Obsidian que no ha sido cacheado
+  if (node.downloadUrl && node.content === undefined) {
+    try {
+      const res = await fetch(node.downloadUrl);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      }
+      const fetchedText = await res.text();
+      node.content = fetchedText;
+      node.size = String(fetchedText.length);
+    } catch (err) {
+      return {
+        lines: [
+          {
+            id: Math.random().toString(36).substring(2, 9),
+            type: 'error',
+            content: `cat: error al descargar '${node.name}' desde GitHub: ${err instanceof Error ? err.message : String(err)}`
+          }
+        ]
+      };
+    }
   }
 
   // Si tiene imagen asociada (foto.png o pingu.png)

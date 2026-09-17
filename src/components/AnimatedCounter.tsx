@@ -21,7 +21,6 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     const match = rawString.match(/^([^\d]*)([\d,.]+)(.*)$/);
 
     if (!match) {
-      setDisplayValue(rawString);
       return;
     }
 
@@ -31,12 +30,15 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     const targetNum = parseFloat(numStr);
 
     if (isNaN(targetNum)) {
-      setDisplayValue(rawString);
       return;
     }
 
     const isFloat = numStr.includes('.');
     const decimals = isFloat ? numStr.split('.')[1].length : 0;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

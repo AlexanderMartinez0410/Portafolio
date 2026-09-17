@@ -141,9 +141,12 @@ export const NetworkPerformanceLab: React.FC<ExperimentComponentProps> = ({
     });
   }, [onTelemetryUpdate]);
 
-  // Ejecutar inspección inicial de recursos cargados
+  // Ejecutar inspección inicial diferida de recursos cargados tras el montaje
   useEffect(() => {
-    inspectCurrentPageWaterfall();
+    const handle = requestAnimationFrame(() => {
+      inspectCurrentPageWaterfall();
+    });
+    return () => cancelAnimationFrame(handle);
   }, [inspectCurrentPageWaterfall]);
 
   // 2. EJECUTAR BENCHMARK EN VIVO (Latencia HTTP Real, Ancho de Banda & CPU Stress)

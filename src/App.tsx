@@ -11,7 +11,9 @@ import { Contact } from './components/Contact';
 
 import { motion, AnimatePresence, type Variants } from 'motion/react';
 import { ReadingProgressBar } from './components/ReadingProgressBar';
-import { CursorAura } from './components/CursorAura';
+import { InteractiveBackground } from './components/InteractiveBackground';
+import { QuickContactRail } from './components/QuickContactRail';
+import { BrokenLampEasterEgg } from './components/BrokenLampEasterEgg';
 
 const sheetVariants: Variants = {
   enter: (direction: number) => ({
@@ -65,7 +67,7 @@ const ExhibitionArea: React.FC = () => {
       tabIndex={-1}
     >
       <ReadingProgressBar containerRef={scrollContainerRef} />
-      <main className="max-w-5xl w-full mx-auto px-6 sm:px-10 md:px-14 lg:px-16 py-8 sm:py-12 md:py-16 flex-1 flex flex-col">
+      <main className="max-w-7xl w-full mx-auto px-5 sm:px-8 md:px-12 lg:px-14 py-8 sm:py-12 md:py-16 flex-1 flex flex-col">
         <AnimatePresence mode="wait" custom={direction} onExitComplete={handleExitComplete}>
           <motion.div
             key={activeSection}
@@ -78,8 +80,8 @@ const ExhibitionArea: React.FC = () => {
           >
             {activeSection === 'sobre-mi' && <Hero />}
             {activeSection === 'proyectos' && <Projects />}
-            {activeSection === 'experimentos' && <Lab />}
             {activeSection === 'experiencia' && <Experience />}
+            {activeSection === 'experimentos' && <Lab />}
             {activeSection === 'contacto' && <Contact />}
           </motion.div>
         </AnimatePresence>
@@ -94,11 +96,20 @@ export const App: React.FC = () => {
       <LanguageProvider>
         <NavigationProvider>
           <div className="min-h-screen bg-bg text-fg transition-colors duration-200 overflow-hidden relative">
-            {/* Efecto de luz tenue (Dark) o silueta de tinta (Light) al mover el cursor */}
-            <CursorAura />
+            {/* Fondo interactivo: Firmamento estrellado con sobrecarga estelar dinámica */}
+            <InteractiveBackground />
+
+            {/* Easter Egg: Foco fundido / Lámpara colgante al jugar con el interruptor */}
+            <BrokenLampEasterEgg />
+
+            {/* Efecto de aura del cursor desactivado para maximizar nitidez de lectura y rendimiento */}
+            {/* <CursorAura /> */}
 
             {/* Sidebar Fijo Izquierdo (Desktop) / Cabecera (Móvil) */}
             <Sidebar />
+
+            {/* Riel Lateral Flotante de Contacto Rápido (HUD Derecho) */}
+            <QuickContactRail />
 
             {/* Área de Exhibición con Scroll Interno Independiente */}
             <ExhibitionArea />

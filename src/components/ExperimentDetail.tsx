@@ -39,6 +39,9 @@ const NetworkPerformanceLab = lazy(() =>
 const GroqLlmStreaming = lazy(() =>
   import('../experiments/GroqLlmStreaming').then((m) => ({ default: m.GroqLlmStreaming }))
 );
+const RetroPcEmulator = lazy(() =>
+  import('../experiments/RetroPcEmulator').then((m) => ({ default: m.RetroPcEmulator }))
+);
 
 // Mapa de id → componente lazy
 const EXPERIMENT_COMPONENTS: Record<string, React.ComponentType<ExperimentComponentProps>> = {
@@ -49,6 +52,7 @@ const EXPERIMENT_COMPONENTS: Record<string, React.ComponentType<ExperimentCompon
   'polyphonic-synth-audio': PolyphonicSynthAudio as React.ComponentType<ExperimentComponentProps>,
   'network-performance-lab': NetworkPerformanceLab as React.ComponentType<ExperimentComponentProps>,
   'groq-llm-streaming': GroqLlmStreaming as React.ComponentType<ExperimentComponentProps>,
+  'retro-pc-emulator': RetroPcEmulator as React.ComponentType<ExperimentComponentProps>,
 };
 
 // Spinner de carga para Suspense
@@ -63,6 +67,12 @@ export interface TelemetryMetric {
   label: string;
   value: string | number;
   color?: string;
+}
+
+export interface ExperimentCodeSnippet {
+  component: string;
+  hook: string;
+  python?: string;
 }
 
 export interface ExperimentComponentProps {
@@ -84,10 +94,9 @@ const GET_INITIAL_METRICS = (expId: string): TelemetryMetric[] => {
   switch (expId) {
     case 'linux-virtual-cli':
       return [
-        { label: 'Shell', value: 'Bash 5.2 (VFS)', color: 'text-emerald-500' },
-        { label: 'Comandos', value: '0', color: 'text-amber-500' },
-        { label: 'Ruta', value: '~', color: 'text-blue-500' },
-        { label: 'Estado', value: 'ONLINE', color: 'text-purple-500' }
+        { label: 'Shell', value: 'DinoBash 5.2', color: 'text-emerald-500' },
+        { label: 'CMD', value: '0', color: 'text-red-500' },
+        { label: 'Ruta', value: '~', color: 'text-blue-500' }
       ];
     case 'pingu-3d-voxel':
       return [
@@ -131,6 +140,12 @@ const GET_INITIAL_METRICS = (expId: string): TelemetryMetric[] => {
         { label: 'Velocidad', value: '0 tok/s', color: 'text-blue-400' },
         { label: 'TTFT', value: '0ms', color: 'text-amber-400' }
       ];
+    case 'retro-pc-emulator':
+      return [
+        { label: 'Juego', value: 'Menú', color: 'text-amber-400' },
+        { label: 'Puntos', value: 0, color: 'text-green-400' },
+        { label: 'Records', value: '0', color: 'text-blue-400' }
+      ];
     case 'pathfinding-visualizer':
       return [
         { label: 'Nodos', value: '0 evaluados', color: 'text-emerald-400' },
@@ -163,12 +178,14 @@ export const ExperimentDetail: React.FC<ExperimentDetailProps> = ({
   const [lastEvent, setLastEvent] = useState<string>('Listo para interactuar');
   const [customMetrics, setCustomMetrics] = useState<TelemetryMetric[]>(() => GET_INITIAL_METRICS(experiment.id));
 
-  // Actualizar métricas iniciales si cambia de experimento
-  useEffect(() => {
+  // Sincronizar métricas iniciales cuando cambia el experimento según patrón idiomático de React 19
+  const [prevExperimentId, setPrevExperimentId] = useState(experiment.id);
+  if (experiment.id !== prevExperimentId) {
+    setPrevExperimentId(experiment.id);
     setCustomMetrics(GET_INITIAL_METRICS(experiment.id));
     setEventCount(0);
     setLastEvent('Inicializado');
-  }, [experiment.id]);
+  }
 
   // Manejo de pantalla completa: bloquear scroll del body y tecla Escape
   useEffect(() => {
@@ -213,7 +230,7 @@ export const ExperimentDetail: React.FC<ExperimentDetailProps> = ({
     currentIndex < labExperimentsData.length - 1 ? labExperimentsData[currentIndex + 1] : null;
 
   // ── Snippets de código REAL por experimento ─────────────────────────────
-  const REAL_CODE: Record<string, { component: string; hook: string; python?: string }> = {
+  const REAL_CODE: Record<string, ExperimentCodeSnippet> = {
     'pingu-3d-voxel': {
       component: `// PinguVoxelCretaceous.tsx — Motor 3D Procedural Voxel con Three.js & WebGL
 // Renderiza a Pingu con pijama de dinosaurio en un bioma cretácico de cubos
@@ -304,6 +321,33 @@ export const VideoScrubbing: React.FC = () => {
 // 2. Cero Almacenamiento:
 //    - 0 bytes guardados en disco duro o servidor backend.
 //    - bitmaps.forEach(b => b.close()) al cerrar o cambiar de video.`,
+      python: `#!/usr/bin/env python3
+# video_to_frames.py — Extracción headless opcional con OpenCV
+# Nota: La demo web ejecuta la extracción 100% en memoria en el cliente con OffscreenCanvas.
+
+import cv2
+import sys
+
+def extract_keyframes(video_path: str, output_dir: str = "./frames", max_frames: int = 60):
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print(f"Error abriendo video: {video_path}")
+        return
+
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    step = max(1, total_frames // max_frames)
+    frame_idx = 0
+
+    for i in range(0, total_frames, step):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, i)
+        ret, frame = cap.read()
+        if not ret:
+            break
+        cv2.imwrite(f"{output_dir}/frame_{frame_idx:03d}.webp", frame, [cv2.IMWRITE_WEBP_QUALITY, 85])
+        frame_idx += 1
+
+    cap.release()
+    print(f"Extracción finalizada: {frame_idx} fotogramas generados.")`,
     },
     'whatsapp-bot-simulator': {
       component: `// WhatsAppBotSimulator.tsx — Flujo conversacional FSM interactivo
@@ -465,7 +509,7 @@ export const GroqLlmStreaming: React.FC<ExperimentComponentProps> = () => {
     },
   };
 
-  const fallbackCode = {
+  const fallbackCode: ExperimentCodeSnippet = {
     component: `// [ ${experiment.id} ] — Demo en construcción
 // El código fuente real de este experimento
 // estará disponible cuando se implemente el demo interactivo.
@@ -480,7 +524,7 @@ ${(experiment.tech ?? []).map((t) => `// · ${t}`).join('\n')}
 // ${experiment.approach ?? '—'}`,
   };
 
-  const codeMap = REAL_CODE[experiment.id] ?? fallbackCode;
+  const codeMap: ExperimentCodeSnippet = REAL_CODE[experiment.id] ?? fallbackCode;
   const currentCodeSnippet =
     selectedFileTab === 'component'
       ? codeMap.component

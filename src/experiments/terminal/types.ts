@@ -2,6 +2,8 @@ export interface VFSNode {
   name: string;
   type: 'file' | 'dir';
   content?: string;
+  downloadUrl?: string;
+  isRemote?: boolean;
   imageSrc?: string;
   imageAlt?: string;
   size?: string;

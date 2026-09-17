@@ -61,13 +61,28 @@ export interface WebhookLog {
   payload: Record<string, any>;
 }
 
+let botIdCounter = 0;
+const getNextBotId = (prefix: string) => `${prefix}_${Date.now()}_${++botIdCounter}`;
+
+const INITIAL_BOT_MESSAGE: ChatMessage = {
+  id: 'm1',
+  sender: 'bot',
+  text: 'Bienvenido a *TechSolutions Automation*. Soy DevBot, tu asistente de calificación y soporte técnico.\n\n¿En qué podemos asistirte hoy?',
+  time: '10:00',
+  options: [
+    { id: 'opt_services', label: 'Ver Servicios & Planes', action: 'show_services' },
+    { id: 'opt_demo', label: 'Agendar Demo Técnica', action: 'book_demo' },
+    { id: 'opt_support', label: 'Soporte Técnico', action: 'tech_support' }
+  ]
+};
+
 export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
   onTelemetryUpdate
 }) => {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_BOT_MESSAGE]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [currentStep, setCurrentStep] = useState<BotStep>('INITIAL');
+  const [currentStep, setCurrentStep] = useState<BotStep>('AWAITING_SERVICE_SELECTION');
   const [leadData, setLeadData] = useState<LeadData>({});
   const [webhookLogs, setWebhookLogs] = useState<WebhookLog[]>([]);
   const [activeTab, setActiveTab] = useState<'chat' | 'lead' | 'webhook'>('chat');
@@ -90,7 +105,7 @@ export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
   // Disparar log de webhook simulado
   const triggerWebhook = (eventName: string, data: Record<string, any>) => {
     const newLog: WebhookLog = {
-      id: 'WH-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+      id: getNextBotId('WH'),
       timestamp: new Date().toISOString().split('T')[1].slice(0, 8),
       event: eventName,
       status: '200 OK',
@@ -100,7 +115,7 @@ export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
     setWebhookLogs(prev => [newLog, ...prev]);
 
     onTelemetryUpdate?.({
-      renderTime: 0.18 + Math.random() * 0.15,
+      renderTime: 0.2,
       eventName: `Webhook [${eventName}] despachado (HTTP 200)`,
       customMetrics: [
         { label: 'Estado FSM', value: currentStep, color: 'text-emerald-400' },
@@ -110,21 +125,9 @@ export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
     });
   };
 
-  // Inicialización del bot
+  // Inicialización o reinicio manual del bot
   const startBotConversation = () => {
-    const startMsg: ChatMessage = {
-      id: 'm1',
-      sender: 'bot',
-      text: 'Bienvenido a *TechSolutions Automation*. Soy DevBot, tu asistente de calificación y soporte técnico.\n\n¿En qué podemos asistirte hoy?',
-      time: getCurrentTime(),
-      options: [
-        { id: 'opt_services', label: 'Ver Servicios & Planes', action: 'show_services' },
-        { id: 'opt_demo', label: 'Agendar Demo Técnica', action: 'book_demo' },
-        { id: 'opt_support', label: 'Soporte Técnico', action: 'tech_support' }
-      ]
-    };
-
-    setMessages([startMsg]);
+    setMessages([{ ...INITIAL_BOT_MESSAGE, time: getCurrentTime() }]);
     setCurrentStep('AWAITING_SERVICE_SELECTION');
     setLeadData({});
     setWebhookLogs([]);
@@ -139,10 +142,6 @@ export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
       ]
     });
   };
-
-  useEffect(() => {
-    startBotConversation();
-  }, []);
 
   // Simular respuesta del bot con delay humanizado
   const botReply = (
@@ -175,7 +174,7 @@ export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
   // Manejador de selección de opciones rápidas
   const handleOptionClick = (opt: { id: string; label: string; action: string }) => {
     const userMsg: ChatMessage = {
-      id: 'usr_' + Date.now(),
+      id: getNextBotId('usr'),
       sender: 'user',
       text: opt.label,
       time: getCurrentTime()
@@ -278,7 +277,7 @@ export const WhatsAppBotSimulator: React.FC<ExperimentComponentProps> = ({
     if (!text) return;
 
     const userMsg: ChatMessage = {
-      id: 'usr_' + Date.now(),
+      id: getNextBotId('usr'),
       sender: 'user',
       text,
       time: getCurrentTime()

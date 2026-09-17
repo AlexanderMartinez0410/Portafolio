@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 import { authorProfile } from '../data/manifesto';
 import dinoPenguImg from '../assets/Trazo Vectorial.png';
-import { Sun, Moon, Menu, X, Languages } from 'lucide-react';
+import { Sun, Moon, Menu, X, Languages, Download } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export const Sidebar: React.FC = () => {
@@ -37,9 +37,10 @@ export const Sidebar: React.FC = () => {
             alt="DinoPengu Mascota"
             className="w-9 h-9 object-contain mix-blend-multiply dark:mix-blend-screen dark:invert shrink-0"
           />
-          <div className="flex flex-col min-w-0">
+          <div className="flex flex-col min-w-0 pr-1">
             <span className="text-xs sm:text-sm font-bold tracking-tight uppercase text-fg truncate">
-              {authorProfile.name}
+              <span className="sm:hidden">{authorProfile.shortName || 'ALEXANDER MARTÍNEZ'}</span>
+              <span className="hidden sm:inline">{authorProfile.name}</span>
             </span>
             <span className="font-mono text-[9px] sm:text-[10px] text-fg-subtle tracking-wider uppercase font-medium truncate">
               {authorProfile.tagline}
@@ -48,7 +49,7 @@ export const Sidebar: React.FC = () => {
         </button>
 
         {/* Lado Derecho: Toggle de Idioma, Toggle de Tema y Hamburguesa */}
-        <div className="flex items-center space-x-1.5 sm:space-x-2 font-mono">
+        <div className="flex items-center space-x-1.5 sm:space-x-2 font-mono shrink-0">
           {/* Botón de Idioma Móvil */}
           <button
             onClick={toggleLanguage}
@@ -259,7 +260,20 @@ export const Sidebar: React.FC = () => {
             <span className="tracking-wider uppercase text-[10px] sm:text-[11px] font-medium">{t.sidebar.status}</span>
           </div>
 
-          {/* Toggle de Modo Claro / Oscuro */}
+          {/* Descargar CV */}
+          <a
+            href={authorProfile.dossierUrl}
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-between py-2 px-3 border border-border hover:border-border-strong bg-bg-subtle text-xs font-mono text-fg transition-all group font-medium"
+          >
+            <div className="flex items-center space-x-2">
+              <Download className="w-3.5 h-3.5 text-fg-muted group-hover:text-fg transition-colors" />
+              <span className="tracking-wider text-[11px]">CURRÍCULUM</span>
+            </div>
+            <span className="text-[10px] text-fg-subtle group-hover:text-fg transition-colors">[ PDF ]</span>
+          </a>
           <div className="space-y-1.5">
             <span className="block font-mono text-[10px] text-fg-subtle uppercase tracking-widest font-semibold">
               {t.sidebar.theme}

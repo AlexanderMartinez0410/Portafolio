@@ -52,9 +52,7 @@ ${techStackData.map((c) => `• ${c.title}: ${c.skills.join(', ')}`).join('\n')}
 [ 3. FILOSOFÍA DE TRABAJO ]
 • Cero deuda técnica prematura y tipado estricto de extremo a extremo.
 • Experiencia de usuario impecable: transiciones fluidas, feedback táctil y accesibilidad.
-• Micro-laboratorios y experimentación constante: WebGL, Web Audio API y Canvas 2D.
-
-(Tip: escribe 'cat bio.txt' o 'foto' para ver más detalles)`
+• Micro-laboratorios y experimentación constante: WebGL, Web Audio API y Canvas 2D.`
               },
 
               'bio.txt': {

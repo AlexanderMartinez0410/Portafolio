@@ -101,6 +101,21 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
     });
   }, []);
 
+  const triggerJump = useCallback(() => {
+    if (!stateRef.current.isJumping) {
+      stateRef.current.isJumping = true;
+      stateRef.current.velY = 8.0;
+      stateRef.current.action = 'JUMP';
+      setCurrentAction('JUMP');
+    }
+  }, []);
+
+  const triggerDance = useCallback(() => {
+    stateRef.current.action = 'DANCE';
+    setCurrentAction('DANCE');
+    setTimeout(() => { if (stateRef.current.action === 'DANCE') { stateRef.current.action = 'IDLE'; setCurrentAction('IDLE'); } }, 4500);
+  }, []);
+
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
@@ -537,6 +552,7 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
     const clock = new THREE.Clock();
     const animate = () => {
       animationId = requestAnimationFrame(animate);
+      if (typeof document !== 'undefined' && document.hidden) return;
       const delta = Math.min(clock.getDelta(), 0.1);
       const time = clock.getElapsedTime();
       const state = stateRef.current;
@@ -651,22 +667,7 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
       }
       renderer.dispose();
     };
-  }, [emitTelemetry]);
-
-  const triggerJump = () => {
-    if (!stateRef.current.isJumping) {
-      stateRef.current.isJumping = true;
-      stateRef.current.velY = 8.0;
-      stateRef.current.action = 'JUMP';
-      setCurrentAction('JUMP');
-    }
-  };
-
-  const triggerDance = () => {
-    stateRef.current.action = 'DANCE';
-    setCurrentAction('DANCE');
-    setTimeout(() => { if (stateRef.current.action === 'DANCE') { stateRef.current.action = 'IDLE'; setCurrentAction('IDLE'); } }, 4500);
-  };
+  }, [emitTelemetry, triggerJump, triggerDance]);
 
   const resetPosition = () => {
     stateRef.current.posX = 0;
@@ -713,6 +714,7 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
             onTouchStart={(e) => { e.stopPropagation(); resetPosition(); }}
             className="p-1.5 border border-border bg-bg-subtle hover:border-fg text-fg transition-all active:scale-95 touch-manipulation" 
             title="Reiniciar al centro"
+            aria-label="Reiniciar posición de Pingu al centro"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -747,6 +749,7 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
             onTouchStart={(e) => { e.stopPropagation(); triggerDance(); }}
             className="px-3 py-2 border border-amber-500/90 bg-slate-950/90 backdrop-blur-sm text-amber-400 font-bold hover:bg-amber-500/20 active:scale-95 text-xs transition-all shadow-md flex items-center space-x-1.5 touch-manipulation select-none"
             title="Hacer bailar a Pingu"
+            aria-label="Hacer bailar a Pingu"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span>[ BAILAR ]</span>
@@ -756,6 +759,7 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
             onTouchStart={(e) => { e.stopPropagation(); triggerJump(); }}
             className="px-3 py-2 border border-emerald-500/90 bg-slate-950/90 backdrop-blur-sm text-emerald-400 font-bold hover:bg-emerald-500/20 active:scale-95 text-xs transition-all shadow-md flex items-center space-x-1.5 touch-manipulation select-none"
             title="Saltar"
+            aria-label="Hacer saltar a Pingu"
           >
             <ArrowUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
             <span>[ SALTAR ]</span>
@@ -764,17 +768,49 @@ export const PinguVoxelCretaceous: React.FC<ExperimentComponentProps> = ({
 
         {/* D-Pad Virtual en pantalla para control táctil o ratón */}
         <div className="absolute bottom-3 right-3 flex flex-col items-center gap-1 bg-bg/80 backdrop-blur-sm p-2 border border-border z-20">
-          <button onMouseDown={() => pressKey('w', true)} onMouseUp={() => pressKey('w', false)} onTouchStart={() => pressKey('w', true)} onTouchEnd={() => pressKey('w', false)} className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg" title="Avanzar">
+          <button 
+            onMouseDown={() => pressKey('w', true)} 
+            onMouseUp={() => pressKey('w', false)} 
+            onTouchStart={() => pressKey('w', true)} 
+            onTouchEnd={() => pressKey('w', false)} 
+            className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg cursor-pointer" 
+            title="Avanzar"
+            aria-label="Avanzar hacia adelante"
+          >
             <ArrowUp className="w-4 h-4" />
           </button>
           <div className="flex gap-1">
-            <button onMouseDown={() => pressKey('a', true)} onMouseUp={() => pressKey('a', false)} onTouchStart={() => pressKey('a', true)} onTouchEnd={() => pressKey('a', false)} className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg" title="Izquierda">
+            <button 
+              onMouseDown={() => pressKey('a', true)} 
+              onMouseUp={() => pressKey('a', false)} 
+              onTouchStart={() => pressKey('a', true)} 
+              onTouchEnd={() => pressKey('a', false)} 
+              className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg cursor-pointer" 
+              title="Izquierda"
+              aria-label="Girar y moverse a la izquierda"
+            >
               <ArrowLeft className="w-4 h-4" />
             </button>
-            <button onMouseDown={() => pressKey('s', true)} onMouseUp={() => pressKey('s', false)} onTouchStart={() => pressKey('s', true)} onTouchEnd={() => pressKey('s', false)} className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg" title="Retroceder">
+            <button 
+              onMouseDown={() => pressKey('s', true)} 
+              onMouseUp={() => pressKey('s', false)} 
+              onTouchStart={() => pressKey('s', true)} 
+              onTouchEnd={() => pressKey('s', false)} 
+              className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg cursor-pointer" 
+              title="Retroceder"
+              aria-label="Retroceder"
+            >
               <ArrowDown className="w-4 h-4" />
             </button>
-            <button onMouseDown={() => pressKey('d', true)} onMouseUp={() => pressKey('d', false)} onTouchStart={() => pressKey('d', true)} onTouchEnd={() => pressKey('d', false)} className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg" title="Derecha">
+            <button 
+              onMouseDown={() => pressKey('d', true)} 
+              onMouseUp={() => pressKey('d', false)} 
+              onTouchStart={() => pressKey('d', true)} 
+              onTouchEnd={() => pressKey('d', false)} 
+              className="p-2 border border-border bg-bg-subtle hover:border-fg text-fg active:bg-fg active:text-bg cursor-pointer" 
+              title="Derecha"
+              aria-label="Girar y moverse a la derecha"
+            >
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

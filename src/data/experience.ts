@@ -3,50 +3,49 @@ import type { ExperienceItem, MilestoneItem } from '../types';
 export const experienceData: ExperienceItem[] = [
   {
     period: '2025 — ACTUALIDAD',
-    role: 'Software & Frontend Engineer',
-    company: 'ISTPET (Inst. Sup. Tecnológico Mayor Pedro Traversari)',
+    role: 'Desarrollador de Software Full Stack (Especialidad Frontend / .NET)',
+    company: 'Instituto Superior Tecnológico Central Técnico (ISTPET)',
     location: 'Quito, Ecuador // Producción Activa',
     impact:
-      'Diseño, desarrollo y mantenimiento de módulos académicos y administrativos en producción real. Construcción de interfaces reactivas en Angular y TypeScript conectadas a servicios backend en .NET 8 (ASP.NET Core) y FastAPI en Python. Modelado de bases de datos relacionales (PostgreSQL / SQL Server), autenticación con roles estrictos (RBAC) y optimización de consultas.',
+      'Ciclo de vida completo (Requerimientos → Arquitectura → Despliegue → Capacitación). Desarrollo de SPAs en Angular respaldadas por microservicios y Web APIs en .NET, desacoplando la lógica de interfaz del motor de datos. Intervención, refactorización y extensión de esquemas transaccionales sobre una base de datos corporativa centralizada con más de 20 años en producción, garantizando integridad referencial y retrocompatibilidad. Diseño del motor centralizado de autenticación y autorización basado en roles (RBAC).',
     tag: '[ PRODUCCIÓN INSTITUCIONAL ]',
-    stack: ['Angular 21', 'TypeScript', '.NET 8', 'C#', 'FastAPI', 'PostgreSQL', 'SQL Server', 'Tailwind CSS']
+    stack: ['Angular 20/21', '.NET 8', 'C#', 'SQL Server', 'MySQL', 'RBAC', 'Clean Architecture', 'Tailwind CSS']
   },
   {
-    period: '2023 — ACTUALIDAD',
-    role: 'Frontend & Software Solutions Developer',
-    company: 'Proyectos Independientes & Freelance',
-    location: 'Remoto // Internacional',
+    period: '2024 — ACTUALIDAD',
+    role: 'Ingeniero de Software Freelance & Tech Consultant',
+    company: 'Consultoría Independiente & Desarrollo Freelance',
+    location: 'Remoto Internacional (B2B / Full-time)',
     impact:
-      'Desarrollo de interfaces web y móviles interactivas en React, Next.js y Flutter. Integración de hardware biométrico mediante sockets de red (ZKTeco / pyzk), experimentación con gráficos 3D en Three.js/Canvas y adopción de metodologías ágiles asistidas por IA con Spec-Driven Development.',
+      'Entrega llave en mano de aplicaciones móviles con requerimientos críticos de tiempo y hardware (como el desarrollo de Bioregistro en 5 días calendario). Desarrollo de pipelines de automatización integrando Webhooks y APIs de mensajería (Telegram / WhatsApp) con Google Drive y microservicios de almacenamiento en la nube.',
     tag: '[ FREELANCE // INGENIERÍA ]',
-    stack: ['React', 'Next.js', 'Three.js', 'Flutter', 'Python', 'Docker', 'ZKTeco Sockets', 'Vitest']
+    stack: ['Flutter', 'Dart', 'FastAPI', 'Python', 'Firebase', 'WebSockets', 'Redis', 'Docker']
   }
 ];
 
 export const milestonesData: MilestoneItem[] = [
   {
-    year: '2023',
-    title: '1er Lugar — Concurso Universitario de Algoritmos & Programación',
-    issuer: 'Universidad Técnica de Cotopaxi (UTC)',
+    year: '2026',
+    title: 'Formación en Ingeniería de Software & AWS Builder',
+    issuer: 'Universidad Politécnica Salesiana / AWS',
     description:
-      'Primer puesto en la competencia universitaria de programación: resolución de desafíos de algoritmos, optimización de complejidad temporal/espacial y estructuras de datos.',
-    badge: '[ 1ER LUGAR / UTC ]'
+      'Estudiante de Ingeniería en Desarrollo de Software (UPS) y miembro activo del programa AWS Builder Student enfocado en arquitecturas cloud y despliegues en infraestructura AWS.',
+    badge: '[ INGENIERÍA & AWS ]'
   },
   {
     year: '2025',
-    title: 'Despliegue Oficial en Google Play Store (App Móvil)',
-    issuer: 'Comunidad Institucional ISTPET',
+    title: 'Tecnólogo Superior en Desarrollo de Software',
+    issuer: 'Instituto Superior Tecnológico Central Técnico',
     description:
-      'Publicación y mantenimiento de la aplicación móvil institucional ("Mi ISTPET") en la tienda oficial de Google Play, conectada a los servicios académicos y administrativos.',
-    badge: '[ GOOGLE PLAY STORE ]'
+      'Graduado con formación técnica integral en ciclo de vida de desarrollo de software, modelado de bases de datos relacionales y arquitectura de sistemas.',
+    badge: '[ GRADUADO // TITULACIÓN ]'
   },
   {
-    year: '2024',
-    title: 'Integración de Hardware Biométrico por Sockets TCP',
-    issuer: 'Control de Asistencia & RRHH',
+    year: '2023',
+    title: 'Competencias de Algoritmia & Programación',
+    issuer: 'Concursos Universitarios & Competitivos',
     description:
-      'Implementación de comunicación socket a bajo nivel con terminales físicos ZKTeco para lectura, validación y sincronización automatizada de registros de asistencia.',
-    badge: '[ HARDWARE & PROTOCOLOS ]'
+      'Participación y destacados resultados en competencias de programación: resolución de desafíos de algoritmos, optimización de complejidad temporal/espacial y estructuras de datos avanzadas.',
+    badge: '[ ALGORITMOS & ESTRUCTURAS ]'
   }
 ];
-

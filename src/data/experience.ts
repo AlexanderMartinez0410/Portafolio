@@ -1,4 +1,4 @@
-import type { ExperienceItem, MilestoneItem } from '../types';
+import type { ExperienceItem, MilestoneItem, CertificationItem } from '../types';
 
 export const experienceData: ExperienceItem[] = [
   {
@@ -49,3 +49,51 @@ export const milestonesData: MilestoneItem[] = [
     badge: '[ ALGORITMOS & ESTRUCTURAS ]'
   }
 ];
+
+export const certificationsData: CertificationItem[] = [
+  {
+    id: 'cert-python-essentials',
+    year: '2024',
+    title: 'Python Essentials 1',
+    issuer: 'Python Institute / Cisco Networking Academy / UPS',
+    badge: '[ PYTHON // CISCO ]',
+    description:
+      'Fundamentos del lenguaje Python: diseño algorítmico, tipos de datos complejos, funciones modulares, manejo de excepciones y fundamentos de programación orientada a objetos.',
+    credentialUrl: 'https://drive.google.com/open?id=1_gis6BxQsey0ELqyZy7MKWNaMdXeSXyP',
+    status: 'verified'
+  },
+  {
+    id: 'cert-hardware-basics',
+    year: '2024',
+    title: 'Computer Hardware Basics',
+    issuer: 'Cisco Networking Academy / UPS',
+    badge: '[ HARDWARE // CISCO ]',
+    description:
+      'Arquitectura de sistemas computacionales, subsistemas de procesamiento y memoria, buses de datos, almacenamiento y diagnóstico de componentes físicos.',
+    credentialUrl: 'https://drive.google.com/open?id=1FA8Nicr94hWjDLarRbf_1tSH9fWkHzcF',
+    status: 'verified'
+  },
+  {
+    id: 'cert-intro-iot',
+    year: '2024',
+    title: 'Introduction to IoT (Internet of Things)',
+    issuer: 'Cisco Networking Academy / UPS',
+    badge: '[ IOT & REDES ]',
+    description:
+      'Interconexión de dispositivos inteligentes, captura de telemetría con sensores, protocolos de comunicación máquina a máquina (M2M) y automatización.',
+    credentialUrl: 'https://drive.google.com/open?id=1y5T5EoEUEmCi9ysP414SmN1ebpATwlEy',
+    status: 'verified'
+  },
+  {
+    id: 'cert-degree-senescyt',
+    year: '2025',
+    title: 'Título Profesional: Tecnólogo Superior en Desarrollo de Software',
+    issuer: 'ISTPET // Registro Oficial SENESCYT',
+    badge: '[ TÍTULO REGISTRADO ]',
+    description:
+      'Título profesional técnico de tercer nivel avalado por SENESCYT. Formación integral en ciclo de vida de desarrollo de software, modelado de datos relacionales y arquitectura de sistemas empresariales.',
+    credentialUrl: undefined,
+    status: 'in_progress'
+  }
+];
+

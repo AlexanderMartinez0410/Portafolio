@@ -106,6 +106,10 @@ export interface Translations {
     tag: string;
     experienceTitle: string;
     milestonesTitle: string;
+    certificationsTitle: string;
+    certificationsTag: string;
+    viewCredential: string;
+    degreeStatusPending: string;
   };
   lab: {
     sectionTag: string;
@@ -324,7 +328,11 @@ export const translations: Record<Language, Translations> = {
       sectionTag: 'TRAYECTORIA & RECONOCIMIENTOS',
       tag: '[ HISTORIAL TÉCNICO ]',
       experienceTitle: 'EXPERIENCIA PROFESIONAL & PRODUCCIÓN',
-      milestonesTitle: 'HITOS, FORMACIÓN & LOGROS TÉCNICOS'
+      milestonesTitle: 'HITOS, FORMACIÓN & LOGROS TÉCNICOS',
+      certificationsTitle: 'CERTIFICACIONES & CREDENCIALES TÉCNICAS',
+      certificationsTag: '[ CREDENCIALES VERIFICABLES ]',
+      viewCredential: 'VER CREDENCIAL ↗',
+      degreeStatusPending: 'EN PROCESO DE REGISTRO SENESCYT'
     },
     lab: {
       sectionTag: 'LABORATORIO EXPERIMENTAL & PROTOTIPOS',
@@ -543,7 +551,11 @@ export const translations: Record<Language, Translations> = {
       sectionTag: 'CAREER & ACHIEVEMENTS',
       tag: '[ TECHNICAL TIMELINE ]',
       experienceTitle: 'PROFESSIONAL EXPERIENCE & PRODUCTION',
-      milestonesTitle: 'MILESTONES, EDUCATION & ACHIEVEMENTS'
+      milestonesTitle: 'MILESTONES, EDUCATION & ACHIEVEMENTS',
+      certificationsTitle: 'CERTIFICATIONS & TECHNICAL CREDENTIALS',
+      certificationsTag: '[ VERIFIABLE CREDENTIALS ]',
+      viewCredential: 'VIEW CREDENTIAL ↗',
+      degreeStatusPending: 'SENESCYT REGISTRATION IN PROGRESS'
     },
     lab: {
       sectionTag: 'EXPERIMENTAL LAB & PROTOTYPES',

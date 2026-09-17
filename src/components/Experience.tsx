@@ -1,10 +1,11 @@
 import React from 'react';
 import { SectionFooterNav } from './SectionFooterNav';
-import { Trophy } from 'lucide-react';
+import { Trophy, Award, ExternalLink, Clock } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 import { FadeUp } from './FadeUp';
+import { certificationsData } from '../data/experience';
 
 export const Experience: React.FC = () => {
   const { language } = useLanguage();
@@ -63,6 +64,61 @@ export const Experience: React.FC = () => {
         ? 'Participation and distinguished performance in programming contests: resolving algorithmic problems, graph theory, dynamic programming, and computational complexity optimization.'
         : 'Participación y destacados resultados en competencias de programación: resolución de desafíos de algoritmos, teoría de grafos, programación dinámica y optimización de complejidad computacional.',
       badge: '[ ALGORITMOS & ESTRUCTURAS ]'
+    }
+  ];
+
+  const localizedCertifications = [
+    {
+      id: 'cert-python-essentials',
+      year: '2024',
+      title: 'Python Essentials 1',
+      issuer: 'Python Institute / Cisco Networking Academy / UPS',
+      badge: '[ PYTHON // CISCO ]',
+      description: isEn
+        ? 'Core programming & algorithms in Python: complex data types, control flow structures, modular functions, error handling, and basic object-oriented design.'
+        : 'Fundamentos de programación y algoritmia en Python: diseño algorítmico, tipos de datos complejos, funciones modulares, manejo de excepciones y POO.',
+      credentialUrl: certificationsData.find(c => c.id === 'cert-python-essentials')?.credentialUrl,
+      status: 'verified' as const
+    },
+    {
+      id: 'cert-hardware-basics',
+      year: '2024',
+      title: 'Computer Hardware Basics',
+      issuer: 'Cisco Networking Academy / UPS',
+      badge: '[ HARDWARE // CISCO ]',
+      description: isEn
+        ? 'Computer systems architecture, internal component buses, memory and storage subsystems, peripherals, and physical diagnostics.'
+        : 'Arquitectura de sistemas computacionales, subsistemas de memoria y procesamiento, buses de datos, almacenamiento y diagnóstico de hardware.',
+      credentialUrl: certificationsData.find(c => c.id === 'cert-hardware-basics')?.credentialUrl,
+      status: 'verified' as const
+    },
+    {
+      id: 'cert-intro-iot',
+      year: '2024',
+      title: 'Introduction to IoT (Internet of Things)',
+      issuer: 'Cisco Networking Academy / UPS',
+      badge: '[ IOT & REDES ]',
+      description: isEn
+        ? 'Smart connected devices architecture, sensor telemetry pipelines, machine-to-machine (M2M) communication protocols, and automation fundamentals.'
+        : 'Interconexión de dispositivos inteligentes, captura de telemetría con sensores, protocolos de comunicación máquina a máquina (M2M) y automatización.',
+      credentialUrl: certificationsData.find(c => c.id === 'cert-intro-iot')?.credentialUrl,
+      status: 'verified' as const
+    },
+    {
+      id: 'cert-degree-senescyt',
+      year: '2025',
+      title: isEn
+        ? 'Higher Technician Degree in Software Development'
+        : 'Título Profesional: Tecnólogo Superior en Desarrollo de Software',
+      issuer: isEn
+        ? 'ISTPET // SENESCYT Official Accreditation'
+        : 'ISTPET // Registro Oficial SENESCYT',
+      badge: isEn ? '[ REGISTERED DEGREE ]' : '[ TÍTULO REGISTRADO ]',
+      description: isEn
+        ? 'Accredited third-level official technical qualification covering full software development lifecycle, relational databases, and enterprise systems architecture.'
+        : 'Titulación oficial de tercer nivel técnico avalada por SENESCYT. Formación integral en ciclo de vida de desarrollo de software, modelado de datos y arquitectura de sistemas.',
+      credentialUrl: certificationsData.find(c => c.id === 'cert-degree-senescyt')?.credentialUrl,
+      status: 'in_progress' as const
     }
   ];
 
@@ -162,6 +218,69 @@ export const Experience: React.FC = () => {
                   <p className="text-xs text-fg-muted leading-relaxed font-sans pt-1">
                     {milestone.description}
                   </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </FadeUp>
+
+        {/* Sección de Certificaciones y Credenciales Técnicas */}
+        <FadeUp keyTrigger={language} delay={0.16} yOffset={10} className="space-y-6 pt-6">
+          <div className="flex items-center justify-between border-b border-border pb-3 font-mono text-xs text-fg font-semibold">
+            <div className="flex items-center space-x-2">
+              <Award className="w-4 h-4 text-fg-muted" />
+              <span className="tracking-wider uppercase">{t.experience.certificationsTitle}</span>
+            </div>
+            <span className="tracking-wider text-[11px] text-fg-subtle uppercase font-normal">
+              {t.experience.certificationsTag}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {localizedCertifications.map((cert, cIdx) => (
+              <motion.div
+                key={cert.id}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.4, delay: cIdx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="p-5 border border-border bg-bg-subtle space-y-4 flex flex-col justify-between hover:border-border-strong transition-colors group"
+              >
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between font-mono text-[10px] text-fg-subtle border-b border-border pb-2">
+                    <span className="font-semibold text-fg">{cert.year}</span>
+                    <span className="uppercase">{cert.badge}</span>
+                  </div>
+                  <h5 className="font-semibold text-sm text-fg leading-snug">
+                    {cert.title}
+                  </h5>
+                  <span className="font-mono text-[11px] text-fg-muted uppercase tracking-wide block">
+                    {cert.issuer}
+                  </span>
+                  <p className="text-xs text-fg-muted leading-relaxed font-sans pt-1">
+                    {cert.description}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-border/60 flex items-center justify-between font-mono text-[11px]">
+                  {cert.credentialUrl ? (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-fg hover:text-fg-subtle underline underline-offset-4 decoration-border hover:decoration-fg transition-colors"
+                    >
+                      <span className="font-medium">{t.experience.viewCredential}</span>
+                      <ExternalLink className="w-3 h-3 text-fg-muted" />
+                    </a>
+                  ) : (
+                    <div className="inline-flex items-center gap-1.5 text-fg-subtle">
+                      <Clock className="w-3 h-3" />
+                      <span className="text-[10px] uppercase tracking-wider">
+                        {t.experience.degreeStatusPending}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}

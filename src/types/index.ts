@@ -125,6 +125,17 @@ export interface MilestoneItem {
   badge: string;
 }
 
+export interface CertificationItem {
+  id: string;
+  year: string;
+  title: string;
+  issuer: string;
+  badge: string;
+  description: string;
+  credentialUrl?: string;
+  status?: 'verified' | 'in_progress';
+}
+
 export interface TechnicalPillar {
   title: string;
   detail: string;

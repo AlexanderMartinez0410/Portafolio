@@ -329,15 +329,15 @@ ${studyCase.resultsAndSecondBrainLinks.backlinks.map((b) => `- ${b}`).join('\n')
             {/* SECCIÓN 02: ARQUITECTURA & ADR                                            */}
             {/* ========================================================================= */}
             <section className="space-y-4">
-              <h2 className="text-lg font-bold text-fg flex items-center space-x-2 border-b border-border pb-2">
-                <span className="font-mono text-sm text-fg-subtle">02.</span>
-                <span>{studyCase.architectureDecision.adrSummary}</span>
+              <h2 className="text-base sm:text-lg font-bold text-fg flex flex-wrap items-baseline gap-2 border-b border-border pb-2 min-w-0 break-words">
+                <span className="font-mono text-sm text-fg-subtle shrink-0">02.</span>
+                <span className="break-words min-w-0">{studyCase.architectureDecision.adrSummary}</span>
               </h2>
 
               {/* Diagrama ASCII Arquitectónico */}
               {studyCase.architectureDecision.diagramAscii && (
-                <div className="p-4 bg-bg-surface border border-border overflow-x-auto">
-                  <pre className="font-mono text-[11px] text-fg leading-tight">
+                <div className="p-3 sm:p-4 bg-bg-surface border border-border overflow-x-auto max-w-full rounded-sm">
+                  <pre className="font-mono text-[10px] sm:text-[11px] text-fg leading-relaxed whitespace-pre font-normal inline-block min-w-full">
                     <code>{studyCase.architectureDecision.diagramAscii.trim()}</code>
                   </pre>
                 </div>

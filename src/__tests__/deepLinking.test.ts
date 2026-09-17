@@ -81,5 +81,21 @@ describe('Deep Linking & Hash Routing Subsystem', () => {
         expect(parsed.params.studyCaseId).toBe(caseId);
       }
     });
+
+    it('el caso de estudio de VITA y proyectos dinámicos no deben exceder el ancho del contenedor en diagramAscii', async () => {
+      const { catalogProjectsData } = await import('../data/projects');
+      const { getStudyCaseForProject } = await import('../data/studyCases');
+      
+      const vita = catalogProjectsData.find(p => p.id === 'vita-talleres');
+      expect(vita).toBeDefined();
+      if (vita) {
+        const studyCase = getStudyCaseForProject(vita, 'es');
+        expect(studyCase.architectureDecision.diagramAscii).toBeDefined();
+        const lines = (studyCase.architectureDecision.diagramAscii ?? '').split('\n').filter(Boolean);
+        for (const line of lines) {
+          expect(line.length).toBeLessThanOrEqual(69);
+        }
+      }
+    });
   });
 });

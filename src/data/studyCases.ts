@@ -810,6 +810,75 @@ class GeoAlertDispatcher:
 };
 
 /**
+ * Función auxiliar para formatear diagramas ASCII con ancho estrictamente acotado
+ * garantizando que ninguna línea de texto se desborde del contenedor visual.
+ */
+function generateDynamicAsciiDiagram(title: string, technologies: string[], impact: string): string {
+  const boxWidth = 69;
+  const innerWidth = boxWidth - 4; // 65 caracteres de ancho útil
+
+  const wrapText = (text: string, maxLen: number): string[] => {
+    const words = text.split(/\s+/);
+    const lines: string[] = [];
+    let current = '';
+
+    for (const w of words) {
+      if (!current) {
+        current = w;
+      } else if ((current + ' ' + w).length <= maxLen) {
+        current += ' ' + w;
+      } else {
+        lines.push(current);
+        current = w;
+      }
+    }
+    if (current) lines.push(current);
+    return lines;
+  };
+
+  const centerLine = (text: string): string => {
+    const truncated = text.length > innerWidth ? text.slice(0, innerWidth - 3) + '...' : text;
+    const pad = Math.max(0, innerWidth - truncated.length);
+    const padLeft = Math.floor(pad / 2);
+    const padRight = pad - padLeft;
+    return `| ${' '.repeat(padLeft)}${truncated}${' '.repeat(padRight)} |`;
+  };
+
+  const padLine = (text: string): string => {
+    const truncated = text.length > innerWidth ? text.slice(0, innerWidth - 3) + '...' : text;
+    const padRight = Math.max(0, innerWidth - truncated.length);
+    return `| ${truncated}${' '.repeat(padRight)} |`;
+  };
+
+  const border = '+' + '-'.repeat(boxWidth - 2) + '+';
+  const midPipe = ' '.repeat(Math.floor(boxWidth / 2)) + '|';
+  const midArrow = ' '.repeat(Math.floor(boxWidth / 2)) + 'v';
+
+  const titleLines = wrapText(title.toUpperCase(), innerWidth);
+  const techText = `[ PIPELINE ] ──> ${technologies.slice(0, 4).join(' + ')}`;
+  const techLines = wrapText(techText, innerWidth);
+  const impactLines = wrapText(impact, innerWidth);
+
+  return [
+    border,
+    ...titleLines.map(centerLine),
+    border,
+    midPipe,
+    midArrow,
+    border,
+    ...techLines.map(padLine),
+    border,
+    midPipe,
+    midArrow,
+    border,
+    padLine('[ RESULTADO & IMPACTO OPERATIVO ]'),
+    padLine(''),
+    ...impactLines.map(padLine),
+    border,
+  ].join('\n');
+}
+
+/**
  * Función que genera un caso de estudio estructurado al instante para cualquier
  * proyecto del catálogo en base a sus metadatos técnicos y el idioma seleccionado.
  */
@@ -854,20 +923,7 @@ export function getStudyCaseForProject(project: Project | CatalogProject, lang: 
     contextAndProblem: project.challenge,
     architectureDecision: {
       adrSummary: isEn ? `ADR-00X: Technical Architecture & Specification for ${project.title}` : `ADR-00X: Arquitectura y Especificación Técnica para ${project.title}`,
-      diagramAscii: `
-+-------------------------------------------------------------------+
-|                     ${project.title.toUpperCase()}                |
-+-------------------------------------------------------------------+
-                                  |
-                                  v
-+-------------------------------------------------------------------+
-|  [ CORE PIPELINE ] ──> ${technologies.slice(0, 3).join(' + ')}           |
-+---------------------------------+---------------------------------+
-                                  |
-                                  v
-+-------------------------------------------------------------------+
-|  [ RESULTADO ] ──> ${impact}                                      |
-+-------------------------------------------------------------------+`,
+      diagramAscii: generateDynamicAsciiDiagram(project.title, technologies, impact),
       keyPoints: isEn
         ? [
             'Modular architecture with strict typing and clear separation of concerns.',

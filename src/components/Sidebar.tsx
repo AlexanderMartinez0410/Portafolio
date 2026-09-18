@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useNavigation, NAV_ITEMS, type SectionId } from '../context/NavigationContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -6,13 +6,64 @@ import { translations } from '../i18n/translations';
 import { authorProfile } from '../data/manifesto';
 import dinoPenguImg from '../assets/Trazo Vectorial.png';
 import { Sun, Moon, Menu, X, Languages, Download } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+
+// ─── Easter Egg Messages ──────────────────────────────────────────────────────
+const PERV_MESSAGES_ES = [
+  '¡Oye, para ya! 🐧',
+  '¡Soy un pingüino, no un juguete! 😤',
+  '¡Hey, PERVERTIDO! 👀',
+  '¡Deja de tocarme o llamo a mi abogado! ⚖️',
+  '¿En serio? ¿Otra vez? Busca algo útil que hacer. 🙄',
+  '¡PARA DE HACERLO! ...por favor 🥺',
+  '¿Quién te crió, una nutria? 🦦',
+];
+const PERV_MESSAGES_EN = [
+  'Hey, stop that! 🐧',
+  "I'm a penguin, not a toy! 😤",
+  'HEY, WEIRDO! 👀',
+  'Stop poking me or I call my lawyer! ⚖️',
+  'Seriously? Again? Go do something productive. 🙄',
+  'STOP IT! ...please 🥺',
+  'Who raised you, a sea otter? 🦦',
+];
 
 export const Sidebar: React.FC = () => {
   const { toggleTheme, isDark } = useTheme();
   const { activeSection, setActiveSection } = useNavigation();
   const { language, setLanguage, toggleLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+
+  // ─── Penguin Easter Egg State ─────────────────────────────────────────────
+  const [pinguJumping, setPinguJumping] = useState(false);
+  const [pervToast, setPervToast] = useState<string | null>(null);
+  const clickCountRef = useRef(0);
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handlePinguClick = useCallback(() => {
+    // Scroll al inicio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Animación de salto
+    setPinguJumping(true);
+    setTimeout(() => setPinguJumping(false), 600);
+
+    // Contar clicks rápidos
+    clickCountRef.current += 1;
+    if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
+    resetTimerRef.current = setTimeout(() => { clickCountRef.current = 0; }, 1500);
+
+    // Mostrar toast si supera el umbral
+    if (clickCountRef.current >= 7) {
+      clickCountRef.current = 0;
+      const msgs = language === 'en' ? PERV_MESSAGES_EN : PERV_MESSAGES_ES;
+      const msg = msgs[Math.floor(Math.random() * msgs.length)];
+      setPervToast(msg);
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setPervToast(null), 3000);
+    }
+  }, [language]);
 
   const t = translations[language];
 
@@ -29,12 +80,14 @@ export const Sidebar: React.FC = () => {
       <header className="lg:hidden sticky top-0 z-40 w-full bg-bg/95 backdrop-blur-md border-b border-border/80 px-4 sm:px-6 py-3 flex items-center justify-between transition-colors">
         {/* Lado Izquierdo: Mascota y Nombre */}
         <button
-          onClick={() => handleNavClick('sobre-mi')}
+          onClick={() => { handleNavClick('sobre-mi'); handlePinguClick(); }}
           className="flex items-center space-x-2.5 text-left group focus:outline-none"
         >
-          <img
+          <motion.img
             src={dinoPenguImg}
             alt="DinoPengu Mascota"
+            animate={pinguJumping ? { y: [-2, -14, -2, 0], rotate: [0, -6, 6, 0] } : { y: 0, rotate: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="w-9 h-9 object-contain mix-blend-multiply dark:mix-blend-screen dark:invert shrink-0"
           />
           <div className="flex flex-col min-w-0 pr-1">
@@ -177,11 +230,22 @@ export const Sidebar: React.FC = () => {
         {/* Superior: Mascota Centrada + Nombre y Rol */}
         <div className="space-y-4 flex flex-col items-center text-center">
           <div className="flex items-center justify-center w-full">
-            <img
-              src={dinoPenguImg}
-              alt="DinoPengu Mascota"
-              className="w-28 h-28 xl:w-32 xl:h-32 object-contain mx-auto mix-blend-multiply dark:mix-blend-screen dark:invert hover:scale-105 transition-transform duration-300"
-            />
+            <motion.button
+              onClick={handlePinguClick}
+              animate={pinguJumping ? { y: [-2, -22, -2, 0], rotate: [0, -8, 8, 0] } : { y: 0, rotate: 0 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.94 }}
+              className="cursor-pointer focus:outline-none"
+              title="🐧 ¡Haz clic para volver al inicio!"
+              aria-label="Volver al inicio"
+            >
+              <img
+                src={dinoPenguImg}
+                alt="DinoPengu Mascota"
+                className="w-28 h-28 xl:w-32 xl:h-32 object-contain mx-auto mix-blend-multiply dark:mix-blend-screen dark:invert transition-transform duration-300"
+              />
+            </motion.button>
           </div>
 
           <div className="space-y-1 w-full">
@@ -324,6 +388,23 @@ export const Sidebar: React.FC = () => {
           </div>
         </div>
       </aside>
+
+      {/* ─── Easter Egg Toast ─────────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {pervToast && (
+          <motion.div
+            key="perv-toast"
+            initial={{ opacity: 0, y: 40, scale: 0.85 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-3 px-5 py-3 bg-bg border border-border-strong shadow-2xl font-mono text-sm text-fg select-none pointer-events-none"
+          >
+            <span className="text-xl">🐧</span>
+            <span className="tracking-wide">{pervToast}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

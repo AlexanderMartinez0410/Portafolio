@@ -803,7 +803,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Complete digital lifecycle for student cases, scholarship grants, and internal permission workflows.'
         : 'Digitalización del ciclo de vida de casos estudiantiles, gestión de becas y régimen de permisos internos.',
-      imageSrc: '/proyectosSecundarios/BIENESTAR.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/BIENESTAR.webp`
     },
     {
       id: 'distributivos-istpet',
@@ -822,7 +822,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Automated orchestration of teaching workload distributions, classroom allocations, and academic calendars.'
         : 'Orquestación automatizada de distributivos de carga horaria, asignación de aulas y calendarios docentes.',
-      imageSrc: '/proyectosSecundarios/ACADEMIA.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/ACADEMIA.webp`
     },
     {
       id: 'rrhh-istpet',
@@ -841,7 +841,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Dynamic templating engine for employment contracts strictly complying with Ecuadorian Labor Ministry standards.'
         : 'Motor de plantillas dinámicas para emisión de contratos laborales bajo normativas del Ministerio del Trabajo de Ecuador.',
-      imageSrc: '/proyectosSecundarios/RRHH.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/RRHH.webp`
     },
     {
       id: 'auth-core-istpet',
@@ -860,7 +860,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Centralized Role-Based Access Control (RBAC) module authenticating and authorizing transactions across all apps.'
         : 'Módulo centralizado de control de acceso basado en roles (RBAC) que autentica y autoriza transacciones entre subsistemas.',
-      imageSrc: '/proyectosSecundarios/Admin.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/Admin.webp`
     },
     {
       id: 'vita-talleres',
@@ -879,7 +879,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Comprehensive UI/UX overhaul over legacy backend to optimize usability in workshop inventories and repair pipelines.'
         : 'Reestructuración integral de UI/UX sobre sistema existente para optimizar la usabilidad en inventarios y mantenimiento de talleres mecánicos.',
-      imageSrc: '/proyectosSecundarios/VITA.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/VITA.webp`
     },
     {
       id: 'siplici-caces',
@@ -898,7 +898,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Modernized dynamic interface for bulk evidence ingestion and automated audit report generation for CACES auditors.'
         : 'Modernización de interfaces dinámicas para carga masiva de evidencias y generación de reportes de acreditación universitaria ante el CACES.',
-      imageSrc: '/proyectosSecundarios/Sipleci.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/Sipleci.webp`
     },
     {
       id: 'titulacion-istpet',
@@ -917,7 +917,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Tracking and submission portal for student graduation files with multi-stage approval audits for academic boards.'
         : 'Portal de seguimiento, recepción de expedientes y fiscalización de etapas de grado para estudiantes y tribunales.',
-      imageSrc: '/proyectosSecundarios/TITULACION.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/TITULACION.webp`
     },
     {
       id: 'sincronizador-biometrico-telnet',
@@ -936,7 +936,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Real-time local capturing and synchronization with physical biometric clocks over Telnet for offline compliance.'
         : 'Captura y sincronización local en tiempo real con relojes biométricos vía Telnet para reportes de escuelas de conducción sin salida a internet.',
-      imageSrc: '/proyectosSecundarios/BIOMETRICO.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/BIOMETRICO.webp`
     },
     {
       id: 'mi-istpet-mobile-sec',
@@ -955,7 +955,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
       impact: isEn
         ? 'Mobile solution for digital student credentialing, on-campus permission validation, and secure academic grade lookup.'
         : 'Solución móvil para carnetización digital, validación de permisos en sitio y consulta segura de notas institucionales.',
-      imageSrc: '/proyectosSecundarios/MIISTPET.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/MIISTPET.webp`
     },
 
     // --- PROYECTOS PERSONALES & SANDBOX ---
@@ -977,7 +977,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
         ? 'Personal finance mobile app built with RPG progression mechanics and interactive visual feedback.'
         : 'Aplicación móvil de finanzas personales con mecánicas de progresión RPG y retroalimentación visual interactiva.',
       githubUrl: 'https://github.com/AlexanderMartinez0410/Gestor-Gastos',
-      imageSrc: '/proyectosSecundarios/MAtchQuest.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/MAtchQuest.webp`
     },
     {
       id: 'frontend-logbook-vanilla',
@@ -997,7 +997,7 @@ export const getLocalizedCatalog = (lang: Language): CatalogProject[] => {
         ? 'Pixel-perfect reconstruction of sophisticated user interfaces intentionally without frameworks to maintain strict DOM mastery.'
         : 'Reconstrucción pixel-perfect de interfaces complejas prescindiendo intencionalmente de frameworks para mantener dominio estricto del DOM y estándares web.',
       githubUrl: 'https://github.com/AlexanderMartinez0410/Frontend-Logbook',
-      imageSrc: '/proyectosSecundarios/FroontDe.webp'
+      imageSrc: `${import.meta.env.BASE_URL}proyectosSecundarios/FroontDe.webp`
     }
   ];
 };

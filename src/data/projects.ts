@@ -1,5 +1,7 @@
 import type { Project, CatalogProject } from '../types';
 
+const base = import.meta.env.BASE_URL;
+
 // ============================================================================
 // LA TRÍADA PRINCIPAL (Casos de Estudio Destacados)
 // ============================================================================
@@ -20,7 +22,7 @@ export const projectsData: Project[] = [
       'Liderazgo y desarrollo full stack de la plataforma institucional con Angular 20 SSR, Clean Architecture sobre .NET 8 y base de datos PostgreSQL, digitalizando al 100% los procesos y automatizando la generación de reportes.',
     liveUrl: 'https://ammionline.ammi.edu.ec/#/',
     visualType: 'image',
-    imageSrc: '/images/AmmiOnline.webp',
+    imageSrc: `${base}images/AmmiOnline.webp`,
     metrics: [
       { label: 'GENERACIÓN REPORTES', value: '2 MIN (ANTES 2 SEM)' },
       { label: 'DIGITALIZACIÓN', value: '100% PROCESOS' },
@@ -42,7 +44,7 @@ export const projectsData: Project[] = [
     summary:
       'Desarrollado en solitario de extremo a extremo: sistema móvil de control biométrico en Flutter con Feature-First Architecture y triple barrera anti-fraude (biometría dactilar/facial, geocercas Haversine y bloqueo de hardware por UUID).',
     visualType: 'image',
-    imageSrc: '/images/bioregistro.webp',
+    imageSrc: `${base}images/bioregistro.webp`,
     metrics: [
       { label: 'DESPLIEGUE PRODUCCIÓN', value: '5 DÍAS SLA' },
       { label: 'SUPLANTACIÓN IDENTIDAD', value: '0 INCIDENCIAS' },
@@ -64,7 +66,7 @@ export const projectsData: Project[] = [
     summary:
       'Liderazgo y desarrollo integral del Frontend y diseño UI/UX: aplicación cliente en Flutter con Riverpod, diseño de interfaces intuitivas para emergencias cívicas, mapas perimetrales interactivos y renderizado de alertas en tiempo real.',
     visualType: 'image',
-    imageSrc: '/images/AlertaDesaparecidos.webp',
+    imageSrc: `${base}images/AlertaDesaparecidos.webp`,
     metrics: [
       { label: 'PROPAGACIÓN ALERTA', value: '< 3 SEGUNDOS' },
       { label: 'CONSULTAS GEO EN MAPA', value: '< 200 MS' },
@@ -91,7 +93,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Modernización de Monolito', 'Digitalización de Procesos', 'Flujos de Validación'],
     challenge: 'Gestión desarticulada de solicitudes de becas y expedientes vulnerables de estudiantes en formatos físicos.',
     impact: 'Digitalización del ciclo de vida de casos estudiantiles, gestión de becas y régimen de permisos internos.',
-    imageSrc: '/proyectosSecundarios/BIENESTAR.webp'
+    imageSrc: `${base}proyectosSecundarios/BIENESTAR.webp`
   },
   {
     id: 'distributivos-istpet',
@@ -106,7 +108,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Orquestación de Horarios', 'Detección de Colisiones', 'Arquitectura Modular'],
     challenge: 'Generación manual de distributivos y colisión recurrente de aulas, asignaturas y horarios docentes.',
     impact: 'Orquestación automatizada de distributivos de carga horaria, asignación de aulas y calendarios docentes.',
-    imageSrc: '/proyectosSecundarios/ACADEMIA.webp'
+    imageSrc: `${base}proyectosSecundarios/ACADEMIA.webp`
   },
   {
     id: 'rrhh-istpet',
@@ -121,7 +123,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Motor de Plantillas Dinámicas', 'Auditoría Normativa', 'Generación de Contratos'],
     challenge: 'Emisión manual y desfasada de contratos laborales con riesgos de inconsistencias legales normativas.',
     impact: 'Motor de plantillas dinámicas para emisión de contratos laborales bajo normativas del Ministerio del Trabajo de Ecuador.',
-    imageSrc: '/proyectosSecundarios/RRHH.webp'
+    imageSrc: `${base}proyectosSecundarios/RRHH.webp`
   },
   {
     id: 'auth-core-istpet',
@@ -136,7 +138,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['RBAC Centralizado', 'Seguridad JWT Token', 'Desacoplamiento de Subsistemas'],
     challenge: 'Falta de un sistema de control de accesos unificado entre múltiples subsistemas académicos.',
     impact: 'Módulo centralizado de control de acceso basado en roles (RBAC) que autentica y autoriza transacciones entre subsistemas.',
-    imageSrc: '/proyectosSecundarios/Admin.webp'
+    imageSrc: `${base}proyectosSecundarios/Admin.webp`
   },
   {
     id: 'vita-talleres',
@@ -151,7 +153,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['ChangeDetection OnPush', 'Refactorización UI/UX', 'Component-Driven Dev'],
     challenge: 'Interfaz obsoleta y fricción operativa en control de inventario de repuestos y órdenes de servicio técnico.',
     impact: 'Reestructuración integral de UI/UX sobre sistema existente para optimizar la usabilidad en inventarios y mantenimiento de talleres mecánicos.',
-    imageSrc: '/proyectosSecundarios/VITA.webp'
+    imageSrc: `${base}proyectosSecundarios/VITA.webp`
   },
   {
     id: 'siplici-caces',
@@ -166,7 +168,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Carga Masiva de Evidencias', 'Motor de Reportes de Acreditación', 'Validación de Formatos'],
     challenge: 'Complejidad y lentitud en la carga masiva y auditoría de evidencias para acreditación de educación superior.',
     impact: 'Modernización de interfaces dinámicas para carga masiva de evidencias y generación de reportes de acreditación universitaria ante el CACES.',
-    imageSrc: '/proyectosSecundarios/Sipleci.webp'
+    imageSrc: `${base}proyectosSecundarios/Sipleci.webp`
   },
   {
     id: 'titulacion-istpet',
@@ -181,7 +183,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Máquinas de Estado Finito (FSM)', 'Trazabilidad de Expedientes', 'Workflow Multi-Actor'],
     challenge: 'Pérdida de trazabilidad en expedientes de grado, validación de prerrequisitos y etapas de defensa de tesis.',
     impact: 'Portal de seguimiento, recepción de expedientes y fiscalización de etapas de grado para estudiantes y tribunales.',
-    imageSrc: '/proyectosSecundarios/TITULACION.webp'
+    imageSrc: `${base}proyectosSecundarios/TITULACION.webp`
   },
   {
     id: 'sincronizador-biometrico-telnet',
@@ -196,7 +198,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Sockets TCP/IP en Tiempo Real', 'Protocolo Telnet Local', 'Sincronización Offline'],
     challenge: 'Escuelas de conducción y centros formativos aislados sin salida a internet para reporte de asistencia física.',
     impact: 'Captura y sincronización local en tiempo real con relojes biométricos vía Telnet para reportes de escuelas de conducción sin salida a internet.',
-    imageSrc: '/proyectosSecundarios/BIOMETRICO.webp'
+    imageSrc: `${base}proyectosSecundarios/BIOMETRICO.webp`
   },
   {
     id: 'mi-istpet-mobile-sec',
@@ -211,7 +213,7 @@ export const catalogProjectsData: CatalogProject[] = [
     methodologies: ['Carnetización Digital', 'Validación QR Segura', 'Persistencia Local'],
     challenge: 'Demanda de consultas estudiantiles inmediatas y validación de permisos en sitio sin acudir a ventanilla.',
     impact: 'Solución móvil para carnetización digital, validación de permisos en sitio y consulta segura de notas institucionales.',
-    imageSrc: '/proyectosSecundarios/MIISTPET.webp'
+    imageSrc: `${base}proyectosSecundarios/MIISTPET.webp`
   },
 
   // --- PROYECTOS PERSONALES & SANDBOX ---
@@ -229,7 +231,7 @@ export const catalogProjectsData: CatalogProject[] = [
     challenge: 'Monotonía y abandono temprano en el registro cotidiano de gastos y finanzas personales.',
     impact: 'Aplicación móvil de finanzas personales con mecánicas de progresión RPG y retroalimentación visual interactiva.',
     githubUrl: 'https://github.com/AlexanderMartinez0410/Gestor-Gastos',
-    imageSrc: '/proyectosSecundarios/MAtchQuest.webp'
+    imageSrc: `${base}proyectosSecundarios/MAtchQuest.webp`
   },
   {
     id: 'frontend-logbook-vanilla',
@@ -245,7 +247,6 @@ export const catalogProjectsData: CatalogProject[] = [
     challenge: 'Dependencia excesiva de librerías y abstracciones automáticas en el diseño de interfaces complejas.',
     impact: 'Reconstrucción pixel-perfect de interfaces complejas prescindiendo intencionalmente de frameworks para mantener dominio estricto del DOM y estándares web.',
     githubUrl: 'https://github.com/AlexanderMartinez0410/Frontend-Logbook',
-    imageSrc: '/proyectosSecundarios/FroontDe.webp'
+    imageSrc: `${base}proyectosSecundarios/FroontDe.webp`
   }
 ];
-

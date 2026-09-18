@@ -41,10 +41,11 @@ REGLAS INMUTABLES:
 3. Responde únicamente preguntas directas y concretas de tecnología, código o arquitectura.`;
 
 const AVAILABLE_MODELS = [
-  { id: 'llama-3.1-8b-instant', name: 'Llama 3.1 8B Instant (Ultra-rápido)', desc: 'Máxima velocidad y mínimo consumo de recursos' },
+  { id: 'llama-3.1-8b-instant', name: 'Llama 3.1 8B Instant', desc: 'Ultra-rápido, disponible en free tier' },
   { id: 'llama-3.3-70b-versatile', name: 'Llama 3.3 70B Versatile', desc: 'Máxima capacidad de razonamiento' },
-  { id: 'mixtral-8x7b-32768', name: 'Mixtral 8x7B (MoE)', desc: 'Mixture of Experts' },
+  { id: 'meta-llama/llama-4-scout-17b-16e-instruct', name: 'Llama 4 Scout 17B', desc: 'Multimodal · MoE · 128k context' },
   { id: 'gemma2-9b-it', name: 'Gemma 2 9B Instruct', desc: 'Modelo compacto optimizado' },
+  { id: 'mixtral-8x7b-32768', name: 'Mixtral 8x7B (MoE)', desc: 'Mixture of Experts · 32k context' },
 ];
 
 const PRESET_SYSTEM_PROMPTS = [
@@ -64,7 +65,7 @@ export const GroqLlmStreaming: React.FC<ExperimentComponentProps> = ({
   const [showKeyConfig, setShowKeyConfig] = useState<boolean>(false);
 
   // Parámetros del Modelo
-  const [selectedModel, setSelectedModel] = useState<string>('llama-3.3-70b-versatile');
+  const [selectedModel, setSelectedModel] = useState<string>('llama-3.1-8b-instant');
   const [temperature, setTemperature] = useState<number>(0.6);
   const [systemPrompt, setSystemPrompt] = useState<string>(PRESET_SYSTEM_PROMPTS[0].prompt);
 

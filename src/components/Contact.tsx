@@ -176,12 +176,12 @@ export const Contact: React.FC = () => {
             </a>
 
             <a
-              href={authorProfile.dossierUrl}
+              href={language === 'en' ? '/cv_alexander_martinez_en.html' : '/cv_alexander_martinez_es.html'}
               target="_blank"
               rel="noopener noreferrer"
               className="min-h-[44px] px-3.5 py-2 border border-border bg-bg hover:border-fg inline-flex items-center space-x-1.5 text-fg font-semibold hover:text-fg-muted transition-all group shadow-sm"
             >
-              <span>{t.contact.cvDownload.replace(' ]', '')}</span>
+              <span>{language === 'en' ? '[ HARVARD RESUME (PDF)' : '[ CV FORMATO HARVARD (PDF)'}</span>
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               <span>]</span>
             </a>

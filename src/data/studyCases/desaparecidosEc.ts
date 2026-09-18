@@ -1,5 +1,4 @@
 import type { StudyCase } from '../../types';
-import type { Language } from '../../types/i18n';
 
 export const desaparecidosEcEs: StudyCase = {
   id: 'desaparecidos-ec',

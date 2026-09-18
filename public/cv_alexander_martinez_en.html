@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Alexander Rafael Martínez Morillo (Harvard Format)</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 12mm 15mm 12mm 15mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Times New Roman', Times, 'EB Garamond', Georgia, serif;
+      font-size: 9.8pt;
+      line-height: 1.25;
+      color: #111111;
+      background-color: #f3f4f6;
+      padding: 20px 0;
+    }
+    .page {
+      width: 216mm;
+      min-height: 279mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 14mm 16mm;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .page {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .header .subtitle {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 4px;
+    }
+    .header .contact {
+      font-size: 9pt;
+      color: #333333;
+    }
+    .header .contact a {
+      color: #111111;
+      text-decoration: none;
+    }
+    .header .contact a:hover {
+      text-decoration: underline;
+    }
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #111111;
+      padding-bottom: 1px;
+      margin-top: 9px;
+      margin-bottom: 5px;
+    }
+    .item {
+      margin-bottom: 6px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.8pt;
+    }
+    .item-title {
+      font-weight: bold;
+    }
+    .item-company {
+      font-style: italic;
+    }
+    .item-date, .item-location {
+      font-size: 9pt;
+      color: #222222;
+      text-align: right;
+      white-space: nowrap;
+    }
+    ul.bullet-list {
+      list-style-type: disc;
+      margin-left: 14px;
+      margin-top: 2px;
+      margin-bottom: 3px;
+    }
+    ul.bullet-list li {
+      margin-bottom: 2px;
+      font-size: 9.3pt;
+      line-height: 1.25;
+      text-align: justify;
+    }
+    .skills-grid {
+      font-size: 9.3pt;
+      line-height: 1.3;
+    }
+    .skills-row {
+      margin-bottom: 2.5px;
+    }
+    .skills-label {
+      font-weight: bold;
+    }
+    .floating-bar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #111827;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+    .floating-bar button, .floating-bar a {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 12px;
+      transition: background 0.2s;
+    }
+    .floating-bar button:hover, .floating-bar a:hover {
+      background: #1d4ed8;
+    }
+    .floating-bar a.alt-btn {
+      background: #374151;
+    }
+    .floating-bar a.alt-btn:hover {
+      background: #4b5563;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating utility bar -->
+  <div class="floating-bar no-print">
+    <span>Harvard Resume (1-Page)</span>
+    <button onclick="window.print()">Print / Save as PDF</button>
+    <a href="/cv_alexander_martinez_es.html" class="alt-btn">View in Spanish (ES)</a>
+    <a href="/" class="alt-btn">← Back to Portfolio</a>
+  </div>
+
+  <div class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <h1>ALEXANDER RAFAEL MARTÍNEZ MORILLO</h1>
+      <div class="subtitle">FULL STACK ENGINEER | .NET & ANGULAR ARCHITECTURE | APPLIED AI</div>
+      <div class="contact">
+        Quito, Ecuador (Available Remote / Hybrid · UTC-5) &nbsp;|&nbsp;
+        Phone: +593 96 996 2799 &nbsp;|&nbsp;
+        <a href="mailto:alkut202@gmail.com">alkut202@gmail.com</a> &nbsp;|&nbsp;
+        <a href="https://linkedin.com/in/alexander-martinez-a1261921a/" target="_blank">linkedin.com/in/alexander-martinez</a> &nbsp;|&nbsp;
+        <a href="https://github.com/AlexanderMartinez0410" target="_blank">github.com/AlexanderMartinez0410</a>
+      </div>
+    </header>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2 class="section-title">EDUCATION</h2>
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Universidad Politécnica Salesiana (UPS)</span> &nbsp;|&nbsp;
+            <span class="item-company">B.S. in Software Development Engineering</span>
+          </div>
+          <div class="item-date">In Progress (Expected: 2027/2028) &nbsp;|&nbsp; Quito, Ecuador</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Accelerated curriculum progression via credit validation of advanced coursework; active member of the <b>AWS Builder Student</b> program focused on cloud architecture and infrastructure deployment.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Instituto Superior Tecnológico Central Técnico (ISTPET)</span> &nbsp;|&nbsp;
+            <span class="item-company">Associate of Science in Software Development</span>
+          </div>
+          <div class="item-date">2023 – 2025 &nbsp;|&nbsp; Quito, Ecuador</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Graduated with official national accreditation (<b>SENESCYT</b>). Comprehensive training in full Software Development Life Cycle (SDLC), systems architecture, and relational data modeling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section>
+      <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Instituto Superior Tecnológico Central Técnico (ISTPET)</span> &nbsp;|&nbsp;
+            <span class="item-company">Full Stack Software Engineer (.NET & Angular)</span>
+          </div>
+          <div class="item-date">2025 – Present &nbsp;|&nbsp; Quito, Ecuador</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Architected and delivered Single Page Applications (SPAs) in <b>Angular 20/21 (Signals & SSR)</b> backed by Web APIs in <b>.NET 8 (C#)</b> using <b>Clean Architecture</b>, serving <b>250+ active students</b> and administrative staff.</li>
+          <li>Modernized and extended transactional schemas over an enterprise relational database (<b>SQL Server</b>) operating in mission-critical production for <b>20+ continuous years</b>, ensuring 100% backward compatibility and zero downtime.</li>
+          <li>Engineered a centralized Role-Based Access Control (<b>RBAC</b>) engine with JWT authentication and deterministic validation middlewares to secure institutional subsystems.</li>
+          <li>Conducted operational and technical training for <b>20+ staff members and end users</b>, producing thorough technical documentation and user guides to drive smooth system adoption.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Independent Consulting & Freelance Engineering</span> &nbsp;|&nbsp;
+            <span class="item-company">Freelance Software Engineer & Technical Consultant</span>
+          </div>
+          <div class="item-date">2024 – Present &nbsp;|&nbsp; International Remote</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Delivered turnkey mobile and web applications under tight hardware and timeline constraints, including the rapid delivery of <b>Bioregistro</b> (Flutter/Dart with biometric sync) in just <b>5 calendar days</b>.</li>
+          <li>Built automated data pipelines integrating Webhooks and messaging APIs (Telegram/WhatsApp) with <b>Python (FastAPI)</b> microservices and cloud storage.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FEATURED TECHNICAL PROJECTS -->
+    <section>
+      <h2 class="section-title">FEATURED TECHNICAL PROJECTS</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">AMMI Online – Clinical Management & Electronic Billing</span> &nbsp;|&nbsp;
+            <span class="item-company">Angular 20, .NET 8, SQL Server, Tailwind CSS</span>
+          </div>
+          <div class="item-date">2025</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Designed a full-featured medical appointment, clinical history, and billing platform with clean layer decoupling, reducing patient check-in latency and enforcing strict ACID transactional integrity.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Desaparecidos EC – Civic Geospatial Alert Platform</span> &nbsp;|&nbsp;
+            <span class="item-company">Flutter, FastAPI (Python), Redis Pub/Sub, PostgreSQL</span>
+          </div>
+          <div class="item-date">2026</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Built a reactive civic emergency platform with interactive geospatial mapping and real-time alert broadcasting (&lt;3s latency) using message broker pipelines and WebSockets.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TECHNICAL & INTERPERSONAL SKILLS & CERTIFICATIONS -->
+    <section>
+      <h2 class="section-title">SKILLS & CERTIFICATIONS</h2>
+      <div class="skills-grid">
+        <div class="skills-row">
+          <span class="skills-label">Languages & Frameworks:</span>
+          C# (.NET 8 / ASP.NET Core), TypeScript, Angular (20/21 Signals & SSR), React, Python (FastAPI/Flask), Flutter & Dart, SQL, HTML5/CSS3 (Tailwind CSS, PrimeNG).
+        </div>
+        <div class="skills-row">
+          <span class="skills-label">Databases & Cloud:</span>
+          SQL Server (Complex Queries & Stored Procedures), PostgreSQL, MySQL, Redis (Pub/Sub & Caching), Firebase, Docker, AWS Cloud Fundamentals.
+        </div>
+        <div class="skills-row">
+          <span class="skills-label">Methodologies & Practices:</span>
+          Clean Architecture, CQRS, RESTful APIs, RBAC, AI Spec-Driven Development, Git/GitLab CI/CD, Unit Testing (Vitest), Architecture Decision Records (ADR).
+        </div>
+        <div class="skills-row">
+          <span class="skills-label">Interpersonal / Soft Skills:</span>
+          Assertive communication with stakeholders/clients, cross-functional teamwork, pragmatic problem solving, ownership & accountability, user training.
+        </div>
+        <div class="skills-row">
+          <span class="skills-label">Languages:</span>
+          Spanish (Native) &nbsp;|&nbsp; English (Advanced technical reading & comprehension / Conversational A2-B1 in continuous progression).
+        </div>
+        <div class="skills-row">
+          <span class="skills-label">Certifications:</span>
+          Python Essentials 1 (Cisco / Python Institute, 2024), Computer Hardware Basics (Cisco, 2024), Introduction to IoT (Cisco, 2024).
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

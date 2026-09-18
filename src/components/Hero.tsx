@@ -83,7 +83,7 @@ const SkillsSection: React.FC = () => {
                   : 'border-border text-fg-muted hover:text-fg hover:border-border-strong bg-bg-subtle'
               }`}
             >
-              {cat === 'all' ? t.hero.skillsAllTab : cat}
+              {cat === 'all' ? t.hero.skillsAllTab : (t.hero.skillsCategoryLabels[cat] || cat)}
             </button>
           ))}
         </div>
@@ -123,7 +123,7 @@ const SkillsSection: React.FC = () => {
                 transition={{ duration: 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch min-h-[490px] md:min-h-[470px]"
               >
-                {/* Columna Izquierda: Tarjetas compactas de las 5 áreas */}
+                {/* Columna Izquierda: Tarjetas compactas de las 6 áreas */}
                 <div className="flex flex-col justify-center h-full space-y-2.5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {skillsData.map((group, idx) => (
@@ -136,7 +136,7 @@ const SkillsSection: React.FC = () => {
                       >
                         <div className="flex items-center justify-between border-b border-border/80 pb-1">
                           <span className={`font-mono text-[11px] font-bold uppercase tracking-wider ${group.color}`}>
-                            {group.category}
+                            {t.hero.skillsCategoryLabels[group.category] || group.category}
                           </span>
                           <span className="font-mono text-[9px] text-fg-subtle group-hover:text-fg transition-colors">
                             VER +
@@ -151,7 +151,7 @@ const SkillsSection: React.FC = () => {
                           ))}
                         </div>
                         <div className="pt-1 border-t border-border/60 text-[9px] font-mono text-fg-subtle text-right">
-                          {group.skills.length} tecnologías · SFIA L{Math.max(...group.skills.map(s => s.sfiaLevel))} máx
+                          {group.skills.length} {group.category === 'HABILIDADES BLANDAS' ? (language === 'en' ? 'competencies' : 'habilidades') : (language === 'en' ? 'technologies' : 'tecnologías')} · SFIA L{Math.max(...group.skills.map(s => s.sfiaLevel))} máx
                         </div>
                       </div>
                     ))}
@@ -188,7 +188,7 @@ const SkillsSection: React.FC = () => {
                           key={i}
                           className="px-2 py-1 border border-border bg-bg text-fg font-medium tracking-wide flex items-center gap-1.5"
                         >
-                          <span className="text-emerald-500 font-bold"></span>
+                          <span className="text-emerald-500 font-bold">✓</span>
                           <span className="truncate">{hl}</span>
                         </div>
                       ))}
@@ -215,10 +215,10 @@ const SkillsSection: React.FC = () => {
                   <div>
                     <div className="flex items-center justify-between border-b border-border pb-2 mb-2.5">
                       <span className={`font-mono text-xs font-bold uppercase tracking-widest ${selectedCategory.color}`}>
-                        {selectedCategory.category}
+                        {t.hero.skillsCategoryLabels[selectedCategory.category] || selectedCategory.category}
                       </span>
                       <span className="font-mono text-[10px] text-fg-subtle">
-                        [ {selectedCategory.skills.length} TECNOLOGÍAS ]
+                        [ {selectedCategory.skills.length} {selectedCategory.category === 'HABILIDADES BLANDAS' ? (language === 'en' ? 'COMPETENCIES' : 'HABILIDADES') : (language === 'en' ? 'TECHNOLOGIES' : 'TECNOLOGÍAS')} ]
                       </span>
                     </div>
                     <div className="space-y-1.5">
@@ -258,7 +258,7 @@ const SkillsSection: React.FC = () => {
                     {/* Stack y capacidades */}
                     <div className="space-y-1">
                       <span className="font-mono text-[10px] font-bold text-fg uppercase tracking-wider block">
-                        // QUÉ MANEJO EN ESTA ÁREA:
+                        // {selectedCategory.category === 'HABILIDADES BLANDAS' ? (language === 'en' ? 'WHAT I BRING TO THE TEAM:' : 'QUÉ APORTO AL EQUIPO HUMANO:') : (language === 'en' ? 'WHAT I BUILD IN THIS AREA:' : 'QUÉ MANEJO EN ESTA ÁREA:')}
                       </span>
                       <p className="font-sans text-xs text-fg leading-relaxed">
                         {insight.capabilities}
@@ -268,7 +268,7 @@ const SkillsSection: React.FC = () => {
                     {/* Dónde y cómo se ha aplicado */}
                     <div className="space-y-1">
                       <span className="font-mono text-[10px] font-bold text-fg uppercase tracking-wider block">
-                        // CASOS REALES EN PRODUCCIÓN:
+                        // {selectedCategory.category === 'HABILIDADES BLANDAS' ? (language === 'en' ? 'WORKPLACE DYNAMICS & CASES:' : 'CASOS Y DINÁMICA DE TRABAJO:') : (language === 'en' ? 'PRODUCTION CASES:' : 'CASOS REALES EN PRODUCCIÓN:')}
                       </span>
                       <p className="font-sans text-xs text-fg-muted leading-relaxed">
                         {insight.productionCases}
@@ -278,7 +278,7 @@ const SkillsSection: React.FC = () => {
                     {/* Criterio y por qué */}
                     <div className="space-y-1">
                       <span className="font-mono text-[10px] font-bold text-fg uppercase tracking-wider block">
-                        // POR QUÉ ESTE CRITERIO TÉCNICO:
+                        // {selectedCategory.category === 'HABILIDADES BLANDAS' ? (language === 'en' ? 'WORK ETHIC & VALUES:' : 'VALORES Y ACTITUD PROFESIONAL:') : (language === 'en' ? 'ENGINEERING RATIONALE:' : 'POR QUÉ ESTE CRITERIO TÉCNICO:')}
                       </span>
                       <p className="font-sans text-xs text-fg-muted leading-relaxed">
                         {insight.engineeringRationale}

@@ -48,6 +48,7 @@ export interface Translations {
     skillsHeader: string;
     skillsTag: string;
     skillsAllTab: string;
+    skillsCategoryLabels: Record<string, string>;
     skillsDisclaimer: string;
     toggleSkillsOpen: string;
     toggleSkillsClose: string;
@@ -220,17 +221,25 @@ export const translations: Record<Language, Translations> = {
             'Ejecución del ciclo completo de software: levantamiento técnico de requerimientos, diseño de esquemas, desarrollo full stack, despliegue y capacitación operativa directa.'
         }
       ],
-      exploreSkillsCta: 'EXPLORAR DOMINIO TÉCNICO & MÉTRICAS',
+      exploreSkillsCta: 'EXPLORAR HABILIDADES & COMPETENCIAS',
       explorePillarsCta: 'CÓMO TRABAJO // FILOSOFÍA',
-      stackCtaTitle: '¿QUIERES CONOCER EL NIVEL DE EXPERIENCIA EN CADA TECNOLOGÍA?',
-      stackCtaSubtitle: 'Autoevaluación interactiva, métricas reales en producción y desglose por área.',
-      stackCtaButton: 'VER DOMINIO TÉCNICO',
-      skillsHeader: 'DOMINIO TÉCNICO',
-      skillsTag: 'ESTÁNDAR SFIA 7 NIVELES · ALCANCE ACTIVO: L1 A L5',
+      stackCtaTitle: '¿QUIERES CONOCER EL NIVEL EN CADA TECNOLOGÍA Y HABILIDAD?',
+      stackCtaSubtitle: 'Autoevaluación interactiva, métricas reales en producción, competencias técnicas y blandas.',
+      stackCtaButton: 'VER HABILIDADES & COMPETENCIAS',
+      skillsHeader: 'HABILIDADES & COMPETENCIAS',
+      skillsTag: 'COMPETENCIAS TÉCNICAS & HABILIDADES INTERPERSONALES · MARCO SFIA',
       skillsAllTab: 'TODOS',
-      skillsDisclaimer: 'Calificado según los 7 niveles del marco internacional SFIA. Alcance activo hasta L5 (Liderazgo Técnico / Aseguramiento de Sistemas).',
-      toggleSkillsOpen: '[ DOMINIO TÉCNICO ↓ ]',
-      toggleSkillsClose: '[ OCULTAR DOMINIO TÉCNICO ↑ ]',
+      skillsCategoryLabels: {
+        FRONTEND: 'FRONTEND',
+        BACKEND: 'BACKEND',
+        'BASES DE DATOS': 'BASES DE DATOS',
+        'DEVOPS & CLOUD': 'DEVOPS & CLOUD',
+        'IA APLICADA': 'IA APLICADA',
+        'HABILIDADES BLANDAS': 'HABILIDADES BLANDAS',
+      },
+      skillsDisclaimer: 'Calificado según los 7 niveles del marco internacional SFIA. Combina rigor técnico en producción con sólidas habilidades blandas orientadas a la colaboración y entrega de resultados.',
+      toggleSkillsOpen: '[ HABILIDADES & COMPETENCIAS ↓ ]',
+      toggleSkillsClose: '[ OCULTAR COMPETENCIAS ↑ ]',
       tierLegend: {
         l7: 'L7 · Fijar Estrategia / Dirección',
         l6: 'L6 · Iniciar e Influir / Principal',
@@ -241,17 +250,17 @@ export const translations: Record<Language, Translations> = {
         l1: 'L1 · Seguir / Herramientas Básicas',
       },
       skillsGlobalOverview: {
-        title: 'PANORAMA DE INGENIERÍA & ARQUITECTURA MULTI-STACK',
+        title: 'PANORAMA DE INGENIERÍA, STACK & DINÁMICA HUMANA',
         tag: 'RESUMEN GLOBAL EN PRODUCCIÓN',
-        profileSummary: 'Ingeniería Full Stack orientada a modernización de plataformas empresariales sobre bases de datos de más de 20 años en producción, arquitecturas frontend desacopladas (Angular SSR, React) y servicios backend limpios en .NET 8 y Python.',
-        sfiaScope: 'Alcance SFIA activo hasta Nivel 5 (Ensure / Advise - Liderazgo Técnico y Aseguramiento Arquitectónico) en Frontend, Backend .NET y Bases de Datos relacionales.',
+        profileSummary: 'Perfil integral que combina ingeniería Full Stack orientada a modernización de plataformas empresariales sobre bases de datos , arquitecturas frontend desacopladas (Angular SSR, React), APIs limpias en .NET 8 y sólidas habilidades de comunicación, trabajo en equipo y empatía con el usuario.',
+        sfiaScope: 'Alcance SFIA activo hasta Nivel 5 (Ensure / Advise - Liderazgo Técnico y Aseguramiento Arquitectónico) en Frontend, Backend .NET, Datos y Dinámica de Equipo.',
         productionHighlights: [
-          '4 Áreas Técnicas Especializadas',
+          '5 Áreas Técnicas + Habilidades Blandas',
           'Modernización de Esquemas de +20 Años',
           'Arquitecturas Limpias (Clean / CQRS / SSR)',
-          'Flujos Asistidos por IA Determinista',
+          'Comunicación Asertiva & Trabajo en Equipo',
         ],
-        calloutHint: 'Selecciona una categoría arriba para ver el listado detallado de tecnologías y el informe de experiencia en producción.',
+        calloutHint: 'Selecciona una categoría arriba para ver el listado detallado y el informe de experiencia y dinámica laboral.',
       },
       skillsCategoryInsights: {
         FRONTEND: {
@@ -293,6 +302,14 @@ export const translations: Record<Language, Translations> = {
           productionCases: 'Desarrollo acelerado de aplicaciones full stack, refactorizaciones guiadas por agentes con especificaciones formales, creación de asistentes y auditoría determinista de código.',
           engineeringRationale: 'Aprovecho la IA como un multiplicador de velocidad y alcance técnico, combinándolo siempre con arquitectura limpia, validación determinista y criterio humano riguroso.',
           keyHighlights: ['Agentic Coding (Cursor / AGY)', 'Spec-Driven Development con IA', 'Integración APIs Claude & Gemini', 'Auditoría Determinista de Código'],
+        },
+        'HABILIDADES BLANDAS': {
+          title: 'HABILIDADES INTERPERSONALES & DINÁMICA DE TRABAJO',
+          tag: 'ENFOQUE PARA RECURSOS HUMANOS / RH',
+          capabilities: 'Comunicación asertiva con clientes y directivos, escucha activa, colaboración constructiva en equipos multidisciplinarios, autonomía, gestión del tiempo y empatía con las necesidades de negocio.',
+          productionCases: 'Experiencia directa interactuando con usuarios no técnicos para levantamiento de requerimientos, capacitación de personal operativo y coordinación transparente con líderes de proyecto.',
+          engineeringRationale: 'El desarrollo de software tiene impacto cuando resuelve problemas humanos reales. Priorizo la responsabilidad, el buen clima laboral y la claridad en los compromisos asumidos.',
+          keyHighlights: ['Comunicación Asertiva & Clientes', 'Trabajo en Equipo & Buen Clima', 'Autonomía & Responsabilidad (Ownership)', 'Capacidad de Escucha y Empatía', 'Rápida Adaptabilidad al Cambio'],
         },
       },
     },
@@ -443,17 +460,25 @@ export const translations: Record<Language, Translations> = {
             'Executing the full software lifecycle: technical requirements gathering, schema modeling, full stack engineering, deployment, and direct operator training.'
         }
       ],
-      exploreSkillsCta: 'EXPLORE TECHNICAL DOMAIN & METRICS',
+      exploreSkillsCta: 'EXPLORE SKILLS & COMPETENCIES',
       explorePillarsCta: 'HOW I BUILD // PHILOSOPHY',
-      stackCtaTitle: 'WANT TO SEE THE DEPTH OF EXPERIENCE IN EACH TECHNOLOGY?',
-      stackCtaSubtitle: 'Interactive self-assessment, production metrics, and breakdown by technical area.',
-      stackCtaButton: 'VIEW TECHNICAL DOMAIN',
-      skillsHeader: 'TECHNICAL PROFICIENCY',
-      skillsTag: 'SFIA 7-LEVEL FRAMEWORK · ACTIVE RANGE: L1 TO L5',
+      stackCtaTitle: 'WANT TO SEE THE PROFICIENCY IN EACH TECH & SOFT SKILL?',
+      stackCtaSubtitle: 'Interactive self-assessment, real production metrics, technical and interpersonal competencies.',
+      stackCtaButton: 'VIEW SKILLS & COMPETENCIES',
+      skillsHeader: 'SKILLS & COMPETENCIES',
+      skillsTag: 'TECHNICAL PROFILE & SOFT SKILLS · SFIA FRAMEWORK',
       skillsAllTab: 'ALL',
-      skillsDisclaimer: 'Rated according to the global 7-level SFIA framework. Active production scope up to L5 (Technical Leadership / System Assurance).',
-      toggleSkillsOpen: '[ TECHNICAL PROFICIENCY ↓ ]',
-      toggleSkillsClose: '[ HIDE TECHNICAL PROFICIENCY ↑ ]',
+      skillsCategoryLabels: {
+        FRONTEND: 'FRONTEND',
+        BACKEND: 'BACKEND',
+        'BASES DE DATOS': 'DATABASES',
+        'DEVOPS & CLOUD': 'DEVOPS & CLOUD',
+        'IA APLICADA': 'APPLIED AI',
+        'HABILIDADES BLANDAS': 'SOFT SKILLS',
+      },
+      skillsDisclaimer: 'Rated according to the global 7-level SFIA framework. Combines technical depth in production with solid interpersonal skills focused on teamwork and value delivery.',
+      toggleSkillsOpen: '[ SKILLS & COMPETENCIES ↓ ]',
+      toggleSkillsClose: '[ HIDE COMPETENCIES ↑ ]',
       tierLegend: {
         l7: 'L7 · Set Strategy / Executive',
         l6: 'L6 · Initiate & Influence / Principal',
@@ -464,17 +489,17 @@ export const translations: Record<Language, Translations> = {
         l1: 'L1 · Follow / Basic Tooling',
       },
       skillsGlobalOverview: {
-        title: 'CROSS-STACK ENGINEERING & ARCHITECTURE OVERVIEW',
+        title: 'CROSS-STACK ENGINEERING & INTERPERSONAL DYNAMICS',
         tag: 'GLOBAL PRODUCTION SUMMARY',
-        profileSummary: 'Full Stack Engineering specialized in modernizing platforms over monolithic enterprise databases with 20+ years in production, designing decoupled interfaces (Angular SSR, React), and building clean services in .NET 8 and Python.',
-        sfiaScope: 'Active SFIA level up to Level 5 (Ensure / Advise - Technical Leadership & Architectural Assurance) across Frontend, .NET Backend, and Relational Data Layers.',
+        profileSummary: 'Comprehensive Full Stack Engineering profile specializing in enterprise platform modernization, legacy database integration, decoupled frontend architectures (Angular SSR and React), and clean .NET 8 APIs, complemented by strong communication, teamwork, and user empathy.',
+        sfiaScope: 'Active SFIA scope up to Level 5 (Ensure / Advise - Technical Leadership & Architectural Assurance) across Frontend, .NET Backend, Data Layers, and Team Dynamics.',
         productionHighlights: [
-          '4 Specialized Technical Areas',
+          '5 Technical Areas + Soft Skills',
           'Modernization Over 20+ Year Legacy Databases',
           'Clean Architecture (Clean / CQRS / SSR)',
-          'Deterministic AI-Augmented Workflows',
+          'Assertive Communication & Teamwork',
         ],
-        calloutHint: 'Select any category above to view individual technologies and the deep-dive production report.',
+        calloutHint: 'Select any category above to view individual competencies and the deep-dive workplace report.',
       },
       skillsCategoryInsights: {
         FRONTEND: {
@@ -516,6 +541,14 @@ export const translations: Record<Language, Translations> = {
           productionCases: 'High-velocity full-stack engineering, agent-guided legacy refactoring via formal specs, automated code audits, and conversational institutional bots.',
           engineeringRationale: 'Using AI as a technical velocity multiplier, strictly bound by human architectural judgment, Clean Architecture principles, and deterministic verification.',
           keyHighlights: ['Agentic Coding (Cursor / AGY)', 'AI Spec-Driven Development', 'Claude & Gemini API Integrations', 'Deterministic Code Audits'],
+        },
+        'HABILIDADES BLANDAS': {
+          title: 'INTERPERSONAL SKILLS & WORKPLACE DYNAMICS',
+          tag: 'HUMAN RESOURCES (HR) OVERVIEW',
+          capabilities: 'Clear and assertive communication with clients and executives, active listening, constructive collaboration in multidisciplinary teams, ownership, time management, and business empathy.',
+          productionCases: 'Direct experience collaborating with non-technical users for requirement elicitation, operational training, and transparent communication with project leaders.',
+          engineeringRationale: 'Software delivers true impact when it solves real human needs. I prioritize ethical accountability, team morale, and reliability in every commitment.',
+          keyHighlights: ['Assertive Communication & Client-Facing', 'Teamwork & Positive Culture', 'Ownership & Accountability', 'Empathy & Active Listening', 'Fast Adaptability to Change'],
         },
       },
     },

@@ -260,19 +260,18 @@ export const Sidebar: React.FC = () => {
             <span className="tracking-wider uppercase text-[10px] sm:text-[11px] font-medium">{t.sidebar.status}</span>
           </div>
 
-          {/* Descargar CV */}
+          {/* Descargar / Ver CV Harvard */}
           <a
-            href={authorProfile.dossierUrl}
-            download
+            href={language === 'en' ? '/cv_alexander_martinez_en.html' : '/cv_alexander_martinez_es.html'}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between py-2 px-3 border border-border hover:border-border-strong bg-bg-subtle text-xs font-mono text-fg transition-all group font-medium"
           >
             <div className="flex items-center space-x-2">
               <Download className="w-3.5 h-3.5 text-fg-muted group-hover:text-fg transition-colors" />
-              <span className="tracking-wider text-[11px]">CURRÍCULUM</span>
+              <span className="tracking-wider text-[11px]">{language === 'en' ? 'HARVARD RESUME' : 'CURRÍCULUM HARVARD'}</span>
             </div>
-            <span className="text-[10px] text-fg-subtle group-hover:text-fg transition-colors">[ PDF ]</span>
+            <span className="text-[10px] text-fg-subtle group-hover:text-fg transition-colors">[ PDF / ↗ ]</span>
           </a>
           <div className="space-y-1.5">
             <span className="block font-mono text-[10px] text-fg-subtle uppercase tracking-widest font-semibold">

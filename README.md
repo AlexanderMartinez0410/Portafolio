@@ -1,4 +1,4 @@
-# 🏛️ Alexander Rafael Martínez Morillo (DinoPengu Dev)
+#  Alexander Rafael Martínez Morillo (DinoPengu Dev)
 ### Full Stack Engineer | Frontend Architecture & Applied AI
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -13,11 +13,11 @@
 
 > **Portafolio de ingeniería de software y sandbox interactivo.** Diseñado con una identidad editorial sobria (*Swiss / Editorial / Brutalism Clean*), enfoque en modernización de sistemas empresariales sobre bases de datos legadas con +20 años en producción, arquitecturas desacopladas (.NET 8 & Angular Signals/SSR) y experimentos técnicos a bajo nivel.
 
-🌐 **Demo en Producción:** [https://alexandermartinez.dev](https://github.com/AlexanderMartinez0410/Portafolio)
+ **Demo en Producción:** [https://alexandermartinez.dev](https://github.com/AlexanderMartinez0410/Portafolio)
 
 ---
 
-## 📑 Tabla de Contenidos
+##  Tabla de Contenidos
 
 1. [Arquitectura y Concepto](#-arquitectura-y-concepto)
 2. [Características Principales](#-características-principales)
@@ -42,13 +42,13 @@ A diferencia de los portafolios convencionales basados en plantillas comerciales
 
 ---
 
-## ✨ Características Principales
+##  Características Principales
 
-* **🧭 Navegación por Habitaciones (Rooms):** Navegación fluida y accesible entre Sobre Mí, Proyectos, Experiencia, Laboratorio y Contacto.
-* **💼 Habilidades Técnicas & Habilidades Blandas:** Desglose categorizado en Frontend, Backend, Bases de Datos, DevOps, IA Aplicada y Habilidades Blandas orientadas a Recursos Humanos (*HR Insights*).
-* **🤖 Bot de Triage y Asistencia:** Asistente interactivo guiado para canalizar consultas de reclutadores, propuestas de proyectos y consultoría técnica.
-* **🛡️ Protección contra Web-Scraping:** Ofuscación de correos electrónicos y números de teléfono contra crawlers y bots automatizados de spam.
-* **📄 Harvard Resume Generator:** Plantillas de CV integradas en formato Harvard estándar de 1 página (en español e inglés) con estilos optimizados para exportación a PDF (`Ctrl + P`).
+* ** Navegación por Habitaciones (Rooms):** Navegación fluida y accesible entre Sobre Mí, Proyectos, Experiencia, Laboratorio y Contacto.
+* ** Habilidades Técnicas & Habilidades Blandas:** Desglose categorizado en Frontend, Backend, Bases de Datos, DevOps, IA Aplicada y Habilidades Blandas orientadas a Recursos Humanos (*HR Insights*).
+* ** Bot de Triage y Asistencia:** Asistente interactivo guiado para canalizar consultas de reclutadores, propuestas de proyectos y consultoría técnica.
+* ** Protección contra Web-Scraping:** Ofuscación de correos electrónicos y números de teléfono contra crawlers y bots automatizados de spam.
+* ** Harvard Resume Generator:** Plantillas de CV integradas en formato Harvard estándar de 1 página (en español e inglés) con estilos optimizados para exportación a PDF (`Ctrl + P`).
 
 ---
 
@@ -72,7 +72,7 @@ A diferencia de los portafolios convencionales basados en plantillas comerciales
 
 ---
 
-## 📂 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```text
 portafolio_developer/
@@ -123,19 +123,19 @@ portafolio_developer/
 
 ---
 
-## 🧪 Laboratorio Técnico (Sandbox & WebGL)
+##  Laboratorio Técnico (Sandbox & WebGL)
 
 El portafolio incluye una sección de laboratorio interactivo que demuestra habilidades avanzadas sobre estándares web nativos:
 
-1. **🐧 Linux Virtual CLI:** Emulador de terminal con sistema de archivos virtual en memoria (`ls`, `cat`, `cd`, `grep`, `history`).
-2. **🎮 Retro PC Emulator:** Simulación de entorno retro con mini-juegos de lógica (*Snake*, *Tetris*, *Buscaminas*).
-3. **🦖 3D Voxel Cretaceous:** Renderizado WebGL interactivo en tiempo real con iluminación dinámica en Three.js.
-4. **🎹 Polyphonic Synth Audio:** Sintetizador con osciladores sinusoidales y envolventes ADSR usando la API nativa de Web Audio.
-5. **⚡ LLM Streaming Lab:** Simulación de flujos de tokenización y streaming de modelos de lenguaje con métricas de latencia.
+1. ** Linux Virtual CLI:** Emulador de terminal con sistema de archivos virtual en memoria (`ls`, `cat`, `cd`, `grep`, `history`).
+2. ** Retro PC Emulator:** Simulación de entorno retro con mini-juegos de lógica (*Snake*, *Tetris*, *Buscaminas*).
+3. ** 3D Voxel Cretaceous:** Renderizado WebGL interactivo en tiempo real con iluminación dinámica en Three.js.
+4. ** Polyphonic Synth Audio:** Sintetizador con osciladores sinusoidales y envolventes ADSR usando la API nativa de Web Audio.
+5. ** LLM Streaming Lab:** Simulación de flujos de tokenización y streaming de modelos de lenguaje con métricas de latencia.
 
 ---
 
-## 🚀 Instalación y Uso Local
+##  Instalación y Uso Local
 
 ### Prerrequisitos
 * **Node.js** v18.0 o superior
@@ -161,7 +161,7 @@ Abre tu navegador en `http://localhost:5173`.
 
 ---
 
-## 🛠️ Scripts Disponibles
+##  Scripts Disponibles
 
 | Comando | Descripción |
 | :--- | :--- |
@@ -173,7 +173,7 @@ Abre tu navegador en `http://localhost:5173`.
 
 ---
 
-## 📄 Currículum Vitae (Formato Harvard)
+##  Currículum Vitae (Formato Harvard)
 
 El proyecto incluye dos plantillas independientes con diseño formal Harvard de 1 página exacta:
 
@@ -184,7 +184,7 @@ Ambas versiones cuentan con estilos `@media print` calibrados para imprimir o gu
 
 ---
 
-## 📬 Contacto y Redes
+##  Contacto y Redes
 
 * **Ingeniero:** Alexander Rafael Martínez Morillo (DinoPengu Dev)
 * **Ubicación:** Quito, Ecuador (Disponible Remoto UTC-5 / Híbrido)

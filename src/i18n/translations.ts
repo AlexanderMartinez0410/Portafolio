@@ -657,7 +657,7 @@ export const getLocalizedProjects = (lang: Language): Project[] => {
           'Liderazgo y desarrollo full stack de la plataforma institucional con Angular 20 SSR, Clean Architecture sobre .NET 8 y base de datos PostgreSQL, digitalizando al 100% los procesos y automatizando la generación de reportes.',
         liveUrl: 'https://ammionline.ammi.edu.ec/#/',
         visualType: 'image',
-        imageSrc: '/images/AmmiOnline.webp',
+        imageSrc: `${import.meta.env.BASE_URL}images/AmmiOnline.webp`,
         metrics: [
           { label: 'GENERACIÓN REPORTES', value: '2 MIN (ANTES 2 SEM)' },
           { label: 'DIGITALIZACIÓN', value: '100% PROCESOS' },
@@ -679,7 +679,7 @@ export const getLocalizedProjects = (lang: Language): Project[] => {
         summary:
           'Desarrollado en solitario de extremo a extremo: sistema móvil de control biométrico en Flutter con Feature-First Architecture y triple barrera anti-fraude (biometría dactilar/facial, geocercas Haversine y bloqueo de hardware por UUID).',
         visualType: 'image',
-        imageSrc: '/images/bioregistro.webp',
+        imageSrc: `${import.meta.env.BASE_URL}images/bioregistro.webp`,
         metrics: [
           { label: 'DESPLIEGUE PRODUCCIÓN', value: '5 DÍAS SLA' },
           { label: 'SUPLANTACIÓN IDENTIDAD', value: '0 INCIDENCIAS' },
@@ -701,7 +701,7 @@ export const getLocalizedProjects = (lang: Language): Project[] => {
         summary:
           'Liderazgo y desarrollo integral del Frontend y diseño UI/UX: aplicación cliente en Flutter con Riverpod, diseño de interfaces intuitivas para emergencias cívicas, mapas perimetrales interactivos y renderizado de alertas en tiempo real.',
         visualType: 'image',
-        imageSrc: '/images/AlertaDesaparecidos.webp',
+        imageSrc: `${import.meta.env.BASE_URL}images/AlertaDesaparecidos.webp`,
         metrics: [
           { label: 'PROPAGACIÓN ALERTA', value: '< 3 SEGUNDOS' },
           { label: 'CONSULTAS GEO EN MAPA', value: '< 200 MS' },
@@ -728,7 +728,7 @@ export const getLocalizedProjects = (lang: Language): Project[] => {
         'Technical leadership and full stack engineering of the enterprise institutional portal using Angular 20 SSR, .NET 8 Clean Architecture, and PostgreSQL, achieving 100% digitalization and instant automated reports.',
       liveUrl: 'https://ammionline.ammi.edu.ec/#/',
       visualType: 'image',
-      imageSrc: '/images/AmmiOnline.webp',
+      imageSrc: `${import.meta.env.BASE_URL}images/AmmiOnline.webp`,
       metrics: [
         { label: 'REPORT GENERATION', value: '2 MIN (WAS 2 WEEKS)' },
         { label: 'DIGITALIZATION', value: '100% PROCESSES' },
@@ -750,7 +750,7 @@ export const getLocalizedProjects = (lang: Language): Project[] => {
       summary:
         'End-to-end solo engineering: mobile biometric attendance app in Flutter featuring Feature-First Architecture and a triple anti-fraud barrier (native fingerprint/Face ID, Haversine perimeter geofencing, and hardware UUID locking).',
       visualType: 'image',
-      imageSrc: '/images/bioregistro.webp',
+      imageSrc: `${import.meta.env.BASE_URL}images/bioregistro.webp`,
       metrics: [
         { label: 'PRODUCTION SLA', value: '5 DAYS ROLLOUT' },
         { label: 'IDENTITY FRAUD', value: '0 INCIDENTS' },
@@ -772,7 +772,7 @@ export const getLocalizedProjects = (lang: Language): Project[] => {
       summary:
         'Technical leadership and complete frontend execution & UI/UX design: Flutter client with Riverpod, intuitive civic emergency interface design, interactive perimeter maps, and sub-second real-time alert visualization.',
       visualType: 'image',
-      imageSrc: '/images/AlertaDesaparecidos.webp',
+      imageSrc: `${import.meta.env.BASE_URL}images/AlertaDesaparecidos.webp`,
       metrics: [
         { label: 'ALERT PROPAGATION', value: '< 3 SECONDS' },
         { label: 'MAP GEO QUERIES', value: '< 200 MS' },

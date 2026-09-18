@@ -10,22 +10,22 @@ import { motion, AnimatePresence } from 'motion/react';
 
 // ─── Easter Egg Messages ──────────────────────────────────────────────────────
 const PERV_MESSAGES_ES = [
-  '¡Oye, para ya! 🐧',
-  '¡Soy un pingüino, no un juguete! 😤',
-  '¡Hey, PERVERTIDO! 👀',
-  '¡Deja de tocarme o llamo a mi abogado! ⚖️',
-  '¿En serio? ¿Otra vez? Busca algo útil que hacer. 🙄',
-  '¡PARA DE HACERLO! ...por favor 🥺',
-  '¿Quién te crió, una nutria? 🦦',
+  '¡Oye, para ya!',
+  '¡Soy un pingüino, no un juguete!',
+  '¡Hey, PERVERTIDO!',
+  '¡Deja de tocarme o llamo a mi abogado!',
+  '¿En serio? ¿Otra vez? Busca algo útil que hacer.',
+  '¡PARA DE HACERLO! ...por favor',
+  '¿Quién te crió, una nutria?',
 ];
 const PERV_MESSAGES_EN = [
-  'Hey, stop that! 🐧',
-  "I'm a penguin, not a toy! 😤",
-  'HEY, WEIRDO! 👀',
-  'Stop poking me or I call my lawyer! ⚖️',
-  'Seriously? Again? Go do something productive. 🙄',
-  'STOP IT! ...please 🥺',
-  'Who raised you, a sea otter? 🦦',
+  'Hey, stop that!',
+  "I'm a penguin, not a toy!",
+  'HEY, WEIRDO!',
+  'Stop poking me or I call my lawyer!',
+  'Seriously? Again? Go do something productive.',
+  'STOP IT! ...please',
+  'Who raised you, a sea otter?',
 ];
 
 export const Sidebar: React.FC = () => {
@@ -398,10 +398,9 @@ export const Sidebar: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 420, damping: 28 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-3 px-5 py-3 bg-bg border border-border-strong shadow-2xl font-mono text-sm text-fg select-none pointer-events-none"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] px-5 py-3 bg-bg border border-border-strong shadow-2xl font-mono text-sm text-fg select-none pointer-events-none tracking-wide"
           >
-            <span className="text-xl">🐧</span>
-            <span className="tracking-wide">{pervToast}</span>
+            {pervToast}
           </motion.div>
         )}
       </AnimatePresence>

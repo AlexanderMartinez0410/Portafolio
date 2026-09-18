@@ -44,22 +44,8 @@ export const labExperimentsData: LabExperiment[] = [
     tech: ['Web Audio API', 'ADSR Envelopes', 'Canvas 2D', 'Fast Fourier Transform (FFT)', 'Polyphony']
   },
   {
-    id: 'network-performance-lab',
-    number: '#04',
-    title: 'Laboratorio de Rendimiento Web, Latencia & Waterfall en Vivo',
-    description:
-      'Banco de pruebas interactivo que simula y mide en vivo tiempos de respuesta, latencia TTFB, descarga en cascada (waterfall) de bundles JS/CSS y diferencias de rendimiento entre arquitecturas CSR, SSR y Edge Caching con perfiles de red (Fibra, 4G, 3G Throttling).',
-    approach:
-      'Simulador de pipeline de carga basado en métricas de Core Web Vitals (FCP, LCP, CLS, TTFB), motor de throttling de red asíncrono y gráfico de cascada interactivo.',
-    category: '[ PERFORMANCE & CORE WEB VITALS ]',
-    tagCategory: 'ui-ux',
-    url: 'https://github.com/dinopengudev',
-    status: 'EN VIVO',
-    tech: ['Core Web Vitals API', 'Network Throttling', 'Waterfall Profiler', 'SSR/CSR/Edge', 'DOM Metrics']
-  },
-  {
     id: 'groq-llm-streaming',
-    number: '#05',
+    number: '#04',
     title: 'Asistente Conversacional IA con Streaming de Ultrabaja Latencia',
     description:
       'Sandbox de IA generativa con procesamiento y renderizado token por token en tiempo real mediante Server-Sent Events (SSE), control de temperatura y system prompts, junto con telemetría de tokens/segundo y TTFT (Time to First Token).',
@@ -72,36 +58,8 @@ export const labExperimentsData: LabExperiment[] = [
     tech: ['Groq LPU / Llama 3', 'Server-Sent Events (SSE)', 'ReadableStream API', 'Optimistic UI', 'Token Metrics']
   },
   {
-    id: 'whatsapp-bot-simulator',
-    number: '#06',
-    title: 'Simulador Interactivo de Automatización & Bot de WhatsApp',
-    description:
-      'Simulador interactivo de interfaz WhatsApp Web/Móvil con árbol de decisiones en tiempo real: catálogos interactivos, toma de pedidos estructurados, captura de leads calificados y simulación de triggers/webhooks hacia backend.',
-    approach:
-      'Máquina de estados finitos (FSM) para el árbol conversacional, persistencia local de sesión y emulación de respuestas automáticas con delay humanizado.',
-    category: '[ AUTOMATION & B2B LEADS ]',
-    tagCategory: 'ui-ux',
-    url: 'https://github.com/dinopengudev',
-    status: 'EN VIVO',
-    tech: ['Finite State Machine (FSM)', 'Conversational UI', 'Webhook Triggers', 'JSON Schema', 'Lead Capture']
-  },
-  {
-    id: 'video-scroll-scrubber',
-    number: '#07',
-    title: 'Controlador de Video Scrubbing Frame a Frame por Scroll & Slider',
-    description:
-      'Micro-experimento de UI Motion estilo showcase de producto Apple que mapea la posición del scroll o de un slider táctil directamente con el tiempo de reproducción de video cuadro a cuadro con aceleración suave.',
-    approach:
-      'Sincronización de currentTime del video HTML5 con interpolación lineal (lerp) dentro de un bucle requestAnimationFrame para evitar saltos o jittering visual.',
-    category: '[ UI MOTION & VIDEO APIS ]',
-    tagCategory: 'ui-ux',
-    url: 'https://github.com/dinopengudev',
-    status: 'EN VIVO',
-    tech: ['HTML5 Video API', 'requestAnimationFrame', 'Linear Interpolation (Lerp)', 'Scroll Observer', 'Canvas Fallback']
-  },
-  {
     id: 'retro-pc-emulator',
-    number: '#08',
+    number: '#05',
     title: 'Retro PC: Emulador de Computadora Antigua & Arcade de Juegos Clásicos',
     description:
       'Emulador interactivo de PC retro (1993) con carcasa CRT, secuencia de arranque BIOS y tres juegos clásicos: Serpiente, Buscaminas y Tetris. Incluye tabla de puntuaciones persistente en localStorage con filtro por juego y guardado de partida.',
